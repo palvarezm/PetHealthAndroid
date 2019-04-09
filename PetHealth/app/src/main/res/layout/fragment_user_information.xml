@@ -1,0 +1,170 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="pe.edu.upc.pethealth.fragments.UserInformationFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/profileNameTextView"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Name: "
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_marginStart="@dimen/big_margin"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/profileLastNameTextView"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Last Name: "
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_marginStart="@dimen/big_margin"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/profileNameTextView"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/profileBirthDateTextView"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Birthdate: "
+            android:textColor="@color/colorPrimaryText"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_marginStart="@dimen/big_margin"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/profileLastNameTextView"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/documentTypeTextView"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Doc. Type: "
+            android:textColor="@color/colorPrimaryText"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_marginStart="@dimen/big_margin"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/profileBirthDateTextView"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/documentNumberTextView"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Doc. Number: "
+            android:textColor="@color/colorPrimaryText"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_marginStart="@dimen/big_margin"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/documentTypeTextView"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/profileAddressTextView"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Address: "
+            android:textColor="@color/colorPrimaryText"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_marginStart="@dimen/big_margin"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/documentNumberTextView"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/profilephoneTextView"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Phone: "
+            android:textColor="@color/colorPrimaryText"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:layout_marginStart="@dimen/big_margin"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/profileAddressTextView"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <Button
+            android:id="@+id/confirmButton"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Confirm"
+            android:textStyle="bold"
+            android:layout_margin="20dp"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:background="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@id/profilePhoneEditText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <EditText
+            android:id="@+id/profileNameEditText"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Name here"
+            android:textColorHint="@color/colorPrimaryLight"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/profileNameTextView"/>
+        <EditText
+            android:id="@+id/profileLastNameEditText"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Last Name here"
+            android:textColorHint="@color/colorPrimaryLight"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/profileNameEditText"
+            app:layout_constraintStart_toEndOf="@id/profileLastNameTextView"/>
+        <EditText
+            android:id="@+id/profileBirthdateEditText"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Select your Birthdate"
+            android:textColorHint="@color/colorPrimaryLight"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/profileLastNameEditText"
+            app:layout_constraintStart_toEndOf="@id/profileBirthDateTextView"/>
+
+        <Spinner
+            android:id="@+id/documentTypeSpinner"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:layout_marginStart="@dimen/default_margin"
+            android:prompt="@string/prompt_document_type"
+            app:layout_constraintTop_toBottomOf="@id/profileBirthdateEditText"
+            app:layout_constraintStart_toEndOf="@id/documentTypeTextView"/>
+
+        <EditText
+            android:id="@+id/documentNumberEditText"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Document Number here"
+            android:textColorHint="@color/colorPrimaryLight"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/documentTypeSpinner"
+            app:layout_constraintStart_toEndOf="@id/documentNumberTextView"/>
+        <EditText
+            android:id="@+id/profileAddressEditText"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Address (Av/Lt.)"
+            android:textColorHint="@color/colorPrimaryLight"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/documentNumberEditText"
+            app:layout_constraintStart_toEndOf="@id/profileAddressTextView"/>
+        <EditText
+            android:id="@+id/profilePhoneEditText"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Phone here (+51)"
+            android:textColorHint="@color/colorPrimaryLight"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/profileAddressEditText"
+            app:layout_constraintStart_toEndOf="@id/profilephoneTextView"/>
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>
