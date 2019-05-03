@@ -1,9 +1,16 @@
 package pe.edu.upc.pethealth.fragments;
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +28,14 @@ import com.wang.avi.AVLoadingIndicatorView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pe.edu.upc.pethealth.R;
+import pe.edu.upc.pethealth.activities.AddPetActivity;
 import pe.edu.upc.pethealth.activities.MainActivity;
+import pe.edu.upc.pethealth.adapters.MyPetAdapters;
+import pe.edu.upc.pethealth.models.MyPet;
 import pe.edu.upc.pethealth.models.Person;
 import pe.edu.upc.pethealth.network.PetHealthApiService;
 
@@ -42,6 +55,12 @@ public class ProfileFragment extends Fragment {
     Button editButton;
     Person person;
     AVLoadingIndicatorView loadingIndicatorView;
+
+    private RecyclerView myPetsRecyclerView;
+    private MyPetAdapters myPetAdapters;
+    private RecyclerView.LayoutManager myPetLayoutManager;
+    private FloatingActionButton addPetFloatingActionButton;
+    List<MyPet> myPets;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -75,7 +94,61 @@ public class ProfileFragment extends Fragment {
                 getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content,userInformationFragment).commit();
             }
         });
+
+        //Pet List
+
+        myPetsRecyclerView = (RecyclerView) view.findViewById(R.id.myPetsRecyclerView);myPets = new ArrayList<>();
+        myPetAdapters = new MyPetAdapters(myPets);
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            myPetLayoutManager = new GridLayoutManager(view.getContext(), 1);
+        }
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            myPetLayoutManager = new GridLayoutManager(view.getContext(), 2);
+        }
+        myPetsRecyclerView.setAdapter(myPetAdapters);
+        myPetsRecyclerView.setLayoutManager(myPetLayoutManager);
+        addPetFloatingActionButton = (FloatingActionButton) view.findViewById(R.id.addPetFloatingActionButton);
+        addPetFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Add Pet?", Snackbar.LENGTH_LONG)
+                        .setAction("Yes", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Context context = v.getContext();
+                                Intent intent = new Intent(context, AddPetActivity.class);
+                                //intent.putExtras(bundle);
+                                context.startActivity(intent);
+                            }
+                        }).show();
+            }
+        });
+        updatePets();
         return view;
+    }
+
+    private void updatePets() {
+        AndroidNetworking.get(PetHealthApiService.PET_URL)
+                .setPriority(Priority.LOW)
+                .setTag(R.string.app_name)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            myPets = MyPet.from(response.getJSONArray("content"));
+                            myPetAdapters.setMyPets(myPets);
+                            myPetAdapters.notifyDataSetChanged();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
     }
 
     private void updateProfile(final Bundle bundle){
