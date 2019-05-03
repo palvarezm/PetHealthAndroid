@@ -5,16 +5,16 @@ package pe.edu.upc.pethealth.network;
  */
 
 public class PetHealthApiService {
-    public static String PET_URL = "http://pethealth.azurewebsites.net/user/pets";
-    public static String TIP_URL = "http://pethealth.azurewebsites.net/tips";
-    public static String LOGIN_URL = "http://pethealth.azurewebsites.net/user/login";
-    public static String DOCTYPE_URL = "http://pethealth.azurewebsites.net/documenttype";
-    public static String SIGNUP_USER = "http://pethealth.azurewebsites.net/user/register";
-    public static String SIGNUP_CUSTOMER = "http://pethealth.azurewebsites.net/user/registerCustomer";
-    public static String VETERINARY_URL = "http://pethealth.azurewebsites.net/veterinaries";
-    public static String CUSTOMER_URL = "http://pethealth.azurewebsites.net/customers";
-    public static String ADD_PET_URL = "http://pethealth.azurewebsites.net/pet/add";
-    public static String APPOINTMENT_URL = "http://pethealth.azurewebsites.net/pets/appointments";
-    public static String ADD_APPOINTMENT_URL = "http://pethealth.azurewebsites.net/appointments/add";
-    public static String VET_URL = "http://pethealth.azurewebsites.net/vets";
+    public static String PET_URL = "http://leodev94-001-site1.dtempurl.com/user/pets";
+    public static String TIP_URL = "http://leodev94-001-site1.dtempurl.com/tips";
+    public static String LOGIN_URL = "http://leodev94-001-site1.dtempurl.com/user/login";
+    public static String DOCTYPE_URL = "http://leodev94-001-site1.dtempurl.com/documenttype";
+    public static String SIGNUP_USER = "http://leodev94-001-site1.dtempurl.com/user/register";
+    public static String SIGNUP_CUSTOMER = "http://leodev94-001-site1.dtempurl.com/user/registerCustomer";
+    public static String VETERINARY_URL = "http://leodev94-001-site1.dtempurl.com/veterinaries";
+    public static String CUSTOMER_URL = "http://leodev94-001-site1.dtempurl.com/customers";
+    public static String ADD_PET_URL = "http://leodev94-001-site1.dtempurl.com/pet/add";
+    public static String APPOINTMENT_URL = "http://leodev94-001-site1.dtempurl.com/pets/appointments";
+    public static String ADD_APPOINTMENT_URL = "http://leodev94-001-site1.dtempurl.com/appointments/add";
+    public static String VET_URL = "http://leodev94-001-site1.dtempurl.com/vets";
 }
