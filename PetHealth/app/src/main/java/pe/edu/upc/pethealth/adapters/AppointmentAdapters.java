@@ -1,14 +1,21 @@
 package pe.edu.upc.pethealth.adapters;
 
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
 
 import pe.edu.upc.pethealth.R;
+import pe.edu.upc.pethealth.activities.AddAppointmentActivity;
+import pe.edu.upc.pethealth.activities.AddPetActivity;
+import pe.edu.upc.pethealth.fragments.ChatsFragment;
 import pe.edu.upc.pethealth.models.Appointment;
 
 /**
@@ -16,11 +23,12 @@ import pe.edu.upc.pethealth.models.Appointment;
  */
 
 public class AppointmentAdapters extends RecyclerView.Adapter<AppointmentAdapters.ViewHolder>{
-
+    private Fragment fragment;
     private List<Appointment> appointments;
 
-    public AppointmentAdapters(List<Appointment> myPets) {
+    public AppointmentAdapters(List<Appointment> myPets, Fragment fragment) {
         this.appointments = myPets;
+        this.fragment = fragment;
     }
 
     @Override
@@ -36,6 +44,13 @@ public class AppointmentAdapters extends RecyclerView.Adapter<AppointmentAdapter
         holder.dateTextView.setText(appointment.getDate());
         holder.descriptionTextView.setText(appointment.getDescription());
         holder.prescriptionTextView.setText(appointment.getPrescription());
+        holder.chatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment.getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content,new ChatsFragment()).commit();
+            }
+        });
     }
 
     @Override
@@ -53,6 +68,7 @@ public class AppointmentAdapters extends RecyclerView.Adapter<AppointmentAdapter
         TextView dateTextView;
         TextView descriptionTextView;
         TextView prescriptionTextView;
+        Button chatButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -61,6 +77,7 @@ public class AppointmentAdapters extends RecyclerView.Adapter<AppointmentAdapter
             dateTextView = (TextView) itemView.findViewById(R.id.dateTextView);
             descriptionTextView = (TextView) itemView.findViewById(R.id.descriptionTextView);
             prescriptionTextView = (TextView) itemView.findViewById(R.id.prescriptionTextView);
+            chatButton = (Button) itemView.findViewById(R.id.chatButton);
         }
     }
 }

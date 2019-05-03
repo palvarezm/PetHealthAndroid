@@ -105,7 +105,14 @@ public class StartActivity extends AppCompatActivity {
             // form field with an error.
             focusView.requestFocus();
         } else {
+            User user = new User(1, "username", "password", "mail", "", "bio description");
+            //user = user.from(response.getJSONObject("userLog"));
+            Intent intent = new Intent(context, MainActivity.class);
+            intent.putExtras(user.toBundle());
+            context.startActivity(intent);
+            finish();
 
+            /*
             AndroidNetworking.post(PetHealthApiService.LOGIN_URL)
                     .addBodyParameter("username", email)
                     .addBodyParameter("password", password)
@@ -147,6 +154,7 @@ public class StartActivity extends AppCompatActivity {
                             Log.d(getString(R.string.app_name), anError.getLocalizedMessage());
                         }
                     });
+                    */
         }
     }
 

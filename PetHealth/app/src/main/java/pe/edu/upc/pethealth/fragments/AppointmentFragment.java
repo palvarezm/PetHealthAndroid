@@ -38,6 +38,7 @@ public class AppointmentFragment extends Fragment {
     private AppointmentAdapters appointmentAdapters;
     private RecyclerView.LayoutManager appointmentLayoutManager;
     private FloatingActionButton addAppointmentFloatingActionButton;
+    private Fragment fragment = this;
     List<Appointment> appointments;
     int petId;
     public AppointmentFragment() {
@@ -55,7 +56,7 @@ public class AppointmentFragment extends Fragment {
         ((MainActivity)getActivity()).setFragmentToolbar(fragmentName,true,getFragmentManager());
         appointmentRecyclerView = (RecyclerView) view.findViewById(R.id.appointmentRecyclerView);
         appointments = new ArrayList<>();
-        appointmentAdapters = new AppointmentAdapters(appointments);
+        appointmentAdapters = new AppointmentAdapters(appointments, fragment);
         appointmentRecyclerView.setAdapter(appointmentAdapters);
         appointmentLayoutManager = new GridLayoutManager(view.getContext(), 1);
         appointmentRecyclerView.setLayoutManager(appointmentLayoutManager);
