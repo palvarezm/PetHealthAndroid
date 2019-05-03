@@ -1,10 +1,13 @@
 package pe.edu.upc.pethealth.fragments;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -17,6 +20,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import pe.edu.upc.pethealth.R;
+import pe.edu.upc.pethealth.activities.AddAppointmentActivity;
 import pe.edu.upc.pethealth.activities.MainActivity;
 import pe.edu.upc.pethealth.models.Veterinary;
 
@@ -24,6 +28,7 @@ public class AboutVeterinaryFragment extends Fragment implements OnMapReadyCallb
     private GoogleMap mMap;
     TextView nameTextView;
     RatingBar rateRatingBar;
+    private Button chatButton;
     Double lat,lng;
     Veterinary veterinary;
     @Override
@@ -42,6 +47,16 @@ public class AboutVeterinaryFragment extends Fragment implements OnMapReadyCallb
         rateRatingBar.setEnabled(false);
         nameTextView.setText(veterinary.getName());
         rateRatingBar.setRating(veterinary.getRating());
+        chatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = veterinary.toBundle();
+                Context context = view.getContext();
+                Intent intent = new Intent(context, AddAppointmentActivity.class);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+            }
+        });
         lat = veterinary.getLatitude();
         lng = veterinary.getLongitude();
         return view;
@@ -62,7 +77,7 @@ public class AboutVeterinaryFragment extends Fragment implements OnMapReadyCallb
         mMap = googleMap;
         //LatLng sydney = new LatLng(-34, 151);
         LatLng vetpos = new LatLng(lat,lng);
-        mMap.addMarker(new MarkerOptions().position(vetpos).title("Marker in Sydney"));
+        mMap.addMarker(new MarkerOptions().position(vetpos));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(vetpos));
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(new LatLng(lat, lng))      // Sets the center of the map to location user
