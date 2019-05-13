@@ -1,7 +1,5 @@
 package pe.edu.upc.pethealth.adapters;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,7 +12,6 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.BitmapRequestListener;
-import com.androidnetworking.widget.ANImageView;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.List;
@@ -58,8 +55,7 @@ public class MyTipAdapters extends RecyclerView.Adapter<MyTipAdapters.ViewHolder
         holder.loadingIndicatorView.setVisibility(View.VISIBLE);
         holder.tipANImageView.setVisibility(View.INVISIBLE);
         final MyTip myTip = myTips.get(position);
-        holder.tittleTextView.setText(myTip.getTittle());
-        holder.descriptionTextView.setText(myTip.getDescription());
+        holder.descriptionTextView.setText(myTip.getContent());
         loadImage(myTip.getImage(),holder.tipANImageView,holder.loadingIndicatorView);
         holder.tipANImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,14 +100,12 @@ public class MyTipAdapters extends RecyclerView.Adapter<MyTipAdapters.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView tipANImageView;
-        TextView tittleTextView;
         TextView descriptionTextView;
         AVLoadingIndicatorView loadingIndicatorView;
         public ViewHolder(View itemView) {
             super(itemView);
             loadingIndicatorView = (AVLoadingIndicatorView) itemView.findViewById(R.id.avi);
             tipANImageView = (ImageView) itemView.findViewById(R.id.tipImageView);
-            tittleTextView = (TextView) itemView.findViewById(R.id.tipTittleTextView);
             descriptionTextView = (TextView) itemView.findViewById(R.id.tipDescriptionTextView);
         }
     }

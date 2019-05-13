@@ -16,14 +16,12 @@ import java.util.List;
 public class MyTip {
     private int id;
     private String image;
-    private String tittle;
-    private String description;
+    private String content;
 
-    public MyTip(int id, String image, String tittle, String description) {
+    public MyTip(int id, String image, String content) {
         this.id = id;
         this.image = image;
-        this.tittle = tittle;
-        this.description = description;
+        this.content = content;
     }
 
     public MyTip() {
@@ -47,21 +45,12 @@ public class MyTip {
         return this;
     }
 
-    public String getTittle() {
-        return tittle;
+    public String getContent() {
+        return content;
     }
 
-    public MyTip setTittle(String tittle) {
-        this.tittle = tittle;
-        return this;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public MyTip setDescription(String description) {
-        this.description = description;
+    public MyTip setContent(String content) {
+        this.content = content;
         return this;
     }
 
@@ -69,26 +58,23 @@ public class MyTip {
         Bundle bundle = new Bundle();
         bundle.putInt("id",id);
         bundle.putString("image",image);
-        bundle.putString("tittle",tittle);
-        bundle.putString("description",description);
+        bundle.putString("content", content);
         return bundle;
     }
     public static MyTip from(Bundle bundle){
         MyTip myTip = new MyTip();
         myTip.setId(bundle.getInt("id"))
                 .setImage(bundle.getString("image"))
-                .setTittle(bundle.getString("tittle"))
-                .setDescription(bundle.getString("description"));
+                .setContent(bundle.getString("content"));
         return myTip;
     }
 
     public static MyTip from(JSONObject jsonTip){
         MyTip myTip = new MyTip();
         try {
-            myTip.setId(jsonTip.getInt("TipId"))
-                    .setTittle(jsonTip.getString("OwnerUsername"))
-                    .setDescription(jsonTip.getString("Content"))
-                    .setImage(jsonTip.getString("Image"));
+            myTip.setId(jsonTip.getInt("id"))
+                    .setContent(jsonTip.getString("content"))
+                    .setImage(jsonTip.getString("image"));
         }catch (JSONException e){
             e.printStackTrace();
             return null;

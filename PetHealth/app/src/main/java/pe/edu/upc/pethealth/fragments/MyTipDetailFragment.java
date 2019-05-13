@@ -2,7 +2,6 @@ package pe.edu.upc.pethealth.fragments;
 
 import android.graphics.Bitmap;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,6 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.BitmapRequestListener;
-import com.androidnetworking.widget.ANImageView;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import pe.edu.upc.pethealth.R;
@@ -24,7 +22,6 @@ import pe.edu.upc.pethealth.models.MyTip;
 public class MyTipDetailFragment extends Fragment {
 
     ImageView tipDetailANImageView;
-    TextView tittleDetailTextView;
     TextView descriptionDetailTextView;
     AVLoadingIndicatorView loadingIndicatorView;
     @Override
@@ -35,14 +32,12 @@ public class MyTipDetailFragment extends Fragment {
 
         MyTip myTip = MyTip.from(getArguments());
         tipDetailANImageView = (ImageView) view.findViewById(R.id.detailImageView);
-        tittleDetailTextView =(TextView) view.findViewById(R.id.tittleDetailTextView);
         descriptionDetailTextView = (TextView) view.findViewById(R.id.descriptionDetailTextView);
         loadingIndicatorView = (AVLoadingIndicatorView) view.findViewById(R.id.avi);
         loadingIndicatorView.setVisibility(View.VISIBLE);
         tipDetailANImageView.setVisibility(View.INVISIBLE);
         loadImage(myTip.getImage());
-        tittleDetailTextView.setText(myTip.getTittle());
-        descriptionDetailTextView.setText(myTip.getDescription());
+        descriptionDetailTextView.setText(myTip.getContent());
         return  view;
     }
 

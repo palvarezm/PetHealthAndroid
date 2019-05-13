@@ -6,7 +6,7 @@ package pe.edu.upc.pethealth.network;
 
 public class PetHealthApiService {
     public static String PET_URL = "http://leodev94-001-site1.dtempurl.com/user/pets";
-    public static String TIP_URL = "http://leodev94-001-site1.dtempurl.com/tips";
+    public static String TIP_URL = "https://pethealthapi.herokuapp.com/api/news";
     public static String LOGIN_URL = "http://leodev94-001-site1.dtempurl.com/user/login";
     public static String DOCTYPE_URL = "http://leodev94-001-site1.dtempurl.com/documenttype";
     public static String SIGNUP_USER = "http://leodev94-001-site1.dtempurl.com/user/register";

@@ -14,7 +14,9 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.google.gson.JsonObject;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -67,7 +69,8 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            myTips= MyTip.from(response.getJSONArray("content"));
+                            JSONArray data = response.getJSONArray("data");
+                            myTips= MyTip.from(data);
                             myTipAdapters.setMyTips(myTips);
                             myTipAdapters.notifyDataSetChanged();
                         }catch (JSONException e){

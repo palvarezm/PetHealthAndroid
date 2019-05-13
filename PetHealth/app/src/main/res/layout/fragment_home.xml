@@ -13,7 +13,7 @@
             android:id="@+id/tittleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome to PetHealth!!!"
+            android:text="@string/pet_tips_title"
             android:textColor="@color/colorPrimary"
             android:textAppearance="?android:textAppearanceLarge"
             android:textStyle="bold"
