@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.navigation_home: return new HomeFragment();
             case R.id.navigation_mypets:
                 MyPetsFragment newFragment = new MyPetsFragment();
-                newFragment.setArguments(user.toBundle());
                 return newFragment;
             case R.id.navigation_chat: return new ChatsFragment();
             case R.id.navigation_notifications: return new NotificationsFragment();

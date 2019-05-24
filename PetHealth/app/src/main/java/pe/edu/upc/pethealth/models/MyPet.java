@@ -137,14 +137,14 @@ public class MyPet {
     public static MyPet from(JSONObject json){
         MyPet myPet = new MyPet();
         try {
-            myPet.setId(json.getInt("petId"))
+            myPet.setId(json.getInt("id"))
                     .setName(json.getString("name"))
                     .setRace(json.getString("race"))
-                    .setBirthDate(json.getString("birthDate"))//TODO fix birthDate
+                    .setBirthDate(json.getString("birth_date"))
                     .setDescription(json.getString("description"))
-                    .setImage(json.getString("photo"))
+                    .setImage(json.getString("image_url"))
                     .setAnimalType(json.getString("animalTypeName"))
-                    .setOwnerId(json.getInt("ownerId"));
+                    .setOwnerId(json.getInt("owner_id"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
