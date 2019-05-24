@@ -54,6 +54,9 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this);
+        if (sharedPreferencesManager.isUserLogged()){
+            sendToTipsView();
+        }
         setContentView(R.layout.activity_start);
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
@@ -131,17 +134,14 @@ public class StartActivity extends AppCompatActivity {
             public void onResponse(Call<RestView<JsonObject>> call, Response<RestView<JsonObject>> response) {
                 super.onResponse(call, response);
                 RestView<JsonObject> answer = response.body();
-                if (!"{}".equals(answer.getData().getAsJsonObject("user").toString())){
+                if ((answer!=null) && (!"{}".equals(answer.getData().getAsJsonObject("user").toString()))){
                     try {
                         JSONObject userJSONObject = new JSONObject(answer.getData().get("user").toString());
                         Gson gson = new GsonBuilder().create();
                         user = gson.fromJson(userJSONObject.toString(), User.class);
 
-                        sharedPreferencesManager.saveUser(user.toString(), answer.getData().get("access_token").toString());
-                        Intent intent = new Intent(context, MainActivity.class);
-                        intent.putExtras(user.toBundle());
-                        context.startActivity(intent);
-                        finish();
+                        sharedPreferencesManager.saveUser(user.toString(), answer.getData().get("access_token").getAsString());
+                        sendToTipsView();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -166,6 +166,12 @@ public class StartActivity extends AppCompatActivity {
                 super.onFailure(call, t);
             }
         });
+    }
+
+    private void sendToTipsView() {
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
+        finish();
     }
 
 }

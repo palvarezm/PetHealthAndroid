@@ -28,6 +28,7 @@ import pe.edu.upc.pethealth.activities.MainActivity;
 import pe.edu.upc.pethealth.adapters.MyTipAdapters;
 import pe.edu.upc.pethealth.models.MyTip;
 import pe.edu.upc.pethealth.network.PetHealthApiService;
+import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,6 +63,7 @@ public class HomeFragment extends Fragment {
 
     private void updateTips() {
         AndroidNetworking.get(PetHealthApiService.TIP_URL)
+                .addHeaders("access_token", SharedPreferencesManager.getInstance(this.getContext()).getAccessToken())
                 .setPriority(Priority.LOW)
                 .setTag(getString(R.string.app_name))
                 .build()

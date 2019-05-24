@@ -1,10 +1,6 @@
 package pe.edu.upc.pethealth.activities;
 
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -14,8 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import pe.edu.upc.pethealth.R;
 import pe.edu.upc.pethealth.fragments.ChatsFragment;
@@ -27,11 +21,12 @@ import pe.edu.upc.pethealth.fragments.ProfileFragment;
 import pe.edu.upc.pethealth.fragments.SearchFragment;
 import pe.edu.upc.pethealth.models.User;
 import pe.edu.upc.pethealth.network.Connection;
+import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
 
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private User u;
+    private User user;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -51,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        u = User.from(getIntent().getExtras());
+        user = SharedPreferencesManager.getInstance(this.getApplicationContext()).getUser();
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -75,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_profile:
                     ProfileFragment newFragment = new ProfileFragment();
-                    newFragment.setArguments(u.toBundle());
+                    newFragment.setArguments(user.toBundle());
                     getSupportFragmentManager().beginTransaction()
                             .addToBackStack(null)
                             .replace(R.id.content, newFragment).commit();
@@ -109,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.navigation_home: return new HomeFragment();
             case R.id.navigation_mypets:
                 MyPetsFragment newFragment = new MyPetsFragment();
-                newFragment.setArguments(u.toBundle());
+                newFragment.setArguments(user.toBundle());
                 return newFragment;
             case R.id.navigation_chat: return new ChatsFragment();
             case R.id.navigation_notifications: return new NotificationsFragment();
