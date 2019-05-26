@@ -10,6 +10,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,7 @@ import pe.edu.upc.pethealth.activities.MainActivity;
 import pe.edu.upc.pethealth.adapters.MyPetAdapters;
 import pe.edu.upc.pethealth.models.MyPet;
 import pe.edu.upc.pethealth.network.PetHealthApiService;
+import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
 
 
 /**
@@ -42,6 +44,7 @@ public class MyPetsFragment extends Fragment {
     private MyPetAdapters myPetAdapters;
     private RecyclerView.LayoutManager myPetLayoutManager;
     private FloatingActionButton addPetFloatingActionButton;
+    private SharedPreferencesManager sharedPreferencesManager;
     //private User user;
     List<MyPet> myPets;
 
@@ -56,6 +59,7 @@ public class MyPetsFragment extends Fragment {
         // Inflate the layout for this fragment
         ((MainActivity)getActivity()).setFragmentToolbar("My Pets",false,getFragmentManager());
         View view =  inflater.inflate(R.layout.fragment_my_pets, container, false);
+        sharedPreferencesManager = SharedPreferencesManager.getInstance(this.getContext());
         myPetsRecyclerView = (RecyclerView) view.findViewById(R.id.myPetsRecyclerView);
         final Bundle bundle = getArguments();
         //user = User.from(bundle);
@@ -96,7 +100,10 @@ public class MyPetsFragment extends Fragment {
     }
 
     private void updatePets(){
+        Log.d("TSET", Integer.toString(sharedPreferencesManager.getUser().getUser_id()));
         AndroidNetworking.get(PetHealthApiService.PET_URL)
+                .addPathParameter("userId", Integer.toString(sharedPreferencesManager.getUser().getUser_id()))
+                .addHeaders("access_token", sharedPreferencesManager.getAccessToken())
                 .setPriority(Priority.LOW)
                 .setTag(R.string.app_name)
                 .build()
@@ -104,7 +111,7 @@ public class MyPetsFragment extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            myPets = MyPet.from(response.getJSONArray("content"));
+                            myPets = MyPet.from(response.getJSONArray("data"));
                             myPetAdapters.setMyPets(myPets);
                             myPetAdapters.notifyDataSetChanged();
                         } catch (JSONException e) {
