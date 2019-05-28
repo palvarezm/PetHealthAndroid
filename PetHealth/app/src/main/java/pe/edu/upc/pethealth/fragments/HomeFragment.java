@@ -69,6 +69,7 @@ public class HomeFragment extends Fragment {
 
     private void updateTips() {
         AndroidNetworking.get(PetHealthApiService.TIP_URL)
+                .addHeaders("access_token", SharedPreferencesManager.getInstance(this.getContext()).getAccessToken())
                 .setPriority(Priority.LOW)
                 .setTag(getString(R.string.app_name))
                 .build()
