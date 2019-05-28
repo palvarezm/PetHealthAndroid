@@ -29,6 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import pe.edu.upc.pethealth.R;
+import pe.edu.upc.pethealth.models.Person;
 import pe.edu.upc.pethealth.models.User;
 import pe.edu.upc.pethealth.network.Connection;
 import pe.edu.upc.pethealth.network.LoggerCallback;
@@ -46,6 +47,7 @@ public class StartActivity extends AppCompatActivity {
     private EditText passwordTextInputEditText;
     private Button signInButton;
     private User user;
+    private Person person;
     private TextView signUptextView;
     private SharedPreferencesManager sharedPreferencesManager;
     final Context context = this;
@@ -131,13 +133,18 @@ public class StartActivity extends AppCompatActivity {
             public void onResponse(Call<RestView<JsonObject>> call, Response<RestView<JsonObject>> response) {
                 super.onResponse(call, response);
                 RestView<JsonObject> answer = response.body();
-                if (!"{}".equals(answer.getData().getAsJsonObject("user").toString())){
+                if ((answer != null) && (!"{}".equals(answer.getData().getAsJsonObject("user").toString()))){
                     try {
                         JSONObject userJSONObject = new JSONObject(answer.getData().get("user").toString());
                         Gson gson = new GsonBuilder().create();
                         user = gson.fromJson(userJSONObject.toString(), User.class);
 
-                        sharedPreferencesManager.saveUser(user.toString(), answer.getData().get("access_token").toString());
+                        JSONObject personJSONObject = new JSONObject(answer.getData().get("person").toString());
+                        gson = new GsonBuilder().create();
+                        person = gson.fromJson(personJSONObject.toString(), Person.class);
+                        user.setUser_id(person.getId());
+
+                        sharedPreferencesManager.saveUser(user.toString(), person.toString(), answer.getData().get("access_token").toString());
                         Intent intent = new Intent(context, MainActivity.class);
                         intent.putExtras(user.toBundle());
                         context.startActivity(intent);
