@@ -76,27 +76,6 @@
                 app:layout_constraintStart_toEndOf="@id/dniTextView"/>
 
             <TextView
-                android:id="@+id/mailTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Email"
-                android:textColor="@color/colorSecondaryText"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:layout_margin="@dimen/big_margin"
-                app:layout_constraintTop_toBottomOf="@id/dniTextView"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-            <TextView
-                android:id="@+id/mailDataTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="email"
-                android:textColor="@color/colorPrimaryText"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:layout_margin="@dimen/big_margin"
-                app:layout_constraintTop_toBottomOf="@id/dniTextView"
-                app:layout_constraintStart_toEndOf="@id/mailTextView" />
-            <TextView
                 android:id="@+id/phoneTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,7 +83,7 @@
                 android:textAppearance="?android:textAppearanceMedium"
                 android:layout_margin="@dimen/big_margin"
                 android:textColor="@color/colorSecondaryText"
-                app:layout_constraintTop_toBottomOf="@id/mailTextView"
+                app:layout_constraintTop_toBottomOf="@id/dniTextView"
                 app:layout_constraintStart_toStartOf="parent"/>
             <TextView
                 android:id="@+id/phoneDataTextView"
@@ -114,7 +93,7 @@
                 android:textAppearance="?android:textAppearanceMedium"
                 android:layout_margin="@dimen/big_margin"
                 android:textColor="@color/colorPrimaryText"
-                app:layout_constraintTop_toBottomOf="@id/mailTextView"
+                app:layout_constraintTop_toBottomOf="@id/dniDataTextView"
                 app:layout_constraintStart_toEndOf="@id/phoneTextView" />
             <TextView
                 android:id="@+id/addressTextView"
