@@ -2,20 +2,18 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/tipsCardView"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/minimun_margin"
     app:cardElevation="@dimen/default_margin">
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/big_margin">
+        android:layout_height="wrap_content">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/layoutImage"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_margin="@dimen/default_margin"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent">
             <ImageView
@@ -47,7 +45,10 @@
             android:text="Description"
             android:textColor="@color/colorSecondaryText"
             android:textAppearance="?android:textAppearanceMedium"
-            android:layout_margin="@dimen/default_margin"
+            android:layout_margin="@dimen/big_margin"
+            android:paddingStart="@dimen/big_margin"
+            android:paddingEnd="@dimen/big_margin"
+            android:paddingBottom="@dimen/big_margin"
             android:maxLines="5"
             app:layout_constraintTop_toBottomOf="@id/layoutImage"
             app:layout_constraintStart_toStartOf="parent"
