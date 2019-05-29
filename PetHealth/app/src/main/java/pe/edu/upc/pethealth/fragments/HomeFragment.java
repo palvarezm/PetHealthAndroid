@@ -27,6 +27,8 @@ import pe.edu.upc.pethealth.R;
 import pe.edu.upc.pethealth.activities.MainActivity;
 import pe.edu.upc.pethealth.adapters.MyTipAdapters;
 import pe.edu.upc.pethealth.models.MyTip;
+import pe.edu.upc.pethealth.models.Person;
+import pe.edu.upc.pethealth.models.User;
 import pe.edu.upc.pethealth.network.PetHealthApiService;
 import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
 
@@ -57,6 +59,10 @@ public class HomeFragment extends Fragment {
         myTipLayoutManager = new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false);
         myTipRecyclerView.setAdapter(myTipAdapters);
         myTipRecyclerView.setLayoutManager(myTipLayoutManager);
+        User user = SharedPreferencesManager.getInstance(this.getContext()).getUser();
+        Person person = SharedPreferencesManager.getInstance(this.getContext()).getPerson();
+        Log.d("TESTING Person data:", person.toString());
+        Log.d("TESTING User data:", user.toString());
         updateTips();
         return view;
     }

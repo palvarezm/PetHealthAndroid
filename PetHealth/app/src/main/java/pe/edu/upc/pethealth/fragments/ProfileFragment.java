@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -46,17 +45,16 @@ import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
  */
 public class ProfileFragment extends Fragment {
 
-    TextView tittleTextView;
-    ImageView photoANImageView;
-    TextView nameTextView;
-    TextView lastNameTextView;
-    TextView dniTextView;
-    TextView mailTextView;
-    TextView phoneTextView;
-    TextView addressTextView;
-    Button editButton;
-    Person person;
-    AVLoadingIndicatorView loadingIndicatorView;
+    private TextView tittleTextView;
+    private ImageView photoANImageView;
+    private TextView nameTextView;
+    private TextView lastNameTextView;
+    private TextView dniTextView;
+    private TextView phoneTextView;
+    private TextView addressTextView;
+    private Button editButton;
+    private Person person;
+    private AVLoadingIndicatorView loadingIndicatorView;
 
     private RecyclerView myPetsRecyclerView;
     private MyPetAdapters myPetAdapters;
@@ -77,15 +75,13 @@ public class ProfileFragment extends Fragment {
         ((MainActivity)getActivity()).setFragmentToolbar("Profile",true,getFragmentManager());
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this.getContext());
-        person = new Person();
-        final Bundle b = getArguments();
+        person = sharedPreferencesManager.getPerson();
         tittleTextView = (TextView) view.findViewById(R.id.tittleTextView);
         loadingIndicatorView = (AVLoadingIndicatorView) view.findViewById(R.id.avi);
         tittleTextView = (TextView) view.findViewById(R.id.tittleTextView);
         photoANImageView = (ImageView) view.findViewById(R.id.profileImageView);
         photoANImageView.setVisibility(View.INVISIBLE);
         dniTextView = (TextView) view.findViewById(R.id.dniDataTextView);
-        mailTextView = (TextView) view.findViewById(R.id.mailDataTextView);
         phoneTextView =(TextView) view.findViewById(R.id.phoneDataTextView);
         addressTextView = (TextView) view.findViewById(R.id.addressDataTextView);
         editButton = (Button) view.findViewById(R.id.editValuesButton);
@@ -93,7 +89,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 UserInformationFragment userInformationFragment = new UserInformationFragment();
-                userInformationFragment.setArguments(b);
                 getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content,userInformationFragment).commit();
             }
         });
@@ -126,13 +121,15 @@ public class ProfileFragment extends Fragment {
                         }).show();
             }
         });
+        updateProfile();
         updatePets();
         return view;
     }
 
     private void updatePets() {
+        Log.d("TOKEN", sharedPreferencesManager.getAccessToken());
         AndroidNetworking.get(PetHealthApiService.PET_URL)
-                .addPathParameter("userId", Integer.toString(sharedPreferencesManager.getUser().getUser_id()))
+                .addPathParameter("userId", Integer.toString(sharedPreferencesManager.getUser().getId()))
                 .addHeaders("access_token", sharedPreferencesManager.getAccessToken())
                 .setPriority(Priority.LOW)
                 .setTag(R.string.app_name)
@@ -141,7 +138,7 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            myPets = MyPet.from(response.getJSONArray("content"));
+                            myPets = MyPet.from(response.getJSONArray("data"));
                             myPetAdapters.setMyPets(myPets);
                             myPetAdapters.notifyDataSetChanged();
                         } catch (JSONException e) {
@@ -156,8 +153,10 @@ public class ProfileFragment extends Fragment {
                 });
     }
 
-    private void updateProfile(final Bundle bundle){
-
+    private void updateProfile(){
+        dniTextView.setText(person.getDni());
+        phoneTextView.setText(person.getPhone());
+        addressTextView.setText(person.getAddress());
     }
 
     private void loadImage(String imageUrl){

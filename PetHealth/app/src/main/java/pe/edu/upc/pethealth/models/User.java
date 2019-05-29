@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 public class User implements Serializable {
-    private int user_id;
+    private int id;
     private String username;
     private String password;
     private String mail;
@@ -27,8 +27,8 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(int user_id, String username, String password, String mail, String photo, String bio) {
-        this.user_id = user_id;
+    public User(int id, String username, String password, String mail, String photo, String bio) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.mail = mail;
@@ -36,12 +36,12 @@ public class User implements Serializable {
         this.bio = bio;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getId() {
+        return id;
     }
 
-    public User setUser_id(int user_id) {
-        this.user_id = user_id;
+    public User setId(int id) {
+        this.id = id;
         return this;
     }
 
@@ -92,7 +92,7 @@ public class User implements Serializable {
 
     public Bundle toBundle(){
         Bundle bundle = new Bundle();
-        bundle.putInt("user_id", user_id);
+        bundle.putInt("id", id);
         bundle.putString("username",username);
         bundle.putString("password",password);
         bundle.putString("mail",mail);
@@ -102,7 +102,7 @@ public class User implements Serializable {
     }
     public static User from(Bundle bundle){
         User user = new User();
-        user.setUser_id(bundle.getInt("user_id"))
+        user.setId(bundle.getInt("id"))
                 .setUsername(bundle.getString("username"))
                 .setPassword(bundle.getString("password"))
                 .setMail(bundle.getString("mail"))
@@ -114,7 +114,7 @@ public class User implements Serializable {
     public static User from(JSONObject jsonUser){
         User user = new User();
         try {
-            user.setUser_id(jsonUser.getInt("user_id"))
+            user.setId(jsonUser.getInt("id"))
                     .setUsername(jsonUser.getString("username"))
                     .setPassword(jsonUser.getString("password"))
                     .setMail(jsonUser.getString("mail"))

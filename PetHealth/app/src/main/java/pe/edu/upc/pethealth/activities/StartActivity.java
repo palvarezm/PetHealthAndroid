@@ -17,10 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -29,10 +25,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import pe.edu.upc.pethealth.R;
+import pe.edu.upc.pethealth.models.Person;
 import pe.edu.upc.pethealth.models.User;
 import pe.edu.upc.pethealth.network.Connection;
 import pe.edu.upc.pethealth.network.LoggerCallback;
-import pe.edu.upc.pethealth.network.PetHealthApiService;
 import pe.edu.upc.pethealth.network.RestClient;
 import pe.edu.upc.pethealth.network.RestView;
 import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
@@ -46,6 +42,7 @@ public class StartActivity extends AppCompatActivity {
     private EditText passwordTextInputEditText;
     private Button signInButton;
     private User user;
+    private Person person;
     private TextView signUptextView;
     private SharedPreferencesManager sharedPreferencesManager;
     final Context context = this;
@@ -134,14 +131,22 @@ public class StartActivity extends AppCompatActivity {
             public void onResponse(Call<RestView<JsonObject>> call, Response<RestView<JsonObject>> response) {
                 super.onResponse(call, response);
                 RestView<JsonObject> answer = response.body();
-                if ((answer!=null) && (!"{}".equals(answer.getData().getAsJsonObject("user").toString()))){
+
+                if ((answer != null) && (!"{}".equals(answer.getData().getAsJsonObject("user").toString()))){
                     try {
                         JSONObject userJSONObject = new JSONObject(answer.getData().get("user").toString());
                         Gson gson = new GsonBuilder().create();
                         user = gson.fromJson(userJSONObject.toString(), User.class);
 
-                        sharedPreferencesManager.saveUser(user.toString(), answer.getData().get("access_token").getAsString());
-                        sendToTipsView();
+                        JSONObject personJSONObject = new JSONObject(answer.getData().get("person").toString());
+                        person = Person.from(personJSONObject);
+                        user.setId(person.getId());
+
+                        sharedPreferencesManager.saveUser(user.toString(), person.toString(), answer.getData().get("access_token").getAsString());
+                        Intent intent = new Intent(context, MainActivity.class);
+                        intent.putExtras(user.toBundle());
+                        context.startActivity(intent);
+                        finish();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

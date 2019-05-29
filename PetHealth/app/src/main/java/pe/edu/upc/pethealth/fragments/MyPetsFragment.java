@@ -101,7 +101,7 @@ public class MyPetsFragment extends Fragment {
 
     private void updatePets(){
         AndroidNetworking.get(PetHealthApiService.PET_URL)
-                .addPathParameter("userId", Integer.toString(sharedPreferencesManager.getUser().getUser_id()))
+                .addPathParameter("userId", Integer.toString(sharedPreferencesManager.getUser().getId()))
                 .addHeaders("access_token", sharedPreferencesManager.getAccessToken())
                 .setPriority(Priority.LOW)
                 .setTag(R.string.app_name)
