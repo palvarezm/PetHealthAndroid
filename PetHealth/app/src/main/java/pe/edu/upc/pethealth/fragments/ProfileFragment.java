@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,7 @@ import pe.edu.upc.pethealth.adapters.MyPetAdapters;
 import pe.edu.upc.pethealth.models.MyPet;
 import pe.edu.upc.pethealth.models.Person;
 import pe.edu.upc.pethealth.network.PetHealthApiService;
+import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,7 +61,8 @@ public class ProfileFragment extends Fragment {
     private RecyclerView myPetsRecyclerView;
     private MyPetAdapters myPetAdapters;
     private RecyclerView.LayoutManager myPetLayoutManager;
-    private FloatingActionButton addPetFloatingActionButton;
+    private Button btAddPet;
+    private SharedPreferencesManager sharedPreferencesManager;
     List<MyPet> myPets;
 
     public ProfileFragment() {
@@ -73,6 +76,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         ((MainActivity)getActivity()).setFragmentToolbar("Profile",true,getFragmentManager());
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        sharedPreferencesManager = SharedPreferencesManager.getInstance(this.getContext());
         person = new Person();
         final Bundle b = getArguments();
         tittleTextView = (TextView) view.findViewById(R.id.tittleTextView);
@@ -85,7 +89,6 @@ public class ProfileFragment extends Fragment {
         phoneTextView =(TextView) view.findViewById(R.id.phoneDataTextView);
         addressTextView = (TextView) view.findViewById(R.id.addressDataTextView);
         editButton = (Button) view.findViewById(R.id.editValuesButton);
-        updateProfile(b);
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,8 +110,8 @@ public class ProfileFragment extends Fragment {
         }
         myPetsRecyclerView.setAdapter(myPetAdapters);
         myPetsRecyclerView.setLayoutManager(myPetLayoutManager);
-        addPetFloatingActionButton = (FloatingActionButton) view.findViewById(R.id.addPetFloatingActionButton);
-        addPetFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+        btAddPet = (Button) view.findViewById(R.id.btAddPet);
+        btAddPet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Add Pet?", Snackbar.LENGTH_LONG)
@@ -129,6 +132,8 @@ public class ProfileFragment extends Fragment {
 
     private void updatePets() {
         AndroidNetworking.get(PetHealthApiService.PET_URL)
+                .addPathParameter("userId", Integer.toString(sharedPreferencesManager.getUser().getUser_id()))
+                .addHeaders("access_token", sharedPreferencesManager.getAccessToken())
                 .setPriority(Priority.LOW)
                 .setTag(R.string.app_name)
                 .build()
@@ -146,52 +151,13 @@ public class ProfileFragment extends Fragment {
 
                     @Override
                     public void onError(ANError anError) {
-
+                        Log.d(getString(R.string.app_name), anError.getErrorBody());
                     }
                 });
     }
 
     private void updateProfile(final Bundle bundle){
-        AndroidNetworking.get(PetHealthApiService.CUSTOMER_URL+ "/" +String.valueOf(bundle.getInt("user_id")))
-                .setTag(getString(R.string.app_name))
-                .setPriority(Priority.LOW)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            if (response.getJSONArray("res") != null) {
-                            JSONObject res = response.getJSONArray("res").getJSONObject(0);
-                                person = new Person(res.getInt("id"),
-                                        res.getString("name"),
-                                        res.getString("lastname"),
-                                        res.getString("nrodocumento"),
-                                        res.getString("address"),
-                                        res.getString("phone"),
-                                        res.getString("birthdate"),
-                                        res.getInt("tipodocumentoId")
-                                );
-                            photoANImageView.setImageResource(R.mipmap.ic_launcher);
-                            //photoANImageView.setDefaultImageResId(R.mipmap.ic_launcher_round);
-                            //photoANImageView.setErrorImageResId(R.mipmap.ic_launcher_round);
-                            //photoANImageView.setImageUrl("http://jbblog.flopro.taco-hvac.com/wp-content/uploads/2014/05/smart-person.jpg");//TODO change for profile image url
-                            tittleTextView.setText(person.getName()+" "+person.getLastName());
-                            dniTextView.setText(person.getDni());
-                            mailTextView.setText(bundle.getString("mail"));
-                            phoneTextView.setText(person.getPhone());
-                            addressTextView.setText(person.getAddress());
-                            loadImage("http://jbblog.flopro.taco-hvac.com/wp-content/uploads/2014/05/smart-person.jpg");
-                        }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
 
-                    @Override
-                    public void onError(ANError anError) {
-
-                    }
-                });
     }
 
     private void loadImage(String imageUrl){

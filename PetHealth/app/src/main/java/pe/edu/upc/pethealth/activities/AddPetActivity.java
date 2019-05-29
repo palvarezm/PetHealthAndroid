@@ -5,11 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.hardware.Camera;
-import android.hardware.Camera.CameraInfo;
-import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,13 +29,10 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import pe.edu.upc.pethealth.PhotoHandler;
 import pe.edu.upc.pethealth.R;
 import pe.edu.upc.pethealth.models.User;
 import pe.edu.upc.pethealth.network.PetHealthApiService;
@@ -193,7 +186,7 @@ public class AddPetActivity extends AppCompatActivity {
         } else {
             JSONObject pet = new JSONObject();
             try {
-                pet.put("ownerId", user.getUserId());
+                pet.put("ownerId", user.getUser_id());
                 pet.put("name", name);
                 pet.put("race",race);
                 pet.put("description",description);

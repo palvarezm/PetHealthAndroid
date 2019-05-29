@@ -2,23 +2,22 @@ package pe.edu.upc.pethealth.models;
 
 import android.os.Bundle;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
  * Created by genob on 27/10/2017.
  */
 
-public class User {
-    private int userId;
+public class User implements Serializable {
+    private int user_id;
     private String username;
     private String password;
     private String mail;
@@ -28,8 +27,8 @@ public class User {
     public User() {
     }
 
-    public User(int userId, String username, String password, String mail, String photo, String bio) {
-        this.userId = userId;
+    public User(int user_id, String username, String password, String mail, String photo, String bio) {
+        this.user_id = user_id;
         this.username = username;
         this.password = password;
         this.mail = mail;
@@ -37,12 +36,12 @@ public class User {
         this.bio = bio;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public User setUserId(int userId) {
-        this.userId = userId;
+    public User setUser_id(int user_id) {
+        this.user_id = user_id;
         return this;
     }
 
@@ -93,7 +92,7 @@ public class User {
 
     public Bundle toBundle(){
         Bundle bundle = new Bundle();
-        bundle.putInt("user_id",userId);
+        bundle.putInt("user_id", user_id);
         bundle.putString("username",username);
         bundle.putString("password",password);
         bundle.putString("mail",mail);
@@ -103,7 +102,7 @@ public class User {
     }
     public static User from(Bundle bundle){
         User user = new User();
-        user.setUserId(bundle.getInt("user_id"))
+        user.setUser_id(bundle.getInt("user_id"))
                 .setUsername(bundle.getString("username"))
                 .setPassword(bundle.getString("password"))
                 .setMail(bundle.getString("mail"))
@@ -115,7 +114,7 @@ public class User {
     public static User from(JSONObject jsonUser){
         User user = new User();
         try {
-            user.setUserId(jsonUser.getInt("userId"))
+            user.setUser_id(jsonUser.getInt("user_id"))
                     .setUsername(jsonUser.getString("username"))
                     .setPassword(jsonUser.getString("password"))
                     .setMail(jsonUser.getString("mail"))
@@ -138,5 +137,10 @@ public class User {
             }
         }
         return users;
+    }
+
+    public String toString(){
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
 }

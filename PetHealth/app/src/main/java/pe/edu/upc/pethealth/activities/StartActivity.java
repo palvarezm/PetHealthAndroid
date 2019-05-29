@@ -21,6 +21,9 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,7 +31,13 @@ import org.json.JSONObject;
 import pe.edu.upc.pethealth.R;
 import pe.edu.upc.pethealth.models.User;
 import pe.edu.upc.pethealth.network.Connection;
+import pe.edu.upc.pethealth.network.LoggerCallback;
 import pe.edu.upc.pethealth.network.PetHealthApiService;
+import pe.edu.upc.pethealth.network.RestClient;
+import pe.edu.upc.pethealth.network.RestView;
+import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
+import retrofit2.Call;
+import retrofit2.Response;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -38,10 +47,16 @@ public class StartActivity extends AppCompatActivity {
     private Button signInButton;
     private User user;
     private TextView signUptextView;
+    private SharedPreferencesManager sharedPreferencesManager;
+    final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPreferencesManager = SharedPreferencesManager.getInstance(this);
+        if (sharedPreferencesManager.isUserLogged()){
+            sendToTipsView();
+        }
         setContentView(R.layout.activity_start);
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
@@ -72,7 +87,6 @@ public class StartActivity extends AppCompatActivity {
         // Reset errors.
         userEditText.setError(null);
         passwordTextInputEditText.setError(null);
-        final Context context = this;
 
         // Store values at the time of the login attempt.
         String email = userEditText.getText().toString();
@@ -105,57 +119,59 @@ public class StartActivity extends AppCompatActivity {
             // form field with an error.
             focusView.requestFocus();
         } else {
-            User user = new User(1, "username", "password", "mail", "", "bio description");
-            //user = user.from(response.getJSONObject("userLog"));
-            Intent intent = new Intent(context, MainActivity.class);
-            intent.putExtras(user.toBundle());
-            context.startActivity(intent);
-            finish();
+            performLogin(email, password, context);
+        }
+    }
 
-            /*
-            AndroidNetworking.post(PetHealthApiService.LOGIN_URL)
-                    .addBodyParameter("username", email)
-                    .addBodyParameter("password", password)
-                    .setTag(getString(R.string.app_name))
-                    .setPriority(Priority.MEDIUM)
-                    .build()
-                    .getAsJSONObject(new JSONObjectRequestListener() {
+    private void performLogin(String email, String password, final Context context) {
+        JsonObject bodyToSend = new JsonObject();
+        bodyToSend.addProperty("username", email);
+        bodyToSend.addProperty("password", password);
+
+        Call<RestView<JsonObject>> call = new RestClient().getWebServices().login(bodyToSend);
+        call.enqueue(new LoggerCallback<RestView<JsonObject>>(){
+            @Override
+            public void onResponse(Call<RestView<JsonObject>> call, Response<RestView<JsonObject>> response) {
+                super.onResponse(call, response);
+                RestView<JsonObject> answer = response.body();
+                if ((answer!=null) && (!"{}".equals(answer.getData().getAsJsonObject("user").toString()))){
+                    try {
+                        JSONObject userJSONObject = new JSONObject(answer.getData().get("user").toString());
+                        Gson gson = new GsonBuilder().create();
+                        user = gson.fromJson(userJSONObject.toString(), User.class);
+
+                        sharedPreferencesManager.saveUser(user.toString(), answer.getData().get("access_token").getAsString());
+                        sendToTipsView();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                else{
+                    Log.d(getString(R.string.app_name), "User and password are incorrect");
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("User and password are incorrect");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
-                        public void onResponse(JSONObject response) {
-                            // do anything with response
-                            try {
-                                if ("success".equalsIgnoreCase(response.getString("status"))) {
-                                    user = user.from(response.getJSONObject("userLog"));
-                                    Intent intent = new Intent(context, MainActivity.class);
-                                    intent.putExtras(user.toBundle());
-                                    context.startActivity(intent);
-                                    finish();
-                                } else {
-                                    Log.d(getString(R.string.app_name), "User and password are incorrect");
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                                    builder.setMessage("User and password are incorrect");
-                                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            dialogInterface.cancel();
-                                        }
-                                    });
-                                    AlertDialog alertDialog = builder.create();
-                                    alertDialog.show();
-                                }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-                        @Override
-                        public void onError(ANError anError) {
-                            Log.d(getString(R.string.app_name), anError.getLocalizedMessage());
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
                         }
                     });
-                    */
-        }
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RestView<JsonObject>> call, Throwable t) {
+                super.onFailure(call, t);
+            }
+        });
+    }
+
+    private void sendToTipsView() {
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
+        finish();
     }
 
 }
