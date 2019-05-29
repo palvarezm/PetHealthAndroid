@@ -61,24 +61,6 @@ public class MyPetAdapters extends RecyclerView.Adapter<MyPetAdapters.ViewHolder
                         .commit();
             }
         });
-        holder.clinicHystoryImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainActivity context = (MainActivity) view.getContext();
-                AppointmentFragment newFragment = new AppointmentFragment();
-                //TODO add the bundle of HistoryClinic
-                Bundle bundle = new Bundle();
-                bundle.putInt("userId",myPet.getOwnerId());
-                bundle.putInt("petId",myPet.getId());
-                bundle.putString("pet",myPet.getName());
-                newFragment.setArguments(bundle);
-                context.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content, newFragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
     }
 
     private void loadImage(String imageUrl, final ImageView imageView, final AVLoadingIndicatorView loadingIndicatorView){
@@ -122,7 +104,6 @@ public class MyPetAdapters extends RecyclerView.Adapter<MyPetAdapters.ViewHolder
         ImageView petANImageView;
         TextView petDescriptionTextView;
         TextView moreTextView;
-        ImageButton clinicHystoryImageButton;
         AVLoadingIndicatorView loadingIndicatorView;
 
         public ViewHolder(View itemView) {
@@ -131,7 +112,6 @@ public class MyPetAdapters extends RecyclerView.Adapter<MyPetAdapters.ViewHolder
             petANImageView = (ImageView) itemView.findViewById(R.id.myPetImageView);
             petDescriptionTextView = (TextView) itemView.findViewById(R.id.myPetDescriptionTextView);
             moreTextView = (TextView) itemView.findViewById(R.id.moreTextView);
-            clinicHystoryImageButton = (ImageButton) itemView.findViewById(R.id.historyClinicImageButton);
             loadingIndicatorView = (AVLoadingIndicatorView) itemView.findViewById(R.id.avi);
         }
     }
