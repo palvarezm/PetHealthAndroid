@@ -140,7 +140,6 @@ public class StartActivity extends AppCompatActivity {
 
                         JSONObject personJSONObject = new JSONObject(answer.getData().get("person").toString());
                         person = Person.from(personJSONObject);
-                        user.setId(person.getId());
 
                         sharedPreferencesManager.saveUser(user.toString(), person.toString(), answer.getData().get("access_token").getAsString());
                         Intent intent = new Intent(context, MainActivity.class);
