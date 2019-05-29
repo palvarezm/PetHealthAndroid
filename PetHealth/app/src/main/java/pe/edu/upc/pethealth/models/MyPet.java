@@ -116,7 +116,6 @@ public class MyPet {
         bundle.putString("birthDate", birthDate);
         bundle.putString("description",description);
         bundle.putString("image",image);
-        bundle.putString("animalType",animalType);
         bundle.putInt("ownerId", ownerId);
         return bundle;
     }
@@ -126,10 +125,9 @@ public class MyPet {
         myPet.setId(bundle.getInt("id"))
                 .setName(bundle.getString("name"))
                 .setRace(bundle.getString("race"))
-                .setBirthDate(bundle.getString("birthDate"))
+                .setBirthDate(bundle.getString("birth_date"))
                 .setDescription(bundle.getString("description"))
                 .setImage(bundle.getString("image"))
-                .setAnimalType(bundle.getString("animalType"))
                 .setOwnerId(bundle.getInt("ownerId"));
         return myPet;
     }
@@ -143,7 +141,6 @@ public class MyPet {
                     .setBirthDate(json.getString("birth_date"))
                     .setDescription(json.getString("description"))
                     .setImage(json.getString("image_url"))
-                    .setAnimalType(json.getString("animalTypeName"))
                     .setOwnerId(json.getInt("owner_id"));
         } catch (JSONException e) {
             e.printStackTrace();

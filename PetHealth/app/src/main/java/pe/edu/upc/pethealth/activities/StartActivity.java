@@ -148,7 +148,7 @@ public class StartActivity extends AppCompatActivity {
                         person = gson.fromJson(personJSONObject.toString(), Person.class);
                         user.setUser_id(person.getId());
 
-                        sharedPreferencesManager.saveUser(user.toString(), person.toString(), answer.getData().get("access_token").toString());
+                        sharedPreferencesManager.saveUser(user.toString(), person.toString(), answer.getData().get("access_token").getAsString());
                         Intent intent = new Intent(context, MainActivity.class);
                         intent.putExtras(user.toBundle());
                         context.startActivity(intent);

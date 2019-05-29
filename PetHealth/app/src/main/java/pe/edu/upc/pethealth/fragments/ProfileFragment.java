@@ -128,6 +128,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void updatePets() {
+        Log.d("TOKEN", sharedPreferencesManager.getAccessToken());
         AndroidNetworking.get(PetHealthApiService.PET_URL)
                 .addPathParameter("userId", Integer.toString(sharedPreferencesManager.getUser().getUser_id()))
                 .addHeaders("access_token", sharedPreferencesManager.getAccessToken())
@@ -138,7 +139,7 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            myPets = MyPet.from(response.getJSONArray("content"));
+                            myPets = MyPet.from(response.getJSONArray("data"));
                             myPetAdapters.setMyPets(myPets);
                             myPetAdapters.notifyDataSetChanged();
                         } catch (JSONException e) {
