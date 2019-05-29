@@ -186,7 +186,7 @@ public class AddPetActivity extends AppCompatActivity {
         } else {
             JSONObject pet = new JSONObject();
             try {
-                pet.put("ownerId", user.getUser_id());
+                pet.put("ownerId", user.getId());
                 pet.put("name", name);
                 pet.put("race",race);
                 pet.put("description",description);

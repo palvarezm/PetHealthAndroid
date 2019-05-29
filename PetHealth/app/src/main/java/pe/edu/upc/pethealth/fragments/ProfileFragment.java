@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -130,7 +129,7 @@ public class ProfileFragment extends Fragment {
     private void updatePets() {
         Log.d("TOKEN", sharedPreferencesManager.getAccessToken());
         AndroidNetworking.get(PetHealthApiService.PET_URL)
-                .addPathParameter("userId", Integer.toString(sharedPreferencesManager.getUser().getUser_id()))
+                .addPathParameter("userId", Integer.toString(sharedPreferencesManager.getUser().getId()))
                 .addHeaders("access_token", sharedPreferencesManager.getAccessToken())
                 .setPriority(Priority.LOW)
                 .setTag(R.string.app_name)
