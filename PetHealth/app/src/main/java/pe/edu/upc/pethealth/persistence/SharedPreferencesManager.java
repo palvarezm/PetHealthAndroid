@@ -5,11 +5,13 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
+import pe.edu.upc.pethealth.models.Person;
 import pe.edu.upc.pethealth.models.User;
 
 public class SharedPreferencesManager {
     private static final String PREFERENCES_NAME = "blcc";
     private static final String CURRENT_USER = "current_user";
+    private static final String CURRENT_PERSON = "current_person";
     private static final String ACCESS_TOKEN = "access_token";
     private static final String COMPLETED_REGISTER = "current_register";
 
@@ -29,9 +31,10 @@ public class SharedPreferencesManager {
         return self;
     }
 
-    public void saveUser(String user, String access_token){
+    public void saveUser(String user, String person, String access_token){
         SharedPreferences.Editor editor = mPreferences.edit();
         editor.putString(CURRENT_USER, user);
+        editor.putString(CURRENT_PERSON, person);
         editor.putString(ACCESS_TOKEN, access_token);
         editor.apply();
     }
@@ -49,6 +52,18 @@ public class SharedPreferencesManager {
         if(!userString.isEmpty()){
             User user = gson.fromJson(userString, User.class);
             return user;
+        }
+        else{
+            return null;
+        }
+    }
+
+    public Person getPerson(){
+        String personString = mPreferences.getString(CURRENT_PERSON, "");
+        Gson gson = new Gson();
+        if (!personString.isEmpty()){
+            Person person = gson.fromJson(personString, Person.class);
+            return person;
         }
         else{
             return null;
