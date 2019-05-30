@@ -17,10 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -33,7 +29,6 @@ import pe.edu.upc.pethealth.models.Person;
 import pe.edu.upc.pethealth.models.User;
 import pe.edu.upc.pethealth.network.Connection;
 import pe.edu.upc.pethealth.network.LoggerCallback;
-import pe.edu.upc.pethealth.network.PetHealthApiService;
 import pe.edu.upc.pethealth.network.RestClient;
 import pe.edu.upc.pethealth.network.RestView;
 import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
@@ -144,11 +139,9 @@ public class StartActivity extends AppCompatActivity {
                         user = gson.fromJson(userJSONObject.toString(), User.class);
 
                         JSONObject personJSONObject = new JSONObject(answer.getData().get("person").toString());
-                        gson = new GsonBuilder().create();
-                        person = gson.fromJson(personJSONObject.toString(), Person.class);
-                        user.setUser_id(person.getId());
+                        person = Person.from(personJSONObject);
 
-                        sharedPreferencesManager.saveUser(user.toString(), person.toString(), answer.getData().get("access_token").toString());
+                        sharedPreferencesManager.saveUser(user.toString(), person.toString(), answer.getData().get("access_token").getAsString());
                         Intent intent = new Intent(context, MainActivity.class);
                         intent.putExtras(user.toBundle());
                         context.startActivity(intent);

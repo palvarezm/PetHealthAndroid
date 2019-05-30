@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import pe.edu.upc.pethealth.R;
+import pe.edu.upc.pethealth.fragments.AppointmentFragment;
 import pe.edu.upc.pethealth.fragments.ChatsFragment;
 import pe.edu.upc.pethealth.fragments.HomeFragment;
 import pe.edu.upc.pethealth.fragments.MyPetsFragment;
@@ -68,13 +69,6 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                     System.exit(0);
                     return true;
-                case R.id.navigation_profile:
-                    ProfileFragment newFragment = new ProfileFragment();
-                    newFragment.setArguments(user.toBundle());
-                    getSupportFragmentManager().beginTransaction()
-                            .addToBackStack(null)
-                            .replace(R.id.content, newFragment).commit();
-                    return true;
                 case R.id.navigation_search:
                     getSupportFragmentManager().beginTransaction()
                             .addToBackStack(null)
@@ -102,11 +96,11 @@ public class MainActivity extends AppCompatActivity {
     private Fragment getFragmentFor(int id){
         switch (id){
             case R.id.navigation_home: return new HomeFragment();
-            case R.id.navigation_mypets:
-                MyPetsFragment newFragment = new MyPetsFragment();
+            case R.id.navigation_myappointments:
+                AppointmentFragment newFragment = new AppointmentFragment();
                 return newFragment;
             case R.id.navigation_chat: return new ChatsFragment();
-            case R.id.navigation_notifications: return new NotificationsFragment();
+            case R.id.navigation_profile: return new ProfileFragment();
         }
         return null;
     }

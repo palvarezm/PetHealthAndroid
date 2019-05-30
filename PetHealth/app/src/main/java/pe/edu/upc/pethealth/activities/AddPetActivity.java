@@ -36,19 +36,22 @@ import java.util.Calendar;
 import pe.edu.upc.pethealth.R;
 import pe.edu.upc.pethealth.models.User;
 import pe.edu.upc.pethealth.network.PetHealthApiService;
+import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
 
 public class AddPetActivity extends AppCompatActivity {
 
     private Camera camera;
-    EditText nameEditText;
-    EditText raceEditText;
-    EditText birthDateEditText;
-    EditText descriptionEditText;
-    TextView cameraTextView;
-    Button addButton;
-    Button cameraButton;
+    private EditText nameEditText;
+    private EditText raceEditText;
+    private EditText birthDateEditText;
+    private EditText descriptionEditText;
+    private TextView cameraTextView;
+    private Button addButton;
+    private Button cameraButton;
     DatePickerDialog datePickerDialog;
+
     private User user;
+    private SharedPreferencesManager sharedPreferencesManager;
     int TAKE_PHOTO_CODE = 0;
     public static int count = 0;
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -64,12 +67,14 @@ public class AddPetActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pet);
+        sharedPreferencesManager = SharedPreferencesManager.getInstance(this.getApplicationContext());
+        user = sharedPreferencesManager.getUser();
+
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_petToolbar);
         setSupportActionBar(myToolbar);
         myToolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
         cameraButton = (Button) findViewById(R.id.cameraButton);
         cameraTextView = (TextView) findViewById(R.id.cameraTextView);
-        user = User.from(getIntent().getExtras());
         nameEditText = (EditText) findViewById(R.id.petTittleTextView);
         raceEditText = (EditText) findViewById(R.id.petRaceEditText);
         descriptionEditText = (EditText) findViewById(R.id.petDescriptionEditText);
@@ -186,12 +191,12 @@ public class AddPetActivity extends AppCompatActivity {
         } else {
             JSONObject pet = new JSONObject();
             try {
-                pet.put("ownerId", user.getUser_id());
                 pet.put("name", name);
                 pet.put("race",race);
                 pet.put("description",description);
-                pet.put("birthDate",format.format(format.parse(birthDate)));
-                pet.put("animalType",1);
+                pet.put("birth_date",format.format(format.parse(birthDate)));
+                pet.put("status",1);
+                pet.put("image_url", "https://static1.squarespace.com/static/58e086d737c5814ef81f146d/t/5939a8f26a4963343981c6d6/1497656344237/piglet");
             }catch (JSONException e) {
                 e.printStackTrace();
             } catch (ParseException e) {
@@ -199,6 +204,8 @@ public class AddPetActivity extends AppCompatActivity {
             }
             System.out.println(pet);
             AndroidNetworking.post(PetHealthApiService.ADD_PET_URL)
+                    .addPathParameter("userId", Integer.toString(sharedPreferencesManager.getUser().getId()))
+                    .addHeaders("access_token", sharedPreferencesManager.getAccessToken())
                     .addJSONObjectBody(pet)
                     .setTag(getString(R.string.app_name))
                     .setPriority(Priority.MEDIUM)
@@ -207,7 +214,7 @@ public class AddPetActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                if ("success".equalsIgnoreCase(response.getString("message"))) {
+                                if ("Ok".equalsIgnoreCase(response.getString("status"))) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                                     builder.setMessage("Your Pet was successfully added");
                                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {

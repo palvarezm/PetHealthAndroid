@@ -19,11 +19,9 @@ public class MyPetDescriptionFragment extends Fragment {
     ANImageView myPetImageView;
     TextView descriptionValueTextView;
     TextView raceValueTextView;
-    TextView ageValueTextView;
     TextView animalTypeValueTextView;
     TextView descriptionTextView;
     TextView raceTextView;
-    TextView ageTextView;
     TextView animalTypeTextView;
 
     @Override
@@ -37,18 +35,15 @@ public class MyPetDescriptionFragment extends Fragment {
         nameTextView = (TextView) view.findViewById(R.id.petTittleTextView);
         myPetImageView  =(ANImageView) view.findViewById(R.id.myPetImageView);
         raceValueTextView = (TextView) view.findViewById(R.id.petRaceValueTextView);
-        ageValueTextView = (TextView) view.findViewById(R.id.petAgeValueTextView);
         descriptionValueTextView = (TextView) view.findViewById(R.id.petDescriptionValueTextView);
         animalTypeValueTextView = (TextView) view.findViewById(R.id.petAnimalTypeValueTextView);
         raceTextView = (TextView) view.findViewById(R.id.petRaceTextView);
-        ageTextView = (TextView) view.findViewById(R.id.petAgeTextView);
         descriptionTextView = (TextView) view.findViewById(R.id.petDescriptionTextView);
         animalTypeTextView = (TextView) view.findViewById(R.id.petAnimalTypeTextView);
 
         nameTextView.setText(myPet.getName());
         myPetImageView.setImageUrl(myPet.getImage());
         raceValueTextView.setText(myPet.getRace());
-        ageValueTextView.setText((myPet.getBirthDate()));
         descriptionValueTextView.setText(myPet.getDescription());
         animalTypeValueTextView.setText(myPet.getAnimalType());
         return view;

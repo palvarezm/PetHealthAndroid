@@ -100,9 +100,8 @@ public class MyPetsFragment extends Fragment {
     }
 
     private void updatePets(){
-        Log.d("TSET", Integer.toString(sharedPreferencesManager.getUser().getUser_id()));
         AndroidNetworking.get(PetHealthApiService.PET_URL)
-                .addPathParameter("userId", Integer.toString(sharedPreferencesManager.getUser().getUser_id()))
+                .addPathParameter("userId", Integer.toString(sharedPreferencesManager.getUser().getId()))
                 .addHeaders("access_token", sharedPreferencesManager.getAccessToken())
                 .setPriority(Priority.LOW)
                 .setTag(R.string.app_name)
@@ -121,7 +120,7 @@ public class MyPetsFragment extends Fragment {
 
                     @Override
                     public void onError(ANError anError) {
-
+                        Log.d(getString(R.string.app_name), anError.getErrorBody());
                     }
                 });
     }
