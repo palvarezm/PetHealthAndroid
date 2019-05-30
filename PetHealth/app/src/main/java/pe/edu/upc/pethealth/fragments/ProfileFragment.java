@@ -122,6 +122,7 @@ public class ProfileFragment extends Fragment {
             }
         });
         updateProfile();
+        loadImage(sharedPreferencesManager.getUser().getPhoto());
         updatePets();
         return view;
     }
