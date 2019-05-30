@@ -69,13 +69,6 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                     System.exit(0);
                     return true;
-                case R.id.navigation_profile:
-                    ProfileFragment newFragment = new ProfileFragment();
-                    newFragment.setArguments(user.toBundle());
-                    getSupportFragmentManager().beginTransaction()
-                            .addToBackStack(null)
-                            .replace(R.id.content, newFragment).commit();
-                    return true;
                 case R.id.navigation_search:
                     getSupportFragmentManager().beginTransaction()
                             .addToBackStack(null)
@@ -107,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 AppointmentFragment newFragment = new AppointmentFragment();
                 return newFragment;
             case R.id.navigation_chat: return new ChatsFragment();
-            case R.id.navigation_notifications: return new NotificationsFragment();
+            case R.id.navigation_profile: return new ProfileFragment();
         }
         return null;
     }
