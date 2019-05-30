@@ -14,7 +14,7 @@ public class PetHealthApiService {
     public static String VETERINARY_URL = "http://leodev94-001-site1.dtempurl.com/veterinaries";
     public static String CUSTOMER_URL = "http://leodev94-001-site1.dtempurl.com/customers";
     public static String ADD_PET_URL = "http://leodev94-001-site1.dtempurl.com/pet/add";
-    public static String APPOINTMENT_URL = "http://leodev94-001-site1.dtempurl.com/pets/appointments";
+    public static String APPOINTMENT_URL = "https://pethealthapi.herokuapp.com/api/user/{userId}/appts";
     public static String ADD_APPOINTMENT_URL = "http://leodev94-001-site1.dtempurl.com/appointments/add";
     public static String VET_URL = "http://leodev94-001-site1.dtempurl.com/vets";
 }

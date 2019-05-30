@@ -9,9 +9,9 @@
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/navigation_mypets"
+        android:id="@+id/navigation_myappointments"
         android:icon="@drawable/ic_petfoot_black_24dp"
-        android:title="@string/title_mypets"
+        android:title="@string/title_myappointments"
         app:showAsAction="never"/>
 
     <item

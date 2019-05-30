@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,7 @@ import pe.edu.upc.pethealth.activities.MainActivity;
 import pe.edu.upc.pethealth.adapters.AppointmentAdapters;
 import pe.edu.upc.pethealth.models.Appointment;
 import pe.edu.upc.pethealth.network.PetHealthApiService;
+import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,10 +39,10 @@ public class AppointmentFragment extends Fragment {
     private RecyclerView appointmentRecyclerView;
     private AppointmentAdapters appointmentAdapters;
     private RecyclerView.LayoutManager appointmentLayoutManager;
-    private FloatingActionButton addAppointmentFloatingActionButton;
     private Fragment fragment = this;
-    List<Appointment> appointments;
-    int petId;
+
+    private List<Appointment> appointments;
+    private SharedPreferencesManager sharedPreferencesManager;
     public AppointmentFragment() {
         // Required empty public constructor
     }
@@ -48,28 +50,15 @@ public class AppointmentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
-        final Bundle bundle = getArguments();
-        int ownerId = bundle.getInt("ownerId");
-        petId = bundle.getInt("petId");
-        String fragmentName = bundle.getString("pet")+"'s Appointments";
+        sharedPreferencesManager = SharedPreferencesManager.getInstance(this.getContext());
         View view = inflater.inflate(R.layout.fragment_appointment, container, false);
-        ((MainActivity)getActivity()).setFragmentToolbar(fragmentName,true,getFragmentManager());
+        ((MainActivity)getActivity()).setFragmentToolbar("Next Appointments",true,getFragmentManager());
         appointmentRecyclerView = (RecyclerView) view.findViewById(R.id.appointmentRecyclerView);
         appointments = new ArrayList<>();
         appointmentAdapters = new AppointmentAdapters(appointments, fragment);
         appointmentRecyclerView.setAdapter(appointmentAdapters);
         appointmentLayoutManager = new GridLayoutManager(view.getContext(), 1);
         appointmentRecyclerView.setLayoutManager(appointmentLayoutManager);
-        addAppointmentFloatingActionButton = (FloatingActionButton) view.findViewById(R.id.addAppointmentFloatingActionButton);
-        addAppointmentFloatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Context context = view.getContext();
-                Intent intent = new Intent(context, AddAppointmentActivity.class);
-                intent.putExtras(bundle);
-                context.startActivity(intent);
-            }
-        });
         updateAppointment();
         return view;
     }
@@ -81,7 +70,9 @@ public class AppointmentFragment extends Fragment {
     }
 
     private void updateAppointment(){
-        AndroidNetworking.get(PetHealthApiService.APPOINTMENT_URL+"/"+petId)
+        AndroidNetworking.get(PetHealthApiService.APPOINTMENT_URL)
+                .addPathParameter("userId", Integer.toString(sharedPreferencesManager.getUser().getId()))
+                .addHeaders("access_token", sharedPreferencesManager.getAccessToken())
                 .setPriority(Priority.LOW)
                 .setTag(R.string.app_name)
                 .build()
@@ -89,7 +80,7 @@ public class AppointmentFragment extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            appointments = Appointment.from(response.getJSONArray("content"));
+                            appointments = Appointment.from(response.getJSONArray("data"));
                             appointmentAdapters.setAppointments(appointments);
                             appointmentAdapters.notifyDataSetChanged();
                         } catch (JSONException e){
