@@ -137,20 +137,20 @@ public class AddAppointmentActivity extends AppCompatActivity {
                 }
                 System.out.println(jsonObject);
                 AndroidNetworking.post(PetHealthApiService.ADD_APPOINTMENT_URL)
-                        .addJSONObjectBody(jsonObject)
-                        .setTag(R.string.app_name)
-                        .setPriority(Priority.LOW)
-                        .build()
-                        .getAsJSONObject(new JSONObjectRequestListener() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                Toast toast;
-                                try {
-                                    if ("ok".equalsIgnoreCase(response.getString("status"))){
-                                         toast = Toast.makeText(context,"Done!",Toast.LENGTH_SHORT);
-                                         finish();
-                                    } else {
-                                         toast = Toast.makeText(context,"Error",Toast.LENGTH_SHORT);
+                                                .addJSONObjectBody(jsonObject)
+                                                .setTag(R.string.app_name)
+                                                .setPriority(Priority.LOW)
+                                                .build()
+                                                .getAsJSONObject(new JSONObjectRequestListener() {
+                                                    @Override
+                                                    public void onResponse(JSONObject response) {
+                                                        Toast toast;
+                                                        try {
+                                                            if ("ok".equalsIgnoreCase(response.getString("status"))){
+                                                                toast = Toast.makeText(context,"Done!",Toast.LENGTH_SHORT);
+                                                                finish();
+                                                            } else {
+                                                                toast = Toast.makeText(context,"Error",Toast.LENGTH_SHORT);
                                     }
                                     toast.show();
                                 } catch (JSONException e) {
