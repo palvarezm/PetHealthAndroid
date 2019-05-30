@@ -17,6 +17,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,8 +30,13 @@ import pe.edu.upc.pethealth.activities.AddAppointmentActivity;
 import pe.edu.upc.pethealth.activities.MainActivity;
 import pe.edu.upc.pethealth.adapters.AppointmentAdapters;
 import pe.edu.upc.pethealth.models.Appointment;
+import pe.edu.upc.pethealth.network.LoggerCallback;
 import pe.edu.upc.pethealth.network.PetHealthApiService;
+import pe.edu.upc.pethealth.network.RestClient;
+import pe.edu.upc.pethealth.network.RestView;
 import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,7 +76,27 @@ public class AppointmentFragment extends Fragment {
     }
 
     private void updateAppointment(){
-        AndroidNetworking.get(PetHealthApiService.APPOINTMENT_URL)
+        JsonObject bodyToSend = new JsonObject();
+        bodyToSend.addProperty("userable_type", 2);
+
+        Call<RestView<JsonObject>> call = new RestClient().getWebServices().getAppts(bodyToSend, sharedPreferencesManager.getUser().getId());
+        call.enqueue(new LoggerCallback<RestView<JsonObject>>(){
+            @Override
+            public void onResponse(Call<RestView<JsonObject>> call, Response<RestView<JsonObject>> response) {
+                super.onResponse(call, response);
+                RestView<JsonObject> answer =  response.body();
+                Log.d("TESTING ANSWERRR", answer.toString());
+
+            }
+
+            @Override
+            public void onFailure(Call<RestView<JsonObject>> call, Throwable t) {
+                super.onFailure(call, t);
+                Log.d("FAILUIRE", t.toString());
+            }
+        });
+
+        /*AndroidNetworking.get(PetHealthApiService.APPOINTMENT_URL)
                 .addPathParameter("userId", Integer.toString(sharedPreferencesManager.getUser().getId()))
                 .addHeaders("access_token", sharedPreferencesManager.getAccessToken())
                 .setPriority(Priority.LOW)
@@ -92,7 +118,7 @@ public class AppointmentFragment extends Fragment {
                     public void onError(ANError anError) {
                         System.out.println(anError.toString());
                     }
-                });
+                });*/
     }
 
 }
