@@ -1,5 +1,7 @@
 package pe.edu.upc.pethealth.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -7,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private User user;
+    private SharedPreferencesManager sharedPreferencesManager;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -47,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        user = SharedPreferencesManager.getInstance(this.getApplicationContext()).getUser();
+        sharedPreferencesManager = SharedPreferencesManager.getInstance(this.getApplicationContext());
+        user = sharedPreferencesManager.getUser();
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -66,15 +71,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
             switch (item.getItemId()){
                 case R.id.navigation_logout:
-                    finish();
-                    System.exit(0);
-                    return true;
-                case R.id.navigation_profile:
-                    ProfileFragment newFragment = new ProfileFragment();
-                    newFragment.setArguments(user.toBundle());
-                    getSupportFragmentManager().beginTransaction()
-                            .addToBackStack(null)
-                            .replace(R.id.content, newFragment).commit();
+                    sharedPreferencesManager.closeSession();
+                    Intent intent = new Intent(MainActivity.this, StartActivity.class);
+                    startActivity(intent);
                     return true;
                 case R.id.navigation_search:
                     getSupportFragmentManager().beginTransaction()
@@ -107,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 AppointmentFragment newFragment = new AppointmentFragment();
                 return newFragment;
             case R.id.navigation_chat: return new ChatsFragment();
-            case R.id.navigation_notifications: return new NotificationsFragment();
+            case R.id.navigation_profile: return new ProfileFragment();
         }
         return null;
     }
