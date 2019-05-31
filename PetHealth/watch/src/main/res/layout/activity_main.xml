@@ -9,17 +9,31 @@
     tools:context=".MainActivity"
     tools:deviceIds="wear">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/inner_frame_layout_padding"
-        app:boxedEdges="all">
-
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hello_world" />
-
-    </FrameLayout>
+        android:orientation="vertical"
+        android:background="@color/primary_dark">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginBottom="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="30dp"
+            android:src="@mipmap/ic_launcher"
+            />
+        <Button
+            android:id="@+id/start_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Ingresar"
+            android:background="@drawable/roundbutton"
+            android:layout_weight="1"
+            android:textColor="@color/blue"
+            android:layout_marginBottom="45dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="15dp" />
+    </LinearLayout>
 </android.support.wear.widget.BoxInsetLayout>
