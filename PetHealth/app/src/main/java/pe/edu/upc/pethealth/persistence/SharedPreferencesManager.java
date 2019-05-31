@@ -2,6 +2,7 @@ package pe.edu.upc.pethealth.persistence;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -42,6 +43,7 @@ public class SharedPreferencesManager {
     public void closeSession(){
         SharedPreferences.Editor editor = mPreferences.edit();
         editor.putString(CURRENT_USER, null);
+        editor.putString(CURRENT_PERSON, null);
         editor.putString(COMPLETED_REGISTER, null);
         editor.apply();
     }
@@ -50,6 +52,7 @@ public class SharedPreferencesManager {
         String userString = mPreferences.getString(CURRENT_USER, "");
         Gson gson = new Gson();
         if(!userString.isEmpty()){
+            Log.d("userstring", userString);
             User user = gson.fromJson(userString, User.class);
             return user;
         }
