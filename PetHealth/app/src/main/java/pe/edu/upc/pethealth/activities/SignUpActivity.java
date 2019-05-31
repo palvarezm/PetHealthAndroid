@@ -41,11 +41,15 @@ import pe.edu.upc.pethealth.network.PetHealthApiService;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    Button doneButton;
-    String tag;
-    EditText usernameEditText;
-    TextInputEditText passwordEditText;
-    EditText emailEditText;
+    private Button doneButton;
+    private EditText usernameEditText;
+    private TextInputEditText passwordEditText;
+    private EditText emailEditText;
+    private EditText nameEditText;
+    private EditText lastNameEditText;
+    private EditText dniEditText;
+    private EditText phoneEditText;
+
     final Context context = this;
 
     @Override
@@ -64,9 +68,11 @@ public class SignUpActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         usernameEditText =(EditText) findViewById(R.id.usernameEditText);
         passwordEditText = (TextInputEditText) findViewById(R.id.passwordTextInputEditText);
-
         emailEditText =(EditText) findViewById(R.id.emailEditText);
-
+        nameEditText =(EditText) findViewById(R.id.nameEditText);
+        lastNameEditText =(EditText) findViewById(R.id.lastNameEditText);
+        dniEditText =(EditText) findViewById(R.id.dniEditText);
+        phoneEditText =(EditText) findViewById(R.id.phoneEditText);
         doneButton = (Button) findViewById(R.id.doneButton);
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +80,6 @@ public class SignUpActivity extends AppCompatActivity {
                 attemptToSignUp();
             }
         });
-        tag = "PetHealth";
     }
 
     @Override
@@ -89,18 +94,25 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void attemptToSignUp() {
-        //Reset Errors
 
+        //Reset Errors
         passwordEditText.setError(null);
         usernameEditText.setError(null);
         emailEditText.setError(null);
-
+        nameEditText.setError(null);
+        lastNameEditText.setError(null);
+        dniEditText.setError(null);
+        phoneEditText.setError(null);
 
         //Store values
-
         String username = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String email = emailEditText.getText().toString();
+        String name = nameEditText.getText().toString();
+        String lastName = lastNameEditText.getText().toString();
+        String dni = dniEditText.getText().toString();
+        String phone = phoneEditText.getText().toString();
+
         View focusView = null;
         Boolean cancel = false;
 
@@ -119,24 +131,56 @@ public class SignUpActivity extends AppCompatActivity {
             focusView = emailEditText;
             cancel = true;
         }
+        if(TextUtils.isEmpty(name)) {
+            nameEditText.setError("This field is empty");
+            focusView = nameEditText;
+            cancel = true;
+        }
+        if(TextUtils.isEmpty(lastName)) {
+            lastNameEditText.setError("This field is empty");
+            focusView = lastNameEditText;
+            cancel = true;
+        }
+        if(TextUtils.isEmpty(dni)) {
+            dniEditText.setError("This field is empty");
+            focusView = dniEditText;
+            cancel = true;
+        }
+        if(TextUtils.isEmpty(phone)) {
+            phoneEditText.setError("This field is empty");
+            focusView = phoneEditText;
+            cancel = true;
+        }
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
             focusView.requestFocus();
         } else {
-            JSONObject user = new JSONObject();
+            JSONObject bodyToSend = new JSONObject();
             try {
-                user.put("username",username);
-                user.put("password",password);
-                user.put("mail",email);
-
+                bodyToSend.put("username", username);
+                bodyToSend.put("password", password);
+                bodyToSend.put("mail", email);
+                bodyToSend.put("photo", "");
+                bodyToSend.put("userable_type", 2);
+                bodyToSend.put("name", name);
+                bodyToSend.put("last_name", lastName);
+                bodyToSend.put("dni",dni);
+                bodyToSend.put("phone,address",phone);
+                bodyToSend.put("linkedin_link", "");
+                bodyToSend.put("degree", "");
+                bodyToSend.put("location", "");
+                bodyToSend.put("opening_hours", "");
+                bodyToSend.put("website_url", "");
+                bodyToSend.put("youtube_url", "");
+                bodyToSend.put("twitter_url", "");
             }catch (JSONException e){
                 e.printStackTrace();
             }
 
             AndroidNetworking.post(PetHealthApiService.SIGNUP_USER)
-                    .addJSONObjectBody(user)
+                    .addJSONObjectBody(bodyToSend)
                     .setTag(getString(R.string.app_name))
                     .setPriority(Priority.MEDIUM)
                     .build()
@@ -145,7 +189,7 @@ public class SignUpActivity extends AppCompatActivity {
                         public void onResponse(JSONObject response) {
                             // do anything with response
                             try {
-                                if ("done".equalsIgnoreCase(response.getString("status"))) {
+                                if ("ok".equalsIgnoreCase(response.getString("status"))) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                                     builder.setMessage("User Corretly Created");
                                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -159,6 +203,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     });
                                     AlertDialog alertDialog = builder.create();
                                     alertDialog.show();
+
                                 } else {
                                     Log.d(getString(R.string.app_name), "Error with the Resgistration of User");
                                 }
