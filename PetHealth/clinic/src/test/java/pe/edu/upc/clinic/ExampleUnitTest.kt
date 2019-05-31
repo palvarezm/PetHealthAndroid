@@ -1,4 +1,4 @@
-package pe.upc.clinic
+package pe.edu.upc.clinic
 
 import org.junit.Test
 

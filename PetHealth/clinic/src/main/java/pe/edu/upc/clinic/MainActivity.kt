@@ -1,4 +1,4 @@
-package pe.upc.clinic
+package pe.edu.upc.clinic
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

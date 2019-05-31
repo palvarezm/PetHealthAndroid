@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp"
+    android:background="@color/primary_dark">
+    <ImageView
+        android:id="@+id/petImageView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/veterinaryTextView"
+        app:layout_constraintStart_toEndOf="@id/petImageView"
+        app:layout_constraintTop_toTopOf="@id/petImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Veterinary"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_text_dark"/>
+    <TextView
+        android:id="@+id/vetTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/veterinaryTextView"
+        app:layout_constraintStart_toStartOf="@id/veterinaryTextView"
+        android:text="Vet"
+        android:textSize="12dp"/>
+    <TextView
+        android:id="@+id/hourTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="19:00"/>
+    <TextView
+        android:id="@+id/dayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/hourTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="19-10-23"
+        android:textSize="12dp"/>
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="lorem ipsum "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/petImageView"
+        app:layout_constraintTop_toBottomOf="@id/vetTextView"
+        android:textSize="12dp"/>
+
+</android.support.constraint.ConstraintLayout>
