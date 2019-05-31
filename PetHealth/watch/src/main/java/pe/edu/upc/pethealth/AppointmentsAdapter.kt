@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_appointment.view.*
 import pe.edu.upc.lib.Appointment
+import pe.edu.upc.lib.AppointmentResponse
 import pe.edu.upc.lib.AppointmentResponseBeta
 
 /*class AppointmentsAdapter(private val myDataset: Array<String>) :
@@ -35,7 +36,7 @@ import pe.edu.upc.lib.AppointmentResponseBeta
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = myDataset.size
 }*/
-class AppointmentsAdapter(var appts: ArrayList<AppointmentResponseBeta>,
+class AppointmentsAdapter(var appts: ArrayList<AppointmentResponse>,
                           val context: Context
 ) : RecyclerView.Adapter<AppointmentsAdapter.ViewHolder>(){
 
@@ -61,16 +62,16 @@ class AppointmentsAdapter(var appts: ArrayList<AppointmentResponseBeta>,
         val veterinary = view.veterinaryTextView
         val vet = view.vetTextView
 
-        fun updateFrom(appt: AppointmentResponseBeta){
-            date.text = appt.date
+        fun updateFrom(apptResponse: AppointmentResponse){
+            date.text = apptResponse.appointment.appt_date.substring(0, Math.min(apptResponse.appointment.appt_date.length, 10));
 
-            hour.text = appt.hour
+            hour.text = apptResponse.appointment.start_t.substring(11, Math.min(apptResponse.appointment.start_t.length, 16));
 
-            desc.text = appt.desc
+            desc.text = apptResponse.appointment.desc
 
-            vet.text = appt.vet
+            vet.text = apptResponse.veterinarian.name
 
-            veterinary.text = appt.veterinary
+            veterinary.text = apptResponse.veterinary.name
 
             /*sessionLayout.setOnClickListener { view->
                 val context = view.context

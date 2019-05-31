@@ -11,6 +11,9 @@ import kotlinx.android.synthetic.main.activity_appointments.*
 import pe.edu.upc.lib.Appointment
 import org.json.JSONObject
 import pe.edu.upc.lib.AppointmentResponse
+import com.github.salomonbrys.kotson.*
+import com.google.gson.Gson
+
 import pe.edu.upc.lib.AppointmentResponseBeta
 
 class AppointmentsActivity : WearableActivity(), DataClient.OnDataChangedListener  {
@@ -25,11 +28,12 @@ class AppointmentsActivity : WearableActivity(), DataClient.OnDataChangedListene
         setContentView(R.layout.activity_appointments)
         shared = getSharedPreferences(APPT_KEY, 0)
 
-        var appts = arrayListOf(AppointmentResponseBeta())
+        var appts = ArrayList<AppointmentResponse>()
 
-        //if (shared.getString(APPT_KEY,"") != ""){
-        //    val json = JSONObject(shared.getString(APPT_KEY,""))
-        //}
+        /*if (shared.getString(APPT_KEY,"") != ""){
+            val gson = Gson()
+            val appts = gson.fromJson<ArrayList<AppointmentResponse>>(shared.getString(APPT_KEY,""))
+        }*/
 
         apptsAdapter = AppointmentsAdapter(appts,AppointmentsRecyclerView.context)
 
@@ -37,7 +41,7 @@ class AppointmentsActivity : WearableActivity(), DataClient.OnDataChangedListene
             layoutManager = WearableLinearLayoutManager(this@AppointmentsActivity)
             adapter = apptsAdapter
         }
-
+        apptsAdapter.notifyDataSetChanged()
         setAmbientEnabled()
 
     }
@@ -58,16 +62,18 @@ class AppointmentsActivity : WearableActivity(), DataClient.OnDataChangedListene
                 event.dataItem.also { item ->
                     if (item.uri.path.compareTo(APPT_PATH) == 0) {
                         DataMapItem.fromDataItem(item).dataMap.apply {
-                            //val editor = shared.edit()
-                            //editor.put(APPT_KEY,getDataMapArrayList(APPT_KEY))
-                            //editor.apply()
 
+                            val editor = shared.edit()
+                            editor.putString(APPT_KEY,getString(APPT_KEY))
+                            editor.apply()
+                            val gson = Gson()
+                            val appts = gson.fromJson<ArrayList<AppointmentResponse>>(getString(APPT_KEY))
                             //parse
-                            val data = getDataMapArrayList(APPT_KEY)
-                            val appts: ArrayList<AppointmentResponseBeta> = arrayListOf()
-                            data.forEach { dataMap ->
-                                appts.add(AppointmentResponseBeta(dataMap["date"],dataMap["veterinary"],dataMap["vet"],dataMap["desc"],dataMap["hour"]))
-                            }
+                            //val data = getDataMapArrayList(APPT_KEY)
+                            //val appts: ArrayList<AppointmentResponseBeta> = arrayListOf()
+                            //data.forEach { dataMap ->
+                            //    appts.add(AppointmentResponseBeta(dataMap["date"],dataMap["veterinary"],dataMap["vet"],dataMap["desc"],dataMap["hour"]))
+                            //}
                             apptsAdapter.appts = appts
                             apptsAdapter.notifyDataSetChanged()
                         }

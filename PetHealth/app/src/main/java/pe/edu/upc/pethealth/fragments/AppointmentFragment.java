@@ -19,6 +19,7 @@ import com.google.android.gms.wearable.DataMap;
 import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -77,6 +78,9 @@ public class AppointmentFragment extends Fragment {
         String APPT_KEY = "appt.key";
         String APPT_PATH = "/appt";
         ArrayList<DataMap> dataMapArray = new ArrayList<DataMap>();
+        Gson gson = new Gson();
+        String response = gson.toJson(jsonArray,JsonArray.class);
+
         for(int i = 0; i < jsonArray.size(); i += 1)
         {
             final JsonObject obj = jsonArray.get(i).getAsJsonObject();
@@ -98,7 +102,7 @@ public class AppointmentFragment extends Fragment {
             dataMapArray.add(dataMap);
         }
         PutDataMapRequest putDataMapReq = PutDataMapRequest.create(APPT_PATH);
-        putDataMapReq.getDataMap().putDataMapArrayList(APPT_KEY,dataMapArray);
+        putDataMapReq.getDataMap().putString(APPT_KEY,response);
         PutDataRequest putDataReq = putDataMapReq.asPutDataRequest().setUrgent();
         dataClient.putDataItem(putDataReq);
     }
