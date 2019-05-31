@@ -41,11 +41,10 @@ import pe.edu.upc.pethealth.network.PetHealthApiService;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    Button doneButton;
-    String tag;
-    EditText usernameEditText;
-    TextInputEditText passwordEditText;
-    EditText emailEditText;
+    private Button doneButton;
+    private EditText usernameEditText;
+    private TextInputEditText passwordEditText;
+    private EditText emailEditText;
     final Context context = this;
 
     @Override
@@ -74,7 +73,6 @@ public class SignUpActivity extends AppCompatActivity {
                 attemptToSignUp();
             }
         });
-        tag = "PetHealth";
     }
 
     @Override
