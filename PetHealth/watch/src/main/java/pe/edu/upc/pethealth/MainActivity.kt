@@ -1,4 +1,4 @@
-package pe.upc.watch
+package pe.edu.upc.pethealth
 
 import android.content.Intent
 import android.os.Bundle

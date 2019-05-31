@@ -1,10 +1,14 @@
-package pe.upc.watch
+package pe.edu.upc.pethealth
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import pe.upc.lib.Appointment
+import kotlinx.android.synthetic.main.item_appointment.view.*
+import pe.edu.upc.lib.Appointment
+import pe.edu.upc.lib.AppointmentResponseBeta
 
 /*class AppointmentsAdapter(private val myDataset: Array<String>) :
         RecyclerView.Adapter<AppointmentsAdapter.MyViewHolder>() {
@@ -31,12 +35,13 @@ import pe.upc.lib.Appointment
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = myDataset.size
 }*/
-class AppointmentsAdapter(var appts: ArrayList<Appointment>
+class AppointmentsAdapter(var appts: ArrayList<AppointmentResponseBeta>,
+                          val context: Context
 ) : RecyclerView.Adapter<AppointmentsAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
         return ViewHolder(
-                LayoutInflater.from(parent.context)
+                LayoutInflater.from(context)
                         .inflate(R.layout.item_appointment, parent, false)
         )
     }
@@ -49,20 +54,25 @@ class AppointmentsAdapter(var appts: ArrayList<Appointment>
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        /*val firstAvenueTextView = view.firstAvenueTextView
-        val secondAvenueTextView = view.secondAvenueTextView
+        val date = view.dayTextView
+        val hour = view.hourTextView
+        val desc = view.descriptionTextView
 
-        val dateTextView = view.dateTexView
-        val sessionLayout = view.item_session
-        */
-        fun updateFrom(appt: Appointment){
-            /*firstAvenueTextView.text = session.avenue_first
-            secondAvenueTextView.text = session.avenue_second
-            var year = session.date.subSequence(0,4).toString()
-            var month = session.date.subSequence(5,7).toString()
-            var day = session.date.subSequence(8,10).toString()
-            dateTextView.text = day + "/" + month +"/"+year
-            sessionLayout.setOnClickListener { view->
+        val veterinary = view.veterinaryTextView
+        val vet = view.vetTextView
+
+        fun updateFrom(appt: AppointmentResponseBeta){
+            date.text = appt.date
+
+            hour.text = appt.hour
+
+            desc.text = appt.desc
+
+            vet.text = appt.vet
+
+            veterinary.text = appt.veterinary
+
+            /*sessionLayout.setOnClickListener { view->
                 val context = view.context
                 context.startActivity(
                         Intent(context, SessionActivity::class.java)

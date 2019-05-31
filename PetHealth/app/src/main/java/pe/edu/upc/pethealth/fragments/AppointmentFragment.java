@@ -14,26 +14,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.androidnetworking.model.Progress;
-import com.google.android.gms.tasks.Task;
 import com.google.android.gms.wearable.DataClient;
-import com.google.android.gms.wearable.DataItem;
+import com.google.android.gms.wearable.DataMap;
 import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.List;
 
 import pe.edu.upc.pethealth.R;
 import pe.edu.upc.pethealth.activities.AddAppointmentActivity;
@@ -84,11 +73,32 @@ public class AppointmentFragment extends Fragment {
         updateAppointment();
     }
 
-    void sendWearData(String jsonString){
+    void sendWearData(JsonArray jsonArray){
         String APPT_KEY = "appt.key";
         String APPT_PATH = "/appt";
+        ArrayList<DataMap> dataMapArray = new ArrayList<DataMap>();
+        for(int i = 0; i < jsonArray.size(); i += 1)
+        {
+            final JsonObject obj = jsonArray.get(i).getAsJsonObject();
+            String fullDate = obj.get("appointment").getAsJsonObject().get("appt_date").getAsString();
+            String fullStartTime = obj.get("appointment").getAsJsonObject().get("start_t").getAsString();
+
+            String veterinary = obj.get("veterinary").getAsJsonObject().get("name").getAsString();
+            String vet = obj.get("veterinarian").getAsJsonObject().get("name").getAsString();
+            String desc = obj.get("appointment").getAsJsonObject().get("desc").getAsString()+"";
+            String date = fullDate.substring(0, Math.min(fullDate.length(), 10));
+            String hour = fullStartTime.substring(11, Math.min(fullDate.length(), 16));
+
+            DataMap dataMap = new DataMap();
+            dataMap.putString("date", date);
+            dataMap.putString("hour", hour);
+            dataMap.putString("vet", vet);
+            dataMap.putString("veterinary", veterinary);
+            dataMap.putString("desc", desc);
+            dataMapArray.add(dataMap);
+        }
         PutDataMapRequest putDataMapReq = PutDataMapRequest.create(APPT_PATH);
-        putDataMapReq.getDataMap().putString(APPT_KEY,jsonString+"as");
+        putDataMapReq.getDataMap().putDataMapArrayList(APPT_KEY,dataMapArray);
         PutDataRequest putDataReq = putDataMapReq.asPutDataRequest().setUrgent();
         dataClient.putDataItem(putDataReq);
     }
@@ -99,7 +109,7 @@ public class AppointmentFragment extends Fragment {
             public void onResponse(Call<RestView<JsonArray>> call, Response<RestView<JsonArray>> response) {
                 super.onResponse(call, response);
                 answer =  response.body();
-                sendWearData(answer.getData().toString());
+                sendWearData(answer.getData());
                 appointmentAdapters = new AppointmentAdapters(fragment);
                 appointmentRecyclerView.setAdapter(appointmentAdapters);
                 appointmentRecyclerView.setLayoutManager(appointmentLayoutManager);

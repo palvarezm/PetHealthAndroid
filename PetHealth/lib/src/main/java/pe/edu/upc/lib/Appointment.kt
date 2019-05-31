@@ -1,4 +1,4 @@
-package pe.upc.lib
+package pe.edu.upc.lib
 
 data class Appointment(
         val id: String = "",

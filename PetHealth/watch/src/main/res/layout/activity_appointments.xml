@@ -14,7 +14,8 @@
         android:layout_height="match_parent"
         android:padding="@dimen/inner_frame_layout_padding"
         app:boxedEdges="all"
-        tools:ignore="MissingPrefix">
+        tools:ignore="MissingPrefix"
+        android:background="@color/primary_dark">
 
         <android.support.wear.widget.WearableRecyclerView
             android:id="@+id/AppointmentsRecyclerView"
