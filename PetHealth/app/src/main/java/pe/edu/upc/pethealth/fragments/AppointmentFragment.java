@@ -19,6 +19,12 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.model.Progress;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.wearable.DataClient;
+import com.google.android.gms.wearable.DataItem;
+import com.google.android.gms.wearable.PutDataMapRequest;
+import com.google.android.gms.wearable.PutDataRequest;
+import com.google.android.gms.wearable.Wearable;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -33,7 +39,6 @@ import pe.edu.upc.pethealth.R;
 import pe.edu.upc.pethealth.activities.AddAppointmentActivity;
 import pe.edu.upc.pethealth.activities.MainActivity;
 import pe.edu.upc.pethealth.adapters.AppointmentAdapters;
-import pe.edu.upc.pethealth.models.Appointment;
 import pe.edu.upc.pethealth.network.LoggerCallback;
 import pe.edu.upc.pethealth.network.PetHealthApiService;
 import pe.edu.upc.pethealth.network.RestClient;
@@ -53,6 +58,9 @@ public class AppointmentFragment extends Fragment {
 
     private RestView<JsonArray> answer;
     private SharedPreferencesManager sharedPreferencesManager;
+
+    DataClient dataClient;
+
     public AppointmentFragment() {
         // Required empty public constructor
     }
@@ -66,6 +74,7 @@ public class AppointmentFragment extends Fragment {
         appointmentRecyclerView = (RecyclerView) view.findViewById(R.id.appointmentRecyclerView);
         appointmentLayoutManager = new GridLayoutManager(view.getContext(), 1);
         ((MainActivity)getActivity()).setFragmentToolbar("Next Appointments",true,getFragmentManager());
+        dataClient = Wearable.getDataClient(this.getContext());
         return view;
     }
 
@@ -75,6 +84,14 @@ public class AppointmentFragment extends Fragment {
         updateAppointment();
     }
 
+    void sendWearData(String jsonString){
+        String APPT_KEY = "appt.key";
+        String APPT_PATH = "/appt";
+        PutDataMapRequest putDataMapReq = PutDataMapRequest.create(APPT_PATH);
+        putDataMapReq.getDataMap().putString(APPT_KEY,jsonString+"as");
+        PutDataRequest putDataReq = putDataMapReq.asPutDataRequest().setUrgent();
+        dataClient.putDataItem(putDataReq);
+    }
     private void updateAppointment(){
         Call<RestView<JsonArray>> call = new RestClient().getWebServices().getAppts(sharedPreferencesManager.getAccessToken(), sharedPreferencesManager.getUser().getId());
         call.enqueue(new LoggerCallback<RestView<JsonArray>>(){
@@ -82,6 +99,7 @@ public class AppointmentFragment extends Fragment {
             public void onResponse(Call<RestView<JsonArray>> call, Response<RestView<JsonArray>> response) {
                 super.onResponse(call, response);
                 answer =  response.body();
+                sendWearData(answer.getData().toString());
                 appointmentAdapters = new AppointmentAdapters(fragment);
                 appointmentRecyclerView.setAdapter(appointmentAdapters);
                 appointmentRecyclerView.setLayoutManager(appointmentLayoutManager);
