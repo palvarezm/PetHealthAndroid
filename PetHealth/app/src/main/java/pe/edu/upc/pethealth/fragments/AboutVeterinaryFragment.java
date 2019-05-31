@@ -17,7 +17,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+//import com.google.android.gms.maps.model.MarkerOptions;
 
 import pe.edu.upc.pethealth.R;
 import pe.edu.upc.pethealth.activities.AddAppointmentActivity;
@@ -77,7 +77,7 @@ public class AboutVeterinaryFragment extends Fragment implements OnMapReadyCallb
         mMap = googleMap;
         //LatLng sydney = new LatLng(-34, 151);
         LatLng vetpos = new LatLng(lat,lng);
-        mMap.addMarker(new MarkerOptions().position(vetpos));
+        //mMap.addMarker(new MarkerOptions().position(vetpos));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(vetpos));
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(new LatLng(lat, lng))      // Sets the center of the map to location user

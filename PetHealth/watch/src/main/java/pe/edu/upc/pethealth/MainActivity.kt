@@ -1,7 +1,9 @@
-package pe.upc.watch
+package pe.edu.upc.pethealth
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : WearableActivity() {
 
@@ -11,5 +13,8 @@ class MainActivity : WearableActivity() {
 
         // Enables Always-on
         setAmbientEnabled()
+        startButton.setOnClickListener {
+            startActivity(Intent(this,AppointmentsActivity::class.java))
+        }
     }
 }
