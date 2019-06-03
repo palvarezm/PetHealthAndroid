@@ -7,10 +7,4 @@ data class AppointmentResponse(
         val veterinary: ApptVeterinary
 )
 
-data class AppointmentResponseBeta(
-        val date: String = "",
-        val veterinary: String = "",
-        val vet: String = "",
-        val desc: String = "",
-        val hour: String = ""
-)
+

@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_appointment.view.*
 import pe.edu.upc.lib.Appointment
 import pe.edu.upc.lib.AppointmentResponse
-import pe.edu.upc.lib.AppointmentResponseBeta
 
 /*class AppointmentsAdapter(private val myDataset: Array<String>) :
         RecyclerView.Adapter<AppointmentsAdapter.MyViewHolder>() {

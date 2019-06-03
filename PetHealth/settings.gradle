@@ -1,1 +1,1 @@
-include ':app', ':clinic', ':lib', ':watch'
+include ':app-customer', ':app-clinic', ':lib', ':watch-customer'
