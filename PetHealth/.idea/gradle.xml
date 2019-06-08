@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app-clinic" />
             <option value="$PROJECT_DIR$/app-customer" />
             <option value="$PROJECT_DIR$/lib" />
+            <option value="$PROJECT_DIR$/resources" />
             <option value="$PROJECT_DIR$/watch-customer" />
           </set>
         </option>

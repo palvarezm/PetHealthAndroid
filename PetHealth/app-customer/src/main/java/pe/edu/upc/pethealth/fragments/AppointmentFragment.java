@@ -84,8 +84,8 @@ public class AppointmentFragment extends Fragment {
         for(int i = 0; i < jsonArray.size(); i += 1)
         {
             final JsonObject obj = jsonArray.get(i).getAsJsonObject();
-            String fullDate = obj.get("appointment").getAsJsonObject().get("appt_date").getAsString();
-            String fullStartTime = obj.get("appointment").getAsJsonObject().get("start_t").getAsString();
+            //String image_url = obj.get("pet").getAsJsonObject().get("image_url").getAsString();
+            /*String fullStartTime = obj.get("appointment").getAsJsonObject().get("start_t").getAsString();
 
             String veterinary = obj.get("veterinary").getAsJsonObject().get("name").getAsString();
             String vet = obj.get("veterinarian").getAsJsonObject().get("name").getAsString();
@@ -100,9 +100,12 @@ public class AppointmentFragment extends Fragment {
             dataMap.putString("veterinary", veterinary);
             dataMap.putString("desc", desc);
             dataMapArray.add(dataMap);
+            */
+
         }
         PutDataMapRequest putDataMapReq = PutDataMapRequest.create(APPT_PATH);
         putDataMapReq.getDataMap().putString(APPT_KEY,response);
+        //putDataMapReq.getDataMap().putAsset (APPT_KEY,response);
         PutDataRequest putDataReq = putDataMapReq.asPutDataRequest().setUrgent();
         dataClient.putDataItem(putDataReq);
     }

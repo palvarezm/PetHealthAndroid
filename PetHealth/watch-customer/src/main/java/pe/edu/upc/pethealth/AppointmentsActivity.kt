@@ -34,6 +34,7 @@ class AppointmentsActivity : WearableActivity(), DataClient.OnDataChangedListene
         apptsAdapter = AppointmentsAdapter(appts,AppointmentsRecyclerView.context)
 
         AppointmentsRecyclerView.apply {
+            isEdgeItemsCenteringEnabled = true
             layoutManager = WearableLinearLayoutManager(this@AppointmentsActivity)
             adapter = apptsAdapter
         }
