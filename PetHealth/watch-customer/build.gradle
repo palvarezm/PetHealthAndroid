@@ -3,8 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
-
-
     defaultConfig {
         applicationId "pe.edu.upc.pethealth"
         minSdkVersion 26
@@ -32,7 +30,7 @@ dependencies {
     implementation 'com.github.salomonbrys.kotson:kotson:2.5.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'jp.wasabeef:picasso-transformations:2.2.1'
-
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
     compileOnly 'com.google.android.wearable:wearable:2.4.0'
     implementation project(path: ':lib')
     implementation project(path: ':resources')

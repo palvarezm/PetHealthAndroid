@@ -7,4 +7,6 @@
     <string name="hello_world">Hello Square World!</string>
     <string name="title_activity_appointments">AppointmentsActivity</string>
     <string name="title_activity_appointment_detail">AppointmentDetailActivity</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="intro_text">Swipe edge to exit the map.</string>
 </resources>

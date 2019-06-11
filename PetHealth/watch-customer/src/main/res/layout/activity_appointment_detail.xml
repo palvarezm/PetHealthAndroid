@@ -9,17 +9,81 @@
     tools:context=".AppointmentDetailActivity"
     tools:deviceIds="wear">
 
-    <FrameLayout
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/inner_frame_layout_padding"
-        app:boxedEdges="all">
+        android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/apptTypeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hello_world" />
+            android:layout_marginTop="8dp"
+            android:text="Cita"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/veterinaryTextView"
+            app:layout_constraintBottom_toTopOf="@id/veterinaryTextView"/>
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/veterinaryTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Veterinaria"
+            app:layout_constraintBottom_toTopOf="@id/vetTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/vetTextView" />
+
+        <TextView
+            android:id="@+id/vetTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Veterinario"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/veterinaryImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4" />
+
+        <TextView
+            android:id="@+id/scheduleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fri, 14 at 9PM - 10PM"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/vetTextView"
+            app:layout_constraintTop_toBottomOf="@id/vetTextView" />
+
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:paddingHorizontal="10dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. et dolore magna aliqua. Ut enim ad minim veniam."
+            android:textSize="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scheduleTextView"
+            app:layout_constraintVertical_bias="0.19999999" />
+        <ImageView
+            android:id="@+id/veterinaryImageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:contentDescription="TODO"
+            app:layout_constraintVertical_bias="0.4"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+
 </android.support.wear.widget.BoxInsetLayout>
