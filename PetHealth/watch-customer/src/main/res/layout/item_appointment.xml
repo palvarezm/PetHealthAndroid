@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp"
+    android:background="@color/circular_button_pressed"
+    android:id="@+id/appointmentLayout">
+    <ImageView
+        android:id="@+id/petImageView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/AppointmentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Veterinary"
+        android:textColor="@color/primary_text_dark"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/petImageView"
+        app:layout_constraintTop_toTopOf="@id/petImageView" />
+
+    <ImageView
+        android:id="@+id/TypeImageView"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="@drawable/ic_access_time_white_20dp"
+        app:layout_constraintBottom_toBottomOf="@id/scheduleTextView"
+        app:layout_constraintEnd_toStartOf="@id/scheduleTextView"
+        app:layout_constraintStart_toStartOf="@id/AppointmentTextView"
+        app:layout_constraintTop_toTopOf="@id/scheduleTextView" />
+
+    <TextView
+        android:id="@+id/scheduleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:text="7 AM  del 29/07"
+        android:textSize="10dp"
+        app:layout_constraintStart_toStartOf="@+id/AppointmentTextView"
+        app:layout_constraintTop_toBottomOf="@id/AppointmentTextView" />
+
+</android.support.constraint.ConstraintLayout>
