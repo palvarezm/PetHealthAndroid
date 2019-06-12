@@ -1,0 +1,304 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:2:1-55:12
+INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:2:1-55:12
+INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:2:1-55:12
+INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:2:1-55:12
+MERGED from [com.android.support:design:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/22665c627676edee4da4d48d86f51b63/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:appcompat-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/0c07c805295822f814601e589876f7a5/AndroidManifest.xml:17:1-31:12
+MERGED from [com.google.android.gms:play-services-wearable:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b6e80ac8dd3da7f6f5b3e7c51b86c67c/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/e83b2765fcd336197c634f3ac954226d/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/46d7600c151eba8571340c8752cef09f/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a3c10c436730ad1d0b86e9f602af7440/AndroidManifest.xml:2:1-11:12
+MERGED from [com.amitshekhar.android:android-networking:1.0.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/24295e050b574d2347726b92030469c3/AndroidManifest.xml:18:1-27:12
+MERGED from [com.android.support:cardview-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a8944956af0347a420c0bde16f7058c3/AndroidManifest.xml:17:1-28:12
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a685af2c7e52f33510ffcfaca378ffdd/AndroidManifest.xml:16:1-25:12
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b9f6214705c268f7b33e529493de5105/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b13b840891c1e6edc4a1818c0d9aa8fd/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/044b1e3b85433fb56d7d291706c7ff0a/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:transition:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/7414f5bdd95044babc797c7aaec839d2/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c89829fbd0e9b1fc373bcde510bf8cf8/AndroidManifest.xml:17:1-31:12
+MERGED from [com.wang.avi:library:2.1.3] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b9b1689a2dd861629503af807c880ff0/AndroidManifest.xml:2:1-11:12
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/daragonor/.gradle/caches/transforms-2/files-2.1/15c1044cc352a08371b967a879ca76cd/AndroidManifest.xml:2:1-14:12
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c38098d7932e10d9fee2419e8881b310/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/43622d645d8886282425d8cd6d30ed89/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/ec777b866f4f0e1d66f64386b8e78e82/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c6a69ceab6e0c24cbc3ec0a2530aac18/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/1065df7bb13dde41adb75bff6479b155/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/30894e09662e609d11d434493f3925d5/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:exifinterface:27.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a888a306e645ab33d341397c36589707/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-maps-license:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a8a09733dbeabb62aa7eb716d903ced7/AndroidManifest.xml:2:1-6:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/e8fd758e0519c18d397bc4b94e75a6bf/AndroidManifest.xml:17:1-30:12
+INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:2:1-55:12
+INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:2:1-55:12
+INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:2:1-55:12
+	package
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:4:5-32
+		INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+		INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:2:1-55:12
+		INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:2:1-55:12
+		INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:7:5-68
+	android:name
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:7:22-65
+uses-permission#android.permission.INTERNET
+ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:8:5-67
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a685af2c7e52f33510ffcfaca378ffdd/AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a685af2c7e52f33510ffcfaca378ffdd/AndroidManifest.xml:20:5-66
+	android:name
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:8:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:9:5-79
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a685af2c7e52f33510ffcfaca378ffdd/AndroidManifest.xml:19:5-78
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a685af2c7e52f33510ffcfaca378ffdd/AndroidManifest.xml:19:5-78
+	android:name
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:9:22-76
+uses-permission#android.permission.CAMERA
+ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:10:5-65
+	android:name
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:10:22-62
+uses-feature#android.hardware.camera
+ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:12:5-60
+	android:name
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:12:19-57
+uses-feature#android.hardware.camera.autofocus
+ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:13:5-70
+	android:name
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:13:19-67
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:15:5-81
+	android:name
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:15:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:21:5-79
+	android:name
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:21:22-76
+application
+ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:22:5-53:19
+MERGED from [com.android.support:design:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/22665c627676edee4da4d48d86f51b63/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:design:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/22665c627676edee4da4d48d86f51b63/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/0c07c805295822f814601e589876f7a5/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/0c07c805295822f814601e589876f7a5/AndroidManifest.xml:25:5-29:19
+MERGED from [com.google.android.gms:play-services-wearable:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b6e80ac8dd3da7f6f5b3e7c51b86c67c/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-wearable:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b6e80ac8dd3da7f6f5b3e7c51b86c67c/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/e83b2765fcd336197c634f3ac954226d/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/e83b2765fcd336197c634f3ac954226d/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/46d7600c151eba8571340c8752cef09f/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/46d7600c151eba8571340c8752cef09f/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a3c10c436730ad1d0b86e9f602af7440/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a3c10c436730ad1d0b86e9f602af7440/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:cardview-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a8944956af0347a420c0bde16f7058c3/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:cardview-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a8944956af0347a420c0bde16f7058c3/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a685af2c7e52f33510ffcfaca378ffdd/AndroidManifest.xml:24:5-19
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a685af2c7e52f33510ffcfaca378ffdd/AndroidManifest.xml:24:5-19
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b9f6214705c268f7b33e529493de5105/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b9f6214705c268f7b33e529493de5105/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b13b840891c1e6edc4a1818c0d9aa8fd/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b13b840891c1e6edc4a1818c0d9aa8fd/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/044b1e3b85433fb56d7d291706c7ff0a/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/044b1e3b85433fb56d7d291706c7ff0a/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/7414f5bdd95044babc797c7aaec839d2/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/7414f5bdd95044babc797c7aaec839d2/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c89829fbd0e9b1fc373bcde510bf8cf8/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c89829fbd0e9b1fc373bcde510bf8cf8/AndroidManifest.xml:25:5-29:19
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/daragonor/.gradle/caches/transforms-2/files-2.1/15c1044cc352a08371b967a879ca76cd/AndroidManifest.xml:7:5-12:19
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/daragonor/.gradle/caches/transforms-2/files-2.1/15c1044cc352a08371b967a879ca76cd/AndroidManifest.xml:7:5-12:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c38098d7932e10d9fee2419e8881b310/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c38098d7932e10d9fee2419e8881b310/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/43622d645d8886282425d8cd6d30ed89/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/43622d645d8886282425d8cd6d30ed89/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/ec777b866f4f0e1d66f64386b8e78e82/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/ec777b866f4f0e1d66f64386b8e78e82/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c6a69ceab6e0c24cbc3ec0a2530aac18/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c6a69ceab6e0c24cbc3ec0a2530aac18/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/1065df7bb13dde41adb75bff6479b155/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/1065df7bb13dde41adb75bff6479b155/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/30894e09662e609d11d434493f3925d5/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/30894e09662e609d11d434493f3925d5/AndroidManifest.xml:25:5-29:19
+MERGED from [com.google.android.gms:play-services-maps-license:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a8a09733dbeabb62aa7eb716d903ced7/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-maps-license:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a8a09733dbeabb62aa7eb716d903ced7/AndroidManifest.xml:5:5-20
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/e8fd758e0519c18d397bc4b94e75a6bf/AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/e8fd758e0519c18d397bc4b94e75a6bf/AndroidManifest.xml:24:5-28:19
+	android:supportsRtl
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:27:9-35
+	android:label
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:25:9-41
+	tools:ignore
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:29:9-48
+	android:roundIcon
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:26:9-54
+	android:icon
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:24:9-43
+	android:allowBackup
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:23:9-35
+	android:theme
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:28:9-40
+activity#pe.edu.upc.clinic.Activities.SignInActivity
+ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:31:9-44:20
+	android:screenOrientation
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:34:13-49
+	android:label
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:33:13-45
+	tools:ignore
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:36:13-47
+	android:theme
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:35:13-69
+	android:name
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:32:13-54
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:39:13-43:29
+action#android.intent.action.MAIN
+ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:40:17-69
+	android:name
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:40:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:42:17-77
+	android:name
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:42:27-74
+activity#pe.edu.upc.clinic.Activities.MainActivity
+ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:45:9-52:20
+	tools:ignore
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:46:13-47
+	android:name
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml:45:19-75
+uses-sdk
+INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/22665c627676edee4da4d48d86f51b63/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:design:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/22665c627676edee4da4d48d86f51b63/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/0c07c805295822f814601e589876f7a5/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/0c07c805295822f814601e589876f7a5/AndroidManifest.xml:21:5-23:78
+MERGED from [com.google.android.gms:play-services-wearable:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b6e80ac8dd3da7f6f5b3e7c51b86c67c/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-wearable:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b6e80ac8dd3da7f6f5b3e7c51b86c67c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/e83b2765fcd336197c634f3ac954226d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/e83b2765fcd336197c634f3ac954226d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/46d7600c151eba8571340c8752cef09f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/46d7600c151eba8571340c8752cef09f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a3c10c436730ad1d0b86e9f602af7440/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a3c10c436730ad1d0b86e9f602af7440/AndroidManifest.xml:5:5-7:41
+MERGED from [com.amitshekhar.android:android-networking:1.0.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/24295e050b574d2347726b92030469c3/AndroidManifest.xml:23:5-25:41
+MERGED from [com.amitshekhar.android:android-networking:1.0.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/24295e050b574d2347726b92030469c3/AndroidManifest.xml:23:5-25:41
+MERGED from [com.android.support:cardview-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a8944956af0347a420c0bde16f7058c3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a8944956af0347a420c0bde16f7058c3/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a685af2c7e52f33510ffcfaca378ffdd/AndroidManifest.xml:23:5-43
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a685af2c7e52f33510ffcfaca378ffdd/AndroidManifest.xml:23:5-43
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b9f6214705c268f7b33e529493de5105/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b9f6214705c268f7b33e529493de5105/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b13b840891c1e6edc4a1818c0d9aa8fd/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b13b840891c1e6edc4a1818c0d9aa8fd/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/044b1e3b85433fb56d7d291706c7ff0a/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/044b1e3b85433fb56d7d291706c7ff0a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/7414f5bdd95044babc797c7aaec839d2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/7414f5bdd95044babc797c7aaec839d2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c89829fbd0e9b1fc373bcde510bf8cf8/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c89829fbd0e9b1fc373bcde510bf8cf8/AndroidManifest.xml:21:5-23:54
+MERGED from [com.wang.avi:library:2.1.3] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b9b1689a2dd861629503af807c880ff0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.wang.avi:library:2.1.3] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b9b1689a2dd861629503af807c880ff0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/daragonor/.gradle/caches/transforms-2/files-2.1/15c1044cc352a08371b967a879ca76cd/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] /home/daragonor/.gradle/caches/transforms-2/files-2.1/15c1044cc352a08371b967a879ca76cd/AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c38098d7932e10d9fee2419e8881b310/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c38098d7932e10d9fee2419e8881b310/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/43622d645d8886282425d8cd6d30ed89/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/43622d645d8886282425d8cd6d30ed89/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/ec777b866f4f0e1d66f64386b8e78e82/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/ec777b866f4f0e1d66f64386b8e78e82/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c6a69ceab6e0c24cbc3ec0a2530aac18/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c6a69ceab6e0c24cbc3ec0a2530aac18/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/1065df7bb13dde41adb75bff6479b155/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/1065df7bb13dde41adb75bff6479b155/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/30894e09662e609d11d434493f3925d5/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/30894e09662e609d11d434493f3925d5/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:exifinterface:27.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a888a306e645ab33d341397c36589707/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:27.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a888a306e645ab33d341397c36589707/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps-license:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a8a09733dbeabb62aa7eb716d903ced7/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-maps-license:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a8a09733dbeabb62aa7eb716d903ced7/AndroidManifest.xml:4:5-43
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/e8fd758e0519c18d397bc4b94e75a6bf/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/e8fd758e0519c18d397bc4b94e75a6bf/AndroidManifest.xml:20:5-22:41
+INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/22665c627676edee4da4d48d86f51b63/AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+		INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+		ADDED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+		INJECTED from /home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/src/main/AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/22665c627676edee4da4d48d86f51b63/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/0c07c805295822f814601e589876f7a5/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/0c07c805295822f814601e589876f7a5/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/e83b2765fcd336197c634f3ac954226d/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/e83b2765fcd336197c634f3ac954226d/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/46d7600c151eba8571340c8752cef09f/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/46d7600c151eba8571340c8752cef09f/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:cardview-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a8944956af0347a420c0bde16f7058c3/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:cardview-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a8944956af0347a420c0bde16f7058c3/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/7414f5bdd95044babc797c7aaec839d2/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/7414f5bdd95044babc797c7aaec839d2/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c89829fbd0e9b1fc373bcde510bf8cf8/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c89829fbd0e9b1fc373bcde510bf8cf8/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c38098d7932e10d9fee2419e8881b310/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c38098d7932e10d9fee2419e8881b310/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/43622d645d8886282425d8cd6d30ed89/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/43622d645d8886282425d8cd6d30ed89/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/ec777b866f4f0e1d66f64386b8e78e82/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/ec777b866f4f0e1d66f64386b8e78e82/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c6a69ceab6e0c24cbc3ec0a2530aac18/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/c6a69ceab6e0c24cbc3ec0a2530aac18/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/1065df7bb13dde41adb75bff6479b155/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/1065df7bb13dde41adb75bff6479b155/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/30894e09662e609d11d434493f3925d5/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/30894e09662e609d11d434493f3925d5/AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:design:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/22665c627676edee4da4d48d86f51b63/AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:design:26.1.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/22665c627676edee4da4d48d86f51b63/AndroidManifest.xml:27:13-51
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a685af2c7e52f33510ffcfaca378ffdd/AndroidManifest.xml:21:5-77
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a685af2c7e52f33510ffcfaca378ffdd/AndroidManifest.xml:21:19-51
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:11.4.2] /home/daragonor/.gradle/caches/transforms-2/files-2.1/a685af2c7e52f33510ffcfaca378ffdd/AndroidManifest.xml:21:52-75
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b9f6214705c268f7b33e529493de5105/AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b9f6214705c268f7b33e529493de5105/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b9f6214705c268f7b33e529493de5105/AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/b9f6214705c268f7b33e529493de5105/AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/044b1e3b85433fb56d7d291706c7ff0a/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/044b1e3b85433fb56d7d291706c7ff0a/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] /home/daragonor/.gradle/caches/transforms-2/files-2.1/044b1e3b85433fb56d7d291706c7ff0a/AndroidManifest.xml:24:13-58
+provider#com.squareup.picasso.PicassoProvider
+ADDED from [com.squareup.picasso:picasso:2.71828] /home/daragonor/.gradle/caches/transforms-2/files-2.1/15c1044cc352a08371b967a879ca76cd/AndroidManifest.xml:8:9-11:40
+	android:authorities
+		ADDED from [com.squareup.picasso:picasso:2.71828] /home/daragonor/.gradle/caches/transforms-2/files-2.1/15c1044cc352a08371b967a879ca76cd/AndroidManifest.xml:10:13-72
+	android:exported
+		ADDED from [com.squareup.picasso:picasso:2.71828] /home/daragonor/.gradle/caches/transforms-2/files-2.1/15c1044cc352a08371b967a879ca76cd/AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [com.squareup.picasso:picasso:2.71828] /home/daragonor/.gradle/caches/transforms-2/files-2.1/15c1044cc352a08371b967a879ca76cd/AndroidManifest.xml:9:13-64
+meta-data#android.arch.lifecycle.VERSION
+ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/e8fd758e0519c18d397bc4b94e75a6bf/AndroidManifest.xml:25:9-27:47
+	android:value
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/e8fd758e0519c18d397bc4b94e75a6bf/AndroidManifest.xml:27:13-44
+	android:name
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/daragonor/.gradle/caches/transforms-2/files-2.1/e8fd758e0519c18d397bc4b94e75a6bf/AndroidManifest.xml:26:13-58

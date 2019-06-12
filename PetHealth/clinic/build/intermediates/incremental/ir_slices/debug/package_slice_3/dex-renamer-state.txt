@@ -1,0 +1,4 @@
+#Wed Jun 12 02:49:15 PET 2019
+base.0=/home/daragonor/Desktop/Droid/PetHealthAndroid/PetHealth/clinic/build/intermediates/transforms/dexMerger/debug/3
+path.0=classes.dex
+renamed.0=classes.dex
