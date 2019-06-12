@@ -25,7 +25,10 @@ data class ApptVeterinarian(
 )
 
 data class ApptVeterinary (
+        val logo: String= "",
         val name: String ="",
         val phone: String ="",
-        val location: String =""
+        val location: String ="",
+        val latitude: Double = 0.0,
+        val longitude: Double = 0.0
 )
