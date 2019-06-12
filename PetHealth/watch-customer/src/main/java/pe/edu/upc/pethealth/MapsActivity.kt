@@ -25,7 +25,9 @@ class MapsActivity : WearableActivity(), OnMapReadyCallback {
      * See [onMapReady]
      */
     private lateinit var mMap: GoogleMap
-
+    private var latitudString: Double = 0.0
+    private var longitudString: Double = 0.0
+    private lateinit var veterinaryName: String
     public override fun onCreate(savedState: Bundle?) {
         super.onCreate(savedState)
 
@@ -33,6 +35,9 @@ class MapsActivity : WearableActivity(), OnMapReadyCallback {
         setAmbientEnabled()
 
         setContentView(R.layout.activity_maps)
+        latitudString = intent.extras.getDouble("latitud")
+        longitudString = intent.extras.getDouble("longitud")
+        veterinaryName = intent.extras.getString("veterinaryName")
 
         // Enables the Swipe-To-Dismiss Gesture via the root layout (SwipeDismissFrameLayout).
         // Swipe-To-Dismiss is a standard pattern in Wear for closing an app and needs to be
@@ -79,8 +84,10 @@ class MapsActivity : WearableActivity(), OnMapReadyCallback {
         toast.show()
 
         // Adds a marker in Sydney, Australia and moves the camera.
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val sydney = LatLng(latitudString, longitudString)
+        mMap.uiSettings.setAllGesturesEnabled(true)
+        mMap.uiSettings.isZoomControlsEnabled= true
+        mMap.addMarker(MarkerOptions().position(sydney).title(veterinaryName))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,13f))
     }
 }

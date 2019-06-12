@@ -11,5 +11,5 @@ data class Appointment(
         val pet_photo: String = "",
         val pet_id: String = "",
         val vet_id: String = "",
-        val type: String
+        val type: String = ""
 )
