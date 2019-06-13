@@ -6,5 +6,4 @@
     tools:context=".activities.SignInActivity">
 
     <include layout="@layout/content_signin" />
-
 </android.support.constraint.ConstraintLayout>
