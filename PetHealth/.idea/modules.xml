@@ -3,10 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PetHealth.iml" filepath="$PROJECT_DIR$/PetHealth.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/clinic/clinic.iml" filepath="$PROJECT_DIR$/clinic/clinic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app-clinic/app-clinic.iml" filepath="$PROJECT_DIR$/app-clinic/app-clinic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app-customer/app-customer.iml" filepath="$PROJECT_DIR$/app-customer/app-customer.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/watch/watch.iml" filepath="$PROJECT_DIR$/watch/watch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/resources/resources.iml" filepath="$PROJECT_DIR$/resources/resources.iml" />
+      <module fileurl="file://$PROJECT_DIR$/watch-customer/watch-customer.iml" filepath="$PROJECT_DIR$/watch-customer/watch-customer.iml" />
     </modules>
   </component>
 </project>
