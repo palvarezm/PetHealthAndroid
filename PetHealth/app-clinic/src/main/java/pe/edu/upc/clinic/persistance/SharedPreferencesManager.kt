@@ -18,11 +18,10 @@ class SharedPreferencesManager(context: Context) {
         get() {
             val userString = mPreferences.getString(CURRENT_USER, "")
             val gson = Gson()
-            if (!userString!!.isEmpty()) {
-                Log.d("userstring", userString)
-                return gson.fromJson<User>(userString, User::class.java)
-            } else {
+            if(userString!!.isNotEmpty()) {
                 return null
+            } else {
+                return gson.fromJson<User>(userString, User::class.java)
             }
         }
 
@@ -30,10 +29,10 @@ class SharedPreferencesManager(context: Context) {
         get() {
             val personString = mPreferences.getString(CURRENT_PERSON, "")
             val gson = Gson()
-            return if (!personString!!.isEmpty()) {
-                gson.fromJson<Person>(personString, Person::class.java)
+            return if (personString!!.isNotEmpty()) {
+                return null
             } else {
-                null
+                gson.fromJson<Person>(personString, Person::class.java)
             }
         }
 
