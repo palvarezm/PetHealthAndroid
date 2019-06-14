@@ -2,11 +2,11 @@ package pe.edu.upc.lib
 
 data class Veterinary(
         val id: Int,
+        val social_url_id: Int,
         val name: String,
-        val preVideo: String,
-        val phoneNumber: String,
+        val phone: String,
+        val location: String,
+        val opening_hours: String,
         val longitude: Double,
-        val latitude: Double,
-        val openingHours: String,
-        val rating: Float
+        val latitude: Double
 )

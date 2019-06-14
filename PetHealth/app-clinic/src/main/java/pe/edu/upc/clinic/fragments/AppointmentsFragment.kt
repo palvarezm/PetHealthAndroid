@@ -59,10 +59,8 @@ class AppointmentsFragment : Fragment() {
     }
 
     private fun updateAppointment() {
-        Log.d("access-token", sharedPreferencesManager?.accessToken)
-        Log.d("user-id",sharedPreferencesManager!!.user!!.id.toString())
         val call = RestClient().webServices
-                .getAppts(sharedPreferencesManager?.accessToken, sharedPreferencesManager?.user!!.id)
+                .getAppts(sharedPreferencesManager?.accessToken, sharedPreferencesManager?.user?.id)
         call.enqueue(object : LoggerCallback<RestView<JsonArray>>() {
             override fun onResponse(call: Call<RestView<JsonArray>>, response: Response<RestView<JsonArray>>) {
                 super.onResponse(call, response)
