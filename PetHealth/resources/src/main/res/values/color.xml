@@ -9,4 +9,13 @@
     <color name="colorButton">#7B1FA2</color>
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorDivider">#BDBDBD</color>
+
+
+    <color name="black_background">#000000</color>
+    <color name="lighter_background_1">#071F33</color>
+    <color name="lighter_background_2">#002A4D</color>
+    <color name="darker_ui_element">#0E3F66</color>
+    <color name="lighter_ui_element">#14568C</color>
+    <color name="active_ui_element">#1766A6</color>
+    <color name="accent">#80C6FF</color>
 </resources>

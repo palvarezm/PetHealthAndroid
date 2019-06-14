@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/inner_frame_layout_padding"
-        android:background="@color/primary_dark">
+        android:background="@color/darker_ui_element">
 
         <android.support.wear.widget.WearableRecyclerView
             android:id="@+id/AppointmentsRecyclerView"
