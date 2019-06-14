@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import pe.edu.upc.pethealth.R;
 import pe.edu.upc.pethealth.fragments.AppointmentFragment;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
             if(Connection.isOnline(getApplicationContext()))
                 return navigateAccordingTo(item.getItemId());
             else{
@@ -56,6 +60,15 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) navigation.getChildAt(0);
+
+        for (int i = 0; i < menuView.getChildCount(); i++) {
+            BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
+            View activeLabel = item.findViewById(R.id.largeLabel);
+            if (activeLabel instanceof TextView) {
+                activeLabel.setPadding(0, 0, 0, 0);
+            }
+        }
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigateAccordingTo(R.id.navigation_home);
     }

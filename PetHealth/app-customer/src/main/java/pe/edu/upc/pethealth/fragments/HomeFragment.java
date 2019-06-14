@@ -56,7 +56,7 @@ public class HomeFragment extends Fragment {
         myTipRecyclerView = (RecyclerView) view.findViewById(R.id.myTipRecyclerView);
         myTips = new ArrayList<>();
         myTipAdapters = new MyTipAdapters(myTips);
-        myTipLayoutManager = new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false);
+        myTipLayoutManager = new LinearLayoutManager(view.getContext(),LinearLayoutManager.VERTICAL,false);
         myTipRecyclerView.setAdapter(myTipAdapters);
         myTipRecyclerView.setLayoutManager(myTipLayoutManager);
         User user = SharedPreferencesManager.getInstance(this.getContext()).getUser();
