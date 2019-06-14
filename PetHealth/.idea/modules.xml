@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/PetHealth.iml" filepath="$PROJECT_DIR$/.idea/PetHealth.iml" />
-      <module fileurl="file://$PROJECT_DIR$/PetHealth.iml" filepath="$PROJECT_DIR$/PetHealth.iml" />
       <module fileurl="file://$PROJECT_DIR$/app-clinic/app-clinic.iml" filepath="$PROJECT_DIR$/app-clinic/app-clinic.iml" />
       <module fileurl="file://$PROJECT_DIR$/app-customer/app-customer.iml" filepath="$PROJECT_DIR$/app-customer/app-customer.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />

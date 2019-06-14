@@ -26,6 +26,7 @@ import pe.edu.upc.clinic.network.RestView
 import pe.edu.upc.clinic.persistance.SharedPreferencesManager
 import pe.edu.upc.lib.Person
 import pe.edu.upc.lib.User
+import pe.edu.upc.lib.Veterinary
 import retrofit2.Call
 import retrofit2.Response
 
@@ -37,7 +38,7 @@ class SignInActivity : AppCompatActivity() {
     private var passwordTextInputEditText: EditText? = null
     private var signInButton: Button? = null
     private var user: User? = null
-    private var person: Person? = null
+    private var veterinary: Veterinary? = null
     private var signUptextView: TextView? = null
     private var sharedPreferencesManager: SharedPreferencesManager? = null
     internal val context: Context = this
@@ -122,17 +123,21 @@ class SignInActivity : AppCompatActivity() {
                         val gson = GsonBuilder().create()
                         user = gson.fromJson<User>(userJSONObject.toString(), User::class.java)
 
-                        val personJSONObject = JSONObject(answer.data?.get("person").toString())
-                        person = gson.fromJson<Person>(personJSONObject.toString(), Person::class.java)
+                        val veterinaryJSONObject = JSONObject(answer.data?.get("veterinary").toString())
+                        veterinary = gson.fromJson<Veterinary>(veterinaryJSONObject.toString(), Veterinary::class.java)
 
                         sharedPreferencesManager!!.saveUser(
-                                user!!.toString(),
-                                person!!.toString(),
+                                gson.toJson(user),
+                                gson.toJson(veterinary),
                                 answer.data!!.get("access_token").asString
                         )
+
+                        Log.d("TESTING", "sharedpreferences")
+                        Log.d("user sp", sharedPreferencesManager?.user.toString())
+                        Log.d("veterinary sp", sharedPreferencesManager?.veterinary.toString())
+                        Log.d("accesstoken sp", sharedPreferencesManager?.accessToken.toString())
+
                         val intent = Intent(context, MainActivity::class.java)
-                        Log.d("user", user!!.username)
-                        Log.d("person", person!!.name)
                         intent.putExtra("user", user!!)
                         context.startActivity(intent)
                         finish()

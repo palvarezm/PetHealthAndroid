@@ -7,8 +7,9 @@ import android.util.Log
 
 
 import com.google.gson.Gson
-import pe.edu.upc.lib.Person
+import com.google.gson.JsonParseException
 import pe.edu.upc.lib.User
+import pe.edu.upc.lib.Veterinary
 
 class SharedPreferencesManager(context: Context) {
     private val mPreferences: SharedPreferences
@@ -18,22 +19,26 @@ class SharedPreferencesManager(context: Context) {
         get() {
             val userString = mPreferences.getString(CURRENT_USER, "")
             val gson = Gson()
-            if(userString!!.isNotEmpty()) {
-                return null
+            var user: User? = null
+            if(userString!!.isEmpty()) {
+
             } else {
-                return gson.fromJson<User>(userString, User::class.java)
+                user = gson.fromJson<User>(userString.toString(), User::class.java)
             }
+            return user;
         }
 
-    val person: Person?
+    val veterinary: Veterinary?
         get() {
-            val personString = mPreferences.getString(CURRENT_PERSON, "")
+            val veterinaryString = mPreferences.getString(CURRENT_VETERINARY, "")
             val gson = Gson()
-            return if (personString!!.isNotEmpty()) {
-                return null
+            var veterinary: Veterinary? = null
+            if (veterinaryString!!.isEmpty()) {
+
             } else {
-                gson.fromJson<Person>(personString, Person::class.java)
+                veterinary = gson.fromJson<Veterinary>(veterinaryString.toString(), Veterinary::class.java)
             }
+            return veterinary
         }
 
     val isUserLogged: Boolean
@@ -47,10 +52,10 @@ class SharedPreferencesManager(context: Context) {
         gson = Gson()
     }
 
-    fun saveUser(user: String, person: String, access_token: String) {
+    fun saveUser(user: String, veterinary: String, access_token: String) {
         val editor = mPreferences.edit()
         editor.putString(CURRENT_USER, user)
-        editor.putString(CURRENT_PERSON, person)
+        editor.putString(CURRENT_VETERINARY, veterinary)
         editor.putString(ACCESS_TOKEN, access_token)
         editor.apply()
     }
@@ -58,7 +63,7 @@ class SharedPreferencesManager(context: Context) {
     fun closeSession() {
         val editor = mPreferences.edit()
         editor.putString(CURRENT_USER, null)
-        editor.putString(CURRENT_PERSON, null)
+        editor.putString(CURRENT_VETERINARY, null)
         editor.putString(COMPLETED_REGISTER, null)
         editor.apply()
     }
@@ -66,7 +71,7 @@ class SharedPreferencesManager(context: Context) {
     companion object {
         private val PREFERENCES_NAME = "blcc"
         private val CURRENT_USER = "current_user"
-        private val CURRENT_PERSON = "current_person"
+        private val CURRENT_VETERINARY = "current_veterinary"
         private val ACCESS_TOKEN = "access_token"
         private val COMPLETED_REGISTER = "current_register"
 
