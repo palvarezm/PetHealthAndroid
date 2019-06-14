@@ -3,6 +3,7 @@ package pe.edu.upc.clinic.fragments
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,7 @@ import com.androidnetworking.interfaces.BitmapRequestListener
 import kotlinx.android.synthetic.main.fragment_profile.*
 import pe.edu.upc.clinic.R
 import pe.edu.upc.clinic.persistance.SharedPreferencesManager
-import pe.edu.upc.lib.Person
+import pe.edu.upc.lib.Veterinary
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -28,7 +29,7 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class ProfileFragment : Fragment() {
-    private var person: Person? = null
+    private var veterinary: Veterinary? = null
 
     private var sharedPreferencesManager: SharedPreferencesManager? = null
 
@@ -36,21 +37,23 @@ class ProfileFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        sharedPreferencesManager = SharedPreferencesManager.getInstance(context!!)
-        person = sharedPreferencesManager?.person
-        vetImageView.visibility = View.INVISIBLE
+        return inflater.inflate(R.layout.fragment_profile, container, false)
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        sharedPreferencesManager = SharedPreferencesManager.getInstance(context!!)
+        veterinary = sharedPreferencesManager?.veterinary
         updateProfile()
         sharedPreferencesManager?.user?.photo?.let { loadImage(it) }
-
-        return inflater.inflate(R.layout.fragment_profile, container, false)
-
+        vetImageView?.visibility = View.INVISIBLE
     }
 
     private fun updateProfile() {
-        nameTextView.text = person?.name
-        contactTextView.text = person?.phone
-        addressTextView.text = person?.address
+        nameTextView.text = veterinary?.name
+        contactTextView.text = veterinary?.phone
+        addressTextView.text = veterinary?.location
+        scheduleTextView.text = veterinary?.opening_hours
     }
 
     private fun loadImage(imageUrl: String) {

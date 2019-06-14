@@ -45,7 +45,7 @@ class AppointmentsFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        //this.sharedPreferencesManager = this.context?.let { SharedPreferencesManager.getInstance(it) }
+        this.sharedPreferencesManager = this.context?.let { SharedPreferencesManager.getInstance(it) }
         val view = inflater.inflate(R.layout.fragment_appointments, container, false)
         updateAppointment()
         appointmentRecyclerView = view.findViewById(R.id.appointmentRecyclerView)
@@ -60,7 +60,7 @@ class AppointmentsFragment : Fragment() {
 
     private fun updateAppointment() {
         val call = RestClient().webServices
-                .getAppts(/*sharedPreferencesManager?.accessToken*/ "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjUsImlhdCI6MTU2MDAyMTY4OX0.2Oqucz1lSZVQswd8EVeRpBQTWgsGU7xzPaqyKhRbxQU", /*sharedPreferencesManager?.user?.id*/ 25 )
+                .getAppts(sharedPreferencesManager?.accessToken, sharedPreferencesManager?.user?.id)
         call.enqueue(object : LoggerCallback<RestView<JsonArray>>() {
             override fun onResponse(call: Call<RestView<JsonArray>>, response: Response<RestView<JsonArray>>) {
                 super.onResponse(call, response)
