@@ -45,7 +45,7 @@ class AppointmentsFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        //this.sharedPreferencesManager = this.context?.let { SharedPreferencesManager.getInstance(it) }
+        this.sharedPreferencesManager = this.context?.let { SharedPreferencesManager.getInstance(it) }
         val view = inflater.inflate(R.layout.fragment_appointments, container, false)
         updateAppointment()
         appointmentRecyclerView = view.findViewById(R.id.appointmentRecyclerView)

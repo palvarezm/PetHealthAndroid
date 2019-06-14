@@ -50,12 +50,12 @@ class SignInActivity : AppCompatActivity() {
         }
         setContentView(R.layout.activity_sign_in)
 
-        logoImageView = findViewById<ImageView>(R.id.logoImageView)
-        userEditText = findViewById<EditText>(R.id.usernameEditText)
-        passwordTextInputEditText = findViewById<TextInputEditText>(R.id.passwordTextInputEditText)
-        signInButton = findViewById<Button>(R.id.signInButton)
+        logoImageView = findViewById<View>(R.id.logoImageView) as ImageView?
+        userEditText = findViewById<View>(R.id.usernameEditText) as EditText?
+        passwordTextInputEditText = findViewById<View>(R.id.passwordTextInputEditText) as EditText?
+        signInButton = findViewById<View>(R.id.signInButton) as Button?
         signInButton!!.setOnClickListener { attemptLogin() }
-        signUptextView = findViewById<TextView>(R.id.signUpTextView)
+        signUptextView = findViewById<View>(R.id.signUpTextView) as TextView?
         signUptextView!!.paintFlags = signUptextView!!.paintFlags or Paint.UNDERLINE_TEXT_FLAG
         signUptextView!!.setOnClickListener { view ->
             val context = view.context
