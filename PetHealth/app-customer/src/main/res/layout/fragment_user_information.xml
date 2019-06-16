@@ -13,69 +13,74 @@
             android:id="@+id/profileNameTextView"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/big_margin"
+            android:layout_marginTop="36dp"
             android:text="Name: "
             android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@color/colorPrimaryText"
-            android:layout_marginStart="@dimen/big_margin"
-            android:layout_marginTop="30dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:textColor="@color/colorSecondaryText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/profileLastNameTextView"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="Last Name: "
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@color/colorPrimaryText"
             android:layout_marginStart="@dimen/big_margin"
             android:layout_marginTop="15dp"
-            app:layout_constraintTop_toBottomOf="@id/profileNameTextView"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:text="Last Name: "
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/colorSecondaryText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileNameTextView" />
+
         <TextView
             android:id="@+id/documentNumberTextView"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="Doc. Number: "
-            android:textColor="@color/colorPrimaryText"
-            android:textAppearance="?android:textAppearanceMedium"
             android:layout_marginStart="@dimen/big_margin"
             android:layout_marginTop="15dp"
-            app:layout_constraintTop_toBottomOf="@id/profileLastNameTextView"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:text="Doc. Number: "
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/colorSecondaryText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileLastNameTextView" />
+
         <TextView
             android:id="@+id/profileAddressTextView"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="Address: "
-            android:textColor="@color/colorPrimaryText"
-            android:textAppearance="?android:textAppearanceMedium"
             android:layout_marginStart="@dimen/big_margin"
             android:layout_marginTop="15dp"
-            app:layout_constraintTop_toBottomOf="@id/documentNumberTextView"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:text="Address: "
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/colorSecondaryText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/documentNumberTextView" />
+
         <TextView
             android:id="@+id/profilephoneTextView"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="Phone: "
-            android:textColor="@color/colorPrimaryText"
-            android:textAppearance="?android:textAppearanceMedium"
             android:layout_marginStart="@dimen/big_margin"
             android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@id/profileAddressTextView"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:text="Phone: "
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/colorSecondaryText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileAddressTextView" />
+
         <Button
             android:id="@+id/confirmButton"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Confirm"
-            android:textStyle="bold"
             android:layout_margin="20dp"
-            android:textAppearance="?android:textAppearanceMedium"
             android:background="@color/colorAccent"
-            app:layout_constraintTop_toBottomOf="@id/profilePhoneEditText"
+            android:text="Confirm"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/profilePhoneEditText" />
 
         <EditText
             android:id="@+id/profileNameEditText"
@@ -83,18 +88,19 @@
             android:layout_height="wrap_content"
             android:hint="Name here"
             android:textColorHint="@color/colorPrimaryLight"
-            android:layout_margin="@dimen/default_margin"
-            app:layout_constraintTop_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/profileNameTextView"/>
+            app:layout_constraintStart_toEndOf="@id/profileNameTextView"
+            app:layout_constraintTop_toTopOf="@id/profileNameTextView"
+            app:layout_constraintBottom_toBottomOf="@id/profileNameTextView" />
+
         <EditText
             android:id="@+id/profileLastNameEditText"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Last Name here"
             android:textColorHint="@color/colorPrimaryLight"
-            android:layout_margin="@dimen/default_margin"
-            app:layout_constraintTop_toBottomOf="@id/profileNameEditText"
-            app:layout_constraintStart_toEndOf="@id/profileLastNameTextView"/>
+            app:layout_constraintStart_toEndOf="@id/profileLastNameTextView"
+            app:layout_constraintTop_toTopOf="@id/profileLastNameTextView"
+            app:layout_constraintBottom_toBottomOf="@id/profileLastNameTextView" />
 
         <EditText
             android:id="@+id/documentNumberEditText"
@@ -102,28 +108,29 @@
             android:layout_height="wrap_content"
             android:hint="Document Number here"
             android:textColorHint="@color/colorPrimaryLight"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="@dimen/default_margin"
-            app:layout_constraintTop_toBottomOf="@id/profileLastNameEditText"
-            app:layout_constraintStart_toEndOf="@id/documentNumberTextView"/>
+            app:layout_constraintStart_toEndOf="@id/documentNumberTextView"
+            app:layout_constraintTop_toTopOf="@id/documentNumberTextView"
+            app:layout_constraintBottom_toBottomOf="@id/documentNumberTextView" />
+
         <EditText
             android:id="@+id/profileAddressEditText"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Address (Av/Lt.)"
             android:textColorHint="@color/colorPrimaryLight"
-            android:layout_margin="@dimen/default_margin"
-            app:layout_constraintTop_toBottomOf="@id/documentNumberEditText"
-            app:layout_constraintStart_toEndOf="@id/profileAddressTextView"/>
+            app:layout_constraintStart_toEndOf="@id/profileAddressTextView"
+            app:layout_constraintTop_toTopOf="@id/profileAddressTextView"
+            app:layout_constraintBottom_toBottomOf="@id/profileAddressTextView" />
+
         <EditText
             android:id="@+id/profilePhoneEditText"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Phone here (+51)"
             android:textColorHint="@color/colorPrimaryLight"
-            android:layout_margin="@dimen/default_margin"
-            app:layout_constraintTop_toBottomOf="@id/profileAddressEditText"
-            app:layout_constraintStart_toEndOf="@id/profilephoneTextView"/>
+            app:layout_constraintStart_toEndOf="@id/profilephoneTextView"
+            app:layout_constraintTop_toTopOf="@id/profilephoneTextView"
+            app:layout_constraintBottom_toBottomOf="@id/profilephoneTextView" />
     </android.support.constraint.ConstraintLayout>
 
 </FrameLayout>

@@ -29,13 +29,16 @@ class AppointmentsActivity : WearableActivity(), DataClient.OnDataChangedListene
         var appts = ArrayList<AppointmentResponse>()
         val apptsString = shared.getString(APPT_KEY,"")
         if (apptsString != ""){
-            appts = Gson().fromJson<ArrayList<AppointmentResponse>>(apptsString)
+            appts = Gson().fromJson(apptsString)
         }
         apptsAdapter = AppointmentsAdapter(appts,AppointmentsRecyclerView.context)
 
         AppointmentsRecyclerView.apply {
             isEdgeItemsCenteringEnabled = true
-            layoutManager = WearableLinearLayoutManager(this@AppointmentsActivity)
+            layoutManager = WearableLinearLayoutManager(this@AppointmentsActivity).apply {
+                stackFromEnd = true
+                reverseLayout = true
+            }
             adapter = apptsAdapter
         }
 

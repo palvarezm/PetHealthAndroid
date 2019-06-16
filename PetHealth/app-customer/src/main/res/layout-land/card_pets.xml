@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<android.support.design.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -58,11 +58,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
-            android:textColor="@color/colorButton"
             android:text="More"
             app:layout_constraintTop_toBottomOf="@id/myPetDescriptionTextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/myPetImageView"/>
     </android.support.constraint.ConstraintLayout>
 
-</android.support.v7.widget.CardView>
+</android.support.design.card.MaterialCardView>
