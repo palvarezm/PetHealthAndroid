@@ -123,7 +123,7 @@ class SignInActivity : AppCompatActivity() {
                         val gson = GsonBuilder().create()
                         user = gson.fromJson<User>(userJSONObject.toString(), User::class.java)
 
-                        val veterinaryJSONObject = JSONObject(answer.data?.get("veterinary").toString())
+                        val veterinaryJSONObject = JSONObject(answer.data?.get("person").toString())
                         veterinary = gson.fromJson<Veterinary>(veterinaryJSONObject.toString(), Veterinary::class.java)
 
                         sharedPreferencesManager!!.saveUser(
