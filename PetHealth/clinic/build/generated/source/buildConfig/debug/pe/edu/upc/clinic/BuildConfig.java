@@ -1,7 +1,7 @@
 /**
  * Automatically generated file. DO NOT MODIFY
  */
-package pe.edu.upc.clinic;
+package pe.edu.upc.phclinic;
 
 public final class BuildConfig {
   public static final boolean DEBUG = Boolean.parseBoolean("true");
