@@ -74,11 +74,11 @@ public class UserInformationFragment extends Fragment {
         documentTypeList = new ArrayList<DocumentType>();
 
         //Assign values
-        nameEditText = (EditText) view.findViewById(R.id.profileNameEditText);
-        lastNameEditText = (EditText) view.findViewById(R.id.profileLastNameEditText);
-        documentNumberEditText = (EditText) view.findViewById(R.id.documentNumberEditText);
-        addressEditText = (EditText) view.findViewById(R.id.profileAddressEditText);
-        phoneEditText = (EditText) view.findViewById(R.id.profilePhoneEditText);
+        nameEditText = (EditText) view.findViewById(R.id.nameTextInputEditText);
+        lastNameEditText = (EditText) view.findViewById(R.id.lastNameTextInputEditText);
+        documentNumberEditText = (EditText) view.findViewById(R.id.docNumberTextInputEditText);
+        addressEditText = (EditText) view.findViewById(R.id.addressTextInputEditText);
+        phoneEditText = (EditText) view.findViewById(R.id.phoneTextInputEditText);
         confirmButton = (Button) view.findViewById(R.id.confirmButton);
 
         updateDocumentTypeList(view);

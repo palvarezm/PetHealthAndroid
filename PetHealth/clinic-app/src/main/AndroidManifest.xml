@@ -34,13 +34,7 @@
         </activity>
 
 
-        <activity android:name="pe.edu.upc.phclinic.activities.MainActivity" tools:ignore="InnerclassSeparator">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+        <activity android:name="pe.edu.upc.phclinic.activities.MainActivity"></activity>
     </application>
 
 </manifest>

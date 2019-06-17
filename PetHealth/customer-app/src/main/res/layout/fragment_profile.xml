@@ -83,9 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Phone"
-                    android:textAppearance="?android:textAppearanceMedium"
                     android:layout_margin="@dimen/big_margin"
-                    android:textColor="@color/colorSecondaryText"
                     app:layout_constraintTop_toBottomOf="@id/dniTextView"
                     app:layout_constraintStart_toStartOf="parent"/>
                 <TextView
@@ -93,9 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="phone"
-                    android:textAppearance="?android:textAppearanceMedium"
                     android:layout_margin="@dimen/big_margin"
-                    android:textColor="@color/colorSecondaryText"
                     app:layout_constraintTop_toBottomOf="@id/dniDataTextView"
                     app:layout_constraintStart_toEndOf="@id/phoneTextView" />
                 <TextView
@@ -104,7 +100,6 @@
                     android:layout_height="wrap_content"
                     android:text="Address"
                     android:textColor="@color/colorSecondaryText"
-                    android:textAppearance="?android:textAppearanceMedium"
                     android:layout_margin="@dimen/big_margin"
                     app:layout_constraintTop_toBottomOf="@id/phoneTextView"
                     app:layout_constraintStart_toStartOf="parent"/>
@@ -114,7 +109,6 @@
                     android:layout_height="wrap_content"
                     android:text="address"
                     android:textColor="@color/colorPrimaryText"
-                    android:textAppearance="?android:textAppearanceMedium"
                     android:layout_margin="@dimen/big_margin"
                     app:layout_constraintTop_toBottomOf="@id/phoneTextView"
                     app:layout_constraintStart_toEndOf="@id/addressTextView"/>
@@ -123,11 +117,9 @@
 
         <android.support.design.button.MaterialButton
             android:id="@+id/editValuesButton"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bt_edit_profile"
-            android:background="@color/colorAccent"
-            android:layout_margin="@dimen/big_margin"
             app:layout_constraintTop_toBottomOf="@id/llProfile"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -157,9 +149,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:padding="@dimen/minimun_margin"
                 android:text="Añadir Mascota"
-                android:background="@color/colorAccent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -169,9 +159,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/big_margin"
                 android:layout_marginBottom="@dimen/super_big_margin"
+                tools:listitem="@layout/card_pets"
                 app:layout_constraintTop_toBottomOf="@id/btAddPet">
             </android.support.v7.widget.RecyclerView>
         </android.support.constraint.ConstraintLayout>
+
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>
