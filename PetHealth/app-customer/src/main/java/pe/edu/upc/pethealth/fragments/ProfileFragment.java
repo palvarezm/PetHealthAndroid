@@ -1,6 +1,5 @@
 package pe.edu.upc.pethealth.fragments;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -23,7 +22,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.BitmapRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.wang.avi.AVLoadingIndicatorView;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,6 +30,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 import pe.edu.upc.pethealth.R;
 import pe.edu.upc.pethealth.activities.AddPetActivity;
 import pe.edu.upc.pethealth.activities.MainActivity;
@@ -54,7 +54,6 @@ public class ProfileFragment extends Fragment {
     private TextView addressTextView;
     private Button editButton;
     private Person person;
-    private AVLoadingIndicatorView loadingIndicatorView;
 
     private RecyclerView myPetsRecyclerView;
     private MyPetAdapters myPetAdapters;
@@ -77,10 +76,8 @@ public class ProfileFragment extends Fragment {
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this.getContext());
         person = sharedPreferencesManager.getPerson();
         tittleTextView = (TextView) view.findViewById(R.id.tittleTextView);
-        loadingIndicatorView = (AVLoadingIndicatorView) view.findViewById(R.id.avi);
         tittleTextView = (TextView) view.findViewById(R.id.tittleTextView);
         photoANImageView = (ImageView) view.findViewById(R.id.profileImageView);
-        photoANImageView.setVisibility(View.INVISIBLE);
         dniTextView = (TextView) view.findViewById(R.id.dniDataTextView);
         phoneTextView =(TextView) view.findViewById(R.id.phoneDataTextView);
         addressTextView = (TextView) view.findViewById(R.id.addressDataTextView);
@@ -122,7 +119,8 @@ public class ProfileFragment extends Fragment {
             }
         });
         updateProfile();
-        loadImage(sharedPreferencesManager.getUser().getPhoto());
+        Picasso.get().load(sharedPreferencesManager.getUser().getPhoto()).error(R.mipmap.ic_launcher).transform(new CropCircleTransformation()).into(photoANImageView);
+        //loadImage(sharedPreferencesManager.getUser().getPhoto());
         updatePets();
         return view;
     }
@@ -172,7 +170,6 @@ public class ProfileFragment extends Fragment {
                     public void onResponse(Bitmap response) {
                         photoANImageView.setImageBitmap(response);
                         photoANImageView.setVisibility(View.VISIBLE);
-                        loadingIndicatorView.setVisibility(View.INVISIBLE);
                     }
 
                     @Override
