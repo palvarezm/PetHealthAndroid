@@ -16,6 +16,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/avi"
+                style="@style/AVLoadingIndicatorView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:indicatorColor="@color/colorPrimaryDark"
+                app:indicatorName="BallScaleIndicator"
+                app:layout_constraintBottom_toBottomOf="@+id/profileImageView"
+                app:layout_constraintEnd_toEndOf="@+id/profileImageView"
+                app:layout_constraintStart_toStartOf="@+id/profileImageView"
+                app:layout_constraintTop_toTopOf="@id/profileImageView" />
+
             <ImageView
                 android:id="@+id/profileImageView"
                 android:layout_width="150dp"
@@ -23,22 +35,8 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:scaleType="centerCrop"
-                android:visibility="invisible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <com.wang.avi.AVLoadingIndicatorView
-                android:id="@+id/avi"
-                style="@style/AVLoadingIndicatorView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="visible"
-                app:indicatorColor="@color/colorPrimaryDark"
-                app:indicatorName="BallScaleIndicator"
-                app:layout_constraintBottom_toBottomOf="@+id/profileImageView"
-                app:layout_constraintEnd_toEndOf="@+id/profileImageView"
-                app:layout_constraintStart_toStartOf="@+id/profileImageView"
-                app:layout_constraintTop_toTopOf="@id/profileImageView" />
 
             <ImageView
                 android:id="@+id/imageView"
@@ -52,15 +50,19 @@
                 app:layout_constraintTop_toTopOf="@+id/documentNumberTextView" />
 
             <TextView
+                app:layout_constraintHorizontal_bias="0.0"
                 android:id="@+id/nameTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
                 android:text="Name"
                 android:textSize="24dp"
                 android:textStyle="bold"
+                android:maxLines="2"
                 app:layout_constraintBottom_toTopOf="@+id/documentNumberTextView"
+                app:layout_constraintEnd_toEndOf="@+id/myPetsRecyclerView"
                 app:layout_constraintStart_toEndOf="@+id/profileImageView" />
 
             <TextView
@@ -91,7 +93,6 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="Phone"
-                android:textSize="12dp"
 
                 app:layout_constraintBottom_toTopOf="@+id/addressTextView"
                 app:layout_constraintStart_toEndOf="@+id/imageView2" />
@@ -114,7 +115,6 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="address"
-                android:textSize="12dp"
                 app:layout_constraintBottom_toBottomOf="@+id/profileImageView"
                 app:layout_constraintStart_toEndOf="@+id/imageView3" />
 
