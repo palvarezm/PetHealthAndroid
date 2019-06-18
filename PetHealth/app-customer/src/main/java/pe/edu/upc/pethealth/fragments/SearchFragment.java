@@ -63,11 +63,10 @@ public class SearchFragment extends Fragment {
             public void onResponse(Call<RestView<JsonArray>> call, Response<RestView<JsonArray>> response) {
                 super.onResponse(call, response);
                 parseResponse(response.body().getData());
-                //TODO set RecyclerView
-                /*searchAdapters = new SearchAdapters(veterinaries);
+                searchAdapters = new SearchAdapters(veterinaries);
                 searchLayoutManager = new LinearLayoutManager(view.getContext());
                 searchRecyclerView.setAdapter(searchAdapters);
-                searchRecyclerView.setLayoutManager(searchLayoutManager);*/
+                searchRecyclerView.setLayoutManager(searchLayoutManager);
             }
 
             @Override
