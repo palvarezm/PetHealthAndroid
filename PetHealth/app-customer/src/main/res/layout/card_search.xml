@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.MaterialComponents.CardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,8 +13,8 @@
         android:layout_height="match_parent">
         <ImageView
             android:id="@+id/ivVet"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:src="@mipmap/ic_launcher"
             android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
@@ -25,8 +27,8 @@
             android:text="VetName"
             android:textStyle="bold"
             android:layout_margin="@dimen/minimun_margin"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivVet"/>
+            app:layout_constraintTop_toBottomOf="@id/ivVet"
+            app:layout_constraintStart_toStartOf="parent"/>
         <TextView
             android:id="@+id/locationTextView"
             android:layout_width="wrap_content"
@@ -34,7 +36,7 @@
             android:text="Distrito y Referencia"
             android:layout_margin="@dimen/minimun_margin"
             app:layout_constraintTop_toBottomOf="@id/nameTextView"
-            app:layout_constraintStart_toEndOf="@id/ivVet"
+            app:layout_constraintStart_toStartOf="@id/ivVet"
             app:layout_constraintBottom_toBottomOf="parent"/>
         <ImageButton
             android:id="@+id/fordwardImageButton"
@@ -42,9 +44,8 @@
             android:layout_height="wrap_content"
             android:background="@color/colorIcons"
             app:srcCompat="@drawable/ic_arrow_forward_black_24dp"
-            android:layout_margin="@dimen/default_margin"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/locationTextView"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"/>
     </android.support.constraint.ConstraintLayout>
-</android.support.v7.widget.CardView>
+</android.support.design.card.MaterialCardView>
