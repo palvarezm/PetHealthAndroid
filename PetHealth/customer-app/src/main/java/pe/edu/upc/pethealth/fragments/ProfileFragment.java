@@ -12,9 +12,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.BitmapRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.squareup.picasso.Picasso;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import org.json.JSONException;
@@ -45,21 +47,19 @@ import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
  */
 public class ProfileFragment extends Fragment {
 
-    private TextView tittleTextView;
     private ImageView photoANImageView;
     private TextView nameTextView;
-    private TextView lastNameTextView;
     private TextView dniTextView;
     private TextView phoneTextView;
     private TextView addressTextView;
-    private Button editButton;
+    //private Button editButton;
     private Person person;
     private AVLoadingIndicatorView loadingIndicatorView;
 
     private RecyclerView myPetsRecyclerView;
     private MyPetAdapters myPetAdapters;
     private RecyclerView.LayoutManager myPetLayoutManager;
-    private Button btAddPet;
+    private TextView btAddPet;
     private SharedPreferencesManager sharedPreferencesManager;
     List<MyPet> myPets;
 
@@ -67,6 +67,11 @@ public class ProfileFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.add("Edit Profile");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,22 +81,21 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this.getContext());
         person = sharedPreferencesManager.getPerson();
-        tittleTextView = (TextView) view.findViewById(R.id.tittleTextView);
+        nameTextView = view.findViewById(R.id.nameTextView);
         loadingIndicatorView = (AVLoadingIndicatorView) view.findViewById(R.id.avi);
-        tittleTextView = (TextView) view.findViewById(R.id.tittleTextView);
         photoANImageView = (ImageView) view.findViewById(R.id.profileImageView);
         photoANImageView.setVisibility(View.INVISIBLE);
-        dniTextView = (TextView) view.findViewById(R.id.dniDataTextView);
-        phoneTextView =(TextView) view.findViewById(R.id.phoneDataTextView);
-        addressTextView = (TextView) view.findViewById(R.id.addressDataTextView);
-        editButton = (Button) view.findViewById(R.id.editValuesButton);
+        dniTextView = (TextView) view.findViewById(R.id.documentNumberTextView);
+        phoneTextView =(TextView) view.findViewById(R.id.phoneTextView);
+        addressTextView = (TextView) view.findViewById(R.id.addressTextView);
+        /*editButton = (Button) view.findViewById(R.id.editValuesButton);
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 UserInformationFragment userInformationFragment = new UserInformationFragment();
                 getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content,userInformationFragment).commit();
             }
-        });
+        });*/
 
         //Pet List
 
@@ -105,7 +109,7 @@ public class ProfileFragment extends Fragment {
         }
         myPetsRecyclerView.setAdapter(myPetAdapters);
         myPetsRecyclerView.setLayoutManager(myPetLayoutManager);
-        btAddPet = (Button) view.findViewById(R.id.btAddPet);
+        btAddPet = view.findViewById(R.id.newPetTextView);
         btAddPet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,13 +120,14 @@ public class ProfileFragment extends Fragment {
                                 Context context = v.getContext();
                                 Intent intent = new Intent(context, AddPetActivity.class);
                                 //intent.putExtras(bundle);
-                                context.startActivity(intent);
+                                //context.startActivity(intent);
                             }
                         }).show();
             }
         });
         updateProfile();
         loadImage(sharedPreferencesManager.getUser().getPhoto());
+        setHasOptionsMenu(true);
         updatePets();
         return view;
     }
@@ -155,6 +160,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void updateProfile(){
+        nameTextView.setText(person.getName() + " " + person.getLastName());
         dniTextView.setText(person.getDni());
         phoneTextView.setText(person.getPhone());
         addressTextView.setText(person.getAddress());

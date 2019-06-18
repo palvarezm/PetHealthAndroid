@@ -72,7 +72,7 @@ public class AddPetActivity extends AppCompatActivity {
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_petToolbar);
         setSupportActionBar(myToolbar);
-        myToolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
+        myToolbar.setNavigationIcon(R.drawable.ic_chevron_left_black_24dp);
         cameraButton = (Button) findViewById(R.id.cameraButton);
         cameraTextView = (TextView) findViewById(R.id.cameraTextView);
         nameEditText = (EditText) findViewById(R.id.petTittleTextView);
