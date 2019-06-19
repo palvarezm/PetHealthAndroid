@@ -1,40 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="pe.edu.upc.pethealth.fragments.MyTipDetailFragment">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/layoutImage"
-        android:layout_width="368dp"
-        android:layout_height="240dp"
-        android:scaleType="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="-482dp">
-        <ImageView
-            android:id="@+id/detailImageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@mipmap/ic_launcher"/>
-        <com.wang.avi.AVLoadingIndicatorView
-            android:id="@+id/avi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/AVLoadingIndicatorView"
-            android:visibility="visible"
-            app:indicatorName="BallPulseIndicator"
-            app:indicatorColor="@color/colorPrimaryDark"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
-    </android.support.constraint.ConstraintLayout>
-
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/avi"
+        style="@style/AVLoadingIndicatorView"
+        android:layout_width="43dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="visible"
+        app:indicatorColor="@color/colorPrimaryDark"
+        app:indicatorName="BallScaleIndicator"
+        app:layout_constraintBottom_toBottomOf="@+id/detailImageView"
+        app:layout_constraintEnd_toEndOf="@+id/detailImageView"
+        app:layout_constraintStart_toStartOf="@id/detailImageView"
+        app:layout_constraintTop_toTopOf="@id/detailImageView" />
+    <ImageView
+        android:id="@+id/detailImageView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintTop_toTopOf="parent"/>
     <TextView
         android:id="@+id/descriptionDetailTextView"
         android:layout_width="wrap_content"
@@ -44,9 +38,8 @@
         android:layout_margin="@dimen/big_margin"
         android:paddingStart="@dimen/big_padding"
         android:paddingEnd="@dimen/big_padding"
-        android:textAppearance="?android:textAppearanceMedium"
-        app:layout_constraintTop_toBottomOf="@+id/layoutImage"
+        app:layout_constraintTop_toBottomOf="@+id/detailImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

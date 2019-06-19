@@ -8,6 +8,7 @@
     tools:context="pe.edu.upc.pethealth.activities.AddPetActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +33,6 @@
         android:textStyle="bold"
         android:textAppearance="?android:textAppearanceLarge"
         android:textColor="@color/colorPrimary"
-        android:shadowColor="@color/colorAccent"
         android:layout_marginTop="24dp"
         app:layout_constraintTop_toBottomOf="@id/appBar"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Select Your Pet Birth Date"
-        android:textColor="@color/colorSecondaryText"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="@dimen/default_margin"
         android:layout_marginStart="@dimen/default_margin"
@@ -117,15 +116,12 @@
         app:layout_constraintTop_toBottomOf="@id/petDescriptionEditText"
         app:layout_constraintStart_toEndOf="@id/cameraTextView"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/addPetButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="ADD"
-        android:textColor="@color/colorPrimaryText"
-        android:textAppearance="?android:textAppearanceMedium"
+        android:text="Add"
         android:textStyle="bold"
-        android:background="@color/colorAccent"
         android:layout_margin="24dp"
         app:layout_constraintTop_toBottomOf="@id/cameraTextView"
         app:layout_constraintStart_toStartOf="parent"

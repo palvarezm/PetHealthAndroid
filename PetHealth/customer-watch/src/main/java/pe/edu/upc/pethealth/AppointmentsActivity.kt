@@ -2,8 +2,9 @@ package pe.edu.upc.pethealth
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.support.wear.widget.WearableLinearLayoutManager
 import android.support.wearable.activity.WearableActivity
+import androidx.core.content.edit
+import androidx.wear.widget.WearableLinearLayoutManager
 
 import com.google.android.gms.wearable.*
 import kotlinx.android.synthetic.main.activity_appointments.*
@@ -32,7 +33,6 @@ class AppointmentsActivity : WearableActivity(), DataClient.OnDataChangedListene
             appts = Gson().fromJson(apptsString)
         }
         apptsAdapter = AppointmentsAdapter(appts,AppointmentsRecyclerView.context)
-
         AppointmentsRecyclerView.apply {
             isEdgeItemsCenteringEnabled = true
             layoutManager = WearableLinearLayoutManager(this@AppointmentsActivity).apply {
@@ -64,9 +64,7 @@ class AppointmentsActivity : WearableActivity(), DataClient.OnDataChangedListene
                     if (item.uri.path.compareTo(APPT_PATH) == 0) {
                         DataMapItem.fromDataItem(item).dataMap.apply {
                             val apptsString = getString(APPT_KEY)
-                            val editor = shared.edit()
-                            editor.putString(APPT_KEY,apptsString)
-                            editor.apply()
+                            shared.edit(true){putString(APPT_KEY,apptsString)}
                             val apptsResponse = Gson().fromJson<ArrayList<AppointmentResponse>>(apptsString)
                             apptsAdapter.appts = apptsResponse
                             apptsAdapter.notifyDataSetChanged()

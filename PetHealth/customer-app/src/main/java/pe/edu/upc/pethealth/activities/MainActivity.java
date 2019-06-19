@@ -21,7 +21,6 @@ import pe.edu.upc.pethealth.R;
 import pe.edu.upc.pethealth.fragments.AppointmentFragment;
 import pe.edu.upc.pethealth.fragments.ChatsFragment;
 import pe.edu.upc.pethealth.fragments.HomeFragment;
-import pe.edu.upc.pethealth.fragments.NoInternetFragment;
 import pe.edu.upc.pethealth.fragments.ProfileFragment;
 import pe.edu.upc.pethealth.fragments.SearchFragment;
 import pe.edu.upc.pethealth.models.User;
@@ -38,14 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-            if(Connection.isOnline(getApplicationContext()))
-                return navigateAccordingTo(item.getItemId());
-            else{
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content,new NoInternetFragment()).commit();
-                return true;
-            }
+            return navigateAccordingTo(item.getItemId());
         }
     };
 

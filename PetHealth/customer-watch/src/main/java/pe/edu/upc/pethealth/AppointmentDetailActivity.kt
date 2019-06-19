@@ -1,5 +1,6 @@
 package pe.edu.upc.pethealth
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -16,6 +17,7 @@ import java.util.*
 
 class AppointmentDetailActivity : WearableActivity() {
 
+    @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_appointment_detail)
@@ -47,8 +49,8 @@ class AppointmentDetailActivity : WearableActivity() {
         locationButton.setOnClickListener{
             this@AppointmentDetailActivity.startActivity(
                     Intent(this@AppointmentDetailActivity, MapsActivity::class.java)
-                            .putExtra("latitud",appt.veterinary.latitude)
-                            .putExtra("longitud",appt.veterinary.longitude)
+                            .putExtra("latitude",appt.veterinary.latitude)
+                            .putExtra("longitude",appt.veterinary.longitude)
                             .putExtra("veterinaryName",appt.veterinary.name))
         }
         setAmbientEnabled()

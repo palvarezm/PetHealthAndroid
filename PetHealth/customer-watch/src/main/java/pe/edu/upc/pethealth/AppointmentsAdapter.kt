@@ -3,10 +3,10 @@ package pe.edu.upc.pethealth
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.item_appointment.view.*
 import pe.edu.upc.lib.AppointmentResponse
 import java.text.SimpleDateFormat
 import java.time.Instant
-import java.time.LocalDateTime
 import java.util.*
 import kotlin.collections.ArrayList
 
