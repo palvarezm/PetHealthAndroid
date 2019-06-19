@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
+import pe.edu.upc.lib.Pet;
 import pe.edu.upc.pethealth.R;
 import pe.edu.upc.pethealth.activities.AddPetActivity;
 import pe.edu.upc.pethealth.activities.MainActivity;
@@ -55,7 +56,7 @@ public class ProfileFragment extends Fragment {
     private RecyclerView.LayoutManager myPetLayoutManager;
     private TextView btAddPet;
     private SharedPreferencesManager sharedPreferencesManager;
-    List<MyPet> myPets;
+    List<Pet> pets;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -90,8 +91,9 @@ public class ProfileFragment extends Fragment {
         dniTextView = (TextView) view.findViewById(R.id.documentNumberTextView);
         phoneTextView =(TextView) view.findViewById(R.id.phoneTextView);
         addressTextView = (TextView) view.findViewById(R.id.addressTextView);
-        myPetsRecyclerView = (RecyclerView) view.findViewById(R.id.myPetsRecyclerView);myPets = new ArrayList<>();
-        myPetAdapters = new MyPetAdapters(myPets);
+        myPetsRecyclerView = (RecyclerView) view.findViewById(R.id.myPetsRecyclerView);
+        pets = new ArrayList<>();
+        myPetAdapters = new MyPetAdapters(pets);
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             myPetLayoutManager = new GridLayoutManager(view.getContext(), 1);
         }
@@ -127,8 +129,8 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            myPets = MyPet.from(response.getJSONArray("data"));
-                            myPetAdapters.setMyPets(myPets);
+                            pets = MyPet.from(response.getJSONArray("data"));
+                            myPetAdapters.setMyPets(pets);
                             myPetAdapters.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();

@@ -52,6 +52,7 @@ dependencies {
     implementation 'com.amitshekhar.android:android-networking:1.0.0'
 
     implementation project(path: ':resources')
+    compile project(path: ':lib')
 }
 
 apply plugin: 'com.google.gms.google-services'

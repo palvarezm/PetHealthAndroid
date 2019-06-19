@@ -4,20 +4,9 @@ import java.util.*
 
 data class AppointmentResponse(
         val appointment: Appointment,
-        val pet: ApptPet,
+        val pet: Pet,
         val veterinarian: ApptVeterinarian,
         val veterinary: ApptVeterinary
-)
-
-data class ApptPet(
-        val name: String = "",
-        val description: String = "",
-        val race: String = "",
-        val birth_date: String = "",
-        val status: String = "",
-        val image_url: String = "",
-        val owner_id: String = "",
-        val history: ArrayList<ClinicHistory>
 )
 
 data class ApptVeterinarian(
