@@ -1,7 +1,16 @@
 package pe.edu.upc.pethealth.fragments;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +20,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -42,6 +54,11 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
     private Double currentLocationLat = -12.0874509;
     private Double currentLocationLong = -77.0499422;
 
+    private Boolean mLocationPermissionsGranted = false;
+    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
+
     public SearchFragment() {
         // Required empty public constructor
     }
@@ -52,18 +69,21 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
         // Inflate the layout for this fragment
         ((MainActivity)getActivity()).setFragmentToolbar("Search",true,getFragmentManager());
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-        mapFragment = (SupportMapFragment) getChildFragmentManager()
-                .findFragmentById(R.id.veterinariesMap);
+        getLocationPermission();
 
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this.getContext());
         veterinaries = new ArrayList<>();
-        updateSearch();
         return view;
     }
 
-    private void updateSearch(){
-
+    public void initMap(){
+        mapFragment = (SupportMapFragment) getChildFragmentManager()
+                .findFragmentById(R.id.veterinariesMap);
         mapFragment.getMapAsync(this);
+        getVeterinaries();
+    }
+
+    private void getVeterinaries(){
         Call<RestView<JsonArray>> call = new RestClient().getWebServices().getCloseVeterinaries(sharedPreferencesManager.getAccessToken(), currentLocationLat, currentLocationLong);
         call.enqueue(new LoggerCallback<RestView<JsonArray>>(){
             @Override
@@ -91,20 +111,71 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
+    public void getLocationPermission(){
+        String[] PERMISSIONS = {
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+        };
+        Boolean permissionFineLoc = ContextCompat.checkSelfPermission(this.getContext(), FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+        Boolean permissionCourseLoc = ContextCompat.checkSelfPermission(this.getContext(), COURSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+
+        if (permissionCourseLoc && permissionFineLoc){
+            mLocationPermissionsGranted = true;
+        }
+        else{
+            ActivityCompat.requestPermissions(this.getActivity(), PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE);
+        }
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
         LatLng currentLatLng = new LatLng(currentLocationLat, currentLocationLong);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f));
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch(requestCode){
+            case LOCATION_PERMISSION_REQUEST_CODE:{
+                Log.d("TEST", "in");
+                if(grantResults.length > 0){
+                    for(int i = 0; i < grantResults.length; i++){
+                        if(grantResults[i] != PackageManager.PERMISSION_GRANTED){
+                            mLocationPermissionsGranted = false;
+                            Log.d("Permissions Result", "onRequestPermissionsResult: permission failed");
+                            return;
+                        }
+                    }
+                    Log.d("Permissions Result", "onRequestPermissionsResult: permission granted");
+                    mLocationPermissionsGranted = true;
+                    //initialize our map
+                    initMap();
+                }
+            }
+        }
+    }
+
     private void setVeterinariesMarkers(List<Veterinary> veterinaries) {
-        Log.d("TESTING LIST!", veterinaries.toString());
         for (Veterinary veterinary :
                 veterinaries) {
-            Log.d("TESTING LIST", veterinary.toString());
             LatLng veterinaryLocation = new LatLng(veterinary.getLatitude(), veterinary.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(veterinaryLocation).title(veterinary.getName()));
+            BitmapDescriptor markerIcon = getMarkerIconFromDrawable(ResourcesCompat.getDrawable(getResources(), R.mipmap.veterinary_marker, null));
+            MarkerOptions markerOptions = new MarkerOptions().
+                    position(veterinaryLocation).
+                    title(veterinary.getName()).
+                    snippet(String.format("%.2f", veterinary.getDistance()) + " Km.").
+                    icon(markerIcon);
+            Marker marker = mMap.addMarker(markerOptions);
+            marker.setTag(veterinary);
         }
+    }
+
+    private BitmapDescriptor getMarkerIconFromDrawable(Drawable drawable) {
+        Canvas canvas = new Canvas();
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        canvas.setBitmap(bitmap);
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        drawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
 }
