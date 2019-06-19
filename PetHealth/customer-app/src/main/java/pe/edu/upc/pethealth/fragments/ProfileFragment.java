@@ -21,7 +21,6 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.squareup.picasso.Picasso;
-import com.wang.avi.AVLoadingIndicatorView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +28,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 import pe.edu.upc.pethealth.R;
 import pe.edu.upc.pethealth.activities.AddPetActivity;
@@ -45,15 +43,12 @@ import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
  */
 public class ProfileFragment extends Fragment {
 
-    private ImageView photoANImageView;
+    private ImageView profileImageView;
     private TextView nameTextView;
     private TextView dniTextView;
     private TextView phoneTextView;
     private TextView addressTextView;
-    //private Button editButton;
     private Person person;
-    private AVLoadingIndicatorView loadingIndicatorView;
-
     private RecyclerView myPetsRecyclerView;
     private MyPetAdapters myPetAdapters;
     private RecyclerView.LayoutManager myPetLayoutManager;
@@ -90,8 +85,7 @@ public class ProfileFragment extends Fragment {
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this.getContext());
         person = sharedPreferencesManager.getPerson();
         nameTextView = view.findViewById(R.id.nameTextView);
-        loadingIndicatorView = (AVLoadingIndicatorView) view.findViewById(R.id.avi);
-        photoANImageView = (ImageView) view.findViewById(R.id.profileImageView);
+        profileImageView = (ImageView) view.findViewById(R.id.profileImageView);
         dniTextView = (TextView) view.findViewById(R.id.documentNumberTextView);
         phoneTextView =(TextView) view.findViewById(R.id.phoneTextView);
         addressTextView = (TextView) view.findViewById(R.id.addressTextView);
@@ -150,9 +144,9 @@ public class ProfileFragment extends Fragment {
     private void updateProfile(){
         Picasso.get().load(sharedPreferencesManager.getUser().getPhoto()).error(R.mipmap.ic_launcher)
                 .transform(new RoundedCornersTransformation(10,0))
-                .resize(150,160)
+                .resize(150,170)
                 .centerCrop()
-                .into(photoANImageView);
+                .into(profileImageView);
         nameTextView.setText(person.getName() + " " + person.getLastName());
         dniTextView.setText(person.getDni());
         phoneTextView.setText(person.getPhone());

@@ -1,156 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+    tools:context="pe.edu.upc.pethealth.fragments.ProfileFragment">
 
-    <ScrollView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="pe.edu.upc.pethealth.fragments.ProfileFragment">
+        android:layout_height="wrap_content">
 
-        <android.support.constraint.ConstraintLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="1.5dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginHorizontal="36dp"
+            android:background="@color/colorPrimaryLight"
+            app:layout_constraintBottom_toTopOf="@+id/textView"/>
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            style="@style/AVLoadingIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:indicatorColor="@color/colorPrimaryDark"
+            app:indicatorName="BallScaleIndicator"
+            app:layout_constraintBottom_toBottomOf="@+id/profileImageView"
+            app:layout_constraintEnd_toEndOf="@+id/profileImageView"
+            app:layout_constraintStart_toStartOf="@+id/profileImageView"
+            app:layout_constraintTop_toTopOf="@id/profileImageView" />
 
-            <com.wang.avi.AVLoadingIndicatorView
-                android:id="@+id/avi"
-                style="@style/AVLoadingIndicatorView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:indicatorColor="@color/colorPrimaryDark"
-                app:indicatorName="BallScaleIndicator"
-                app:layout_constraintBottom_toBottomOf="@+id/profileImageView"
-                app:layout_constraintEnd_toEndOf="@+id/profileImageView"
-                app:layout_constraintStart_toStartOf="@+id/profileImageView"
-                app:layout_constraintTop_toTopOf="@id/profileImageView" />
+        <ImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="150dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/profileImageView"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_account_box_black_24dp"
+            android:tint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/documentNumberTextView"
+            app:layout_constraintStart_toEndOf="@+id/profileImageView"
+            app:layout_constraintTop_toTopOf="@+id/documentNumberTextView" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/ic_account_box_black_24dp"
-                android:tint="@color/colorPrimary"
-                app:layout_constraintBottom_toBottomOf="@+id/documentNumberTextView"
-                app:layout_constraintStart_toEndOf="@+id/profileImageView"
-                app:layout_constraintTop_toTopOf="@+id/documentNumberTextView" />
+        <TextView
+            app:layout_constraintHorizontal_bias="0.0"
+            android:id="@+id/nameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="Name"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:maxLines="2"
+            app:layout_constraintBottom_toTopOf="@+id/documentNumberTextView"
+            app:layout_constraintEnd_toEndOf="@+id/myPetsRecyclerView"
+            app:layout_constraintStart_toEndOf="@+id/profileImageView" />
 
-            <TextView
-                app:layout_constraintHorizontal_bias="0.0"
-                android:id="@+id/nameTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="16dp"
-                android:text="Name"
-                android:textSize="24dp"
-                android:textStyle="bold"
-                android:maxLines="2"
-                app:layout_constraintBottom_toTopOf="@+id/documentNumberTextView"
-                app:layout_constraintEnd_toEndOf="@+id/myPetsRecyclerView"
-                app:layout_constraintStart_toEndOf="@+id/profileImageView" />
+        <TextView
+            android:id="@+id/documentNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="DNI/CE"
+            app:layout_constraintBottom_toTopOf="@+id/phoneTextView"
+            app:layout_constraintStart_toEndOf="@+id/imageView" />
 
-            <TextView
-                android:id="@+id/documentNumberTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="DNI/CE"
-                app:layout_constraintBottom_toTopOf="@+id/phoneTextView"
-                app:layout_constraintStart_toEndOf="@+id/imageView" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_smartphone_black_24dp"
+            android:tint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/phoneTextView"
+            app:layout_constraintStart_toEndOf="@+id/profileImageView"
+            app:layout_constraintTop_toTopOf="@+id/phoneTextView" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/ic_smartphone_black_24dp"
-                android:tint="@color/colorPrimary"
-                app:layout_constraintBottom_toBottomOf="@+id/phoneTextView"
-                app:layout_constraintStart_toEndOf="@+id/profileImageView"
-                app:layout_constraintTop_toTopOf="@+id/phoneTextView" />
+        <TextView
+            android:id="@+id/phoneTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Phone"
 
-            <TextView
-                android:id="@+id/phoneTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="Phone"
+            app:layout_constraintBottom_toTopOf="@+id/addressTextView"
+            app:layout_constraintStart_toEndOf="@+id/imageView2" />
 
-                app:layout_constraintBottom_toTopOf="@+id/addressTextView"
-                app:layout_constraintStart_toEndOf="@+id/imageView2" />
+        <ImageView
+            android:elevation="5dp"
+            android:id="@+id/imageView3"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_home_black_24dp"
+            android:tint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/addressTextView"
+            app:layout_constraintStart_toEndOf="@+id/profileImageView"
+            app:layout_constraintTop_toTopOf="@+id/addressTextView" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/ic_home_black_24dp"
-                android:tint="@color/colorPrimary"
-                app:layout_constraintBottom_toBottomOf="@+id/addressTextView"
-                app:layout_constraintStart_toEndOf="@+id/profileImageView"
-                app:layout_constraintTop_toTopOf="@+id/addressTextView" />
+        <TextView
+            android:id="@+id/addressTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="address"
+            app:layout_constraintBottom_toBottomOf="@+id/profileImageView"
+            app:layout_constraintStart_toEndOf="@+id/imageView3" />
 
-            <TextView
-                android:id="@+id/addressTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="address"
-                app:layout_constraintBottom_toBottomOf="@+id/profileImageView"
-                app:layout_constraintStart_toEndOf="@+id/imageView3" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="My pets"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/myPetsRecyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="My pets"
-                android:textSize="22dp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/myPetsRecyclerView"
-                app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
+        <TextView
+            android:id="@+id/newPetTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="New Pet +"
+            app:layout_constraintBottom_toTopOf="@+id/myPetsRecyclerView"
+            app:layout_constraintEnd_toEndOf="@+id/myPetsRecyclerView" />
 
-            <TextView
-                android:id="@+id/newPetTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="New Pet +"
-                app:layout_constraintBottom_toTopOf="@+id/myPetsRecyclerView"
-                app:layout_constraintEnd_toEndOf="@+id/myPetsRecyclerView"
-                app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/myPetsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:listitem="@layout/card_pets"></android.support.v7.widget.RecyclerView>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/myPetsRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
-                tools:listitem="@layout/card_pets"></android.support.v7.widget.RecyclerView>
+    </android.support.constraint.ConstraintLayout>
 
-        </android.support.constraint.ConstraintLayout>
-
-    </ScrollView>
-
-</android.support.constraint.ConstraintLayout>
+</ScrollView>
 
