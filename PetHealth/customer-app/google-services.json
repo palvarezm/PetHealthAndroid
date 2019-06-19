@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "271674225216",
-    "firebase_url": "https://pethealth-1560184157826.firebaseio.com",
-    "project_id": "pethealth-1560184157826",
-    "storage_bucket": "pethealth-1560184157826.appspot.com"
+    "project_number": "357330776201",
+    "firebase_url": "https://tikray.firebaseio.com",
+    "project_id": "tikray",
+    "storage_bucket": "tikray.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:271674225216:android:cb204fe59b3ea54d",
+        "mobilesdk_app_id": "1:357330776201:android:cb204fe59b3ea54d",
         "android_client_info": {
           "package_name": "pe.edu.upc.pethealth"
         }
       },
       "oauth_client": [
         {
-          "client_id": "271674225216-8i1lltn3d903idpfk04r2gqlto887ieg.apps.googleusercontent.com",
+          "client_id": "357330776201-juta24959uivokcu4cjt1urnltokuqh8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCksfpj6rpuIkIuC7WsD3AjjKl6cV-UqpM"
+          "current_key": "AIzaSyBqSMe-H7GhXqYN6X0oMLiaZ62LvyJ7lnM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "271674225216-8i1lltn3d903idpfk04r2gqlto887ieg.apps.googleusercontent.com",
+              "client_id": "357330776201-juta24959uivokcu4cjt1urnltokuqh8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

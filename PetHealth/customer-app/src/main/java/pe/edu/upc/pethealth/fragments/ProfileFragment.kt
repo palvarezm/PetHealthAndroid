@@ -16,12 +16,11 @@ import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.github.salomonbrys.kotson.fromJson
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
-
 import org.json.JSONException
 import org.json.JSONObject
-
 import kotlinx.android.synthetic.main.fragment_profile.*
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
 import pe.edu.upc.lib.Pet
