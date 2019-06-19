@@ -2,7 +2,6 @@ package pe.edu.upc.pethealth.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +20,7 @@ import com.google.gson.JsonElement;
 import java.util.ArrayList;
 import java.util.List;
 
+import pe.edu.upc.lib.Veterinary;
 import pe.edu.upc.pethealth.R;
 import pe.edu.upc.pethealth.activities.MainActivity;
 import pe.edu.upc.pethealth.network.LoggerCallback;
@@ -39,6 +39,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
 
     private List<pe.edu.upc.lib.Veterinary> veterinaries;
     private SharedPreferencesManager sharedPreferencesManager;
+    private Double currentLocationLat = -12.0874509;
+    private Double currentLocationLong = -77.0499422;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -62,12 +64,13 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
     private void updateSearch(){
 
         mapFragment.getMapAsync(this);
-        Call<RestView<JsonArray>> call = new RestClient().getWebServices().getCloseVeterinaries(sharedPreferencesManager.getAccessToken(), -12.0874509, -77.0499422);
+        Call<RestView<JsonArray>> call = new RestClient().getWebServices().getCloseVeterinaries(sharedPreferencesManager.getAccessToken(), currentLocationLat, currentLocationLong);
         call.enqueue(new LoggerCallback<RestView<JsonArray>>(){
             @Override
             public void onResponse(Call<RestView<JsonArray>> call, Response<RestView<JsonArray>> response) {
                 super.onResponse(call, response);
                 parseResponse(response.body().getData());
+                setVeterinariesMarkers(veterinaries);
             }
 
             @Override
@@ -91,10 +94,17 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        LatLng currentLatLng = new LatLng(currentLocationLat, currentLocationLong);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f));
+    }
 
-        // Add a marker in Sydney, Australia, and move the camera.
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    private void setVeterinariesMarkers(List<Veterinary> veterinaries) {
+        Log.d("TESTING LIST!", veterinaries.toString());
+        for (Veterinary veterinary :
+                veterinaries) {
+            Log.d("TESTING LIST", veterinary.toString());
+            LatLng veterinaryLocation = new LatLng(veterinary.getLatitude(), veterinary.getLongitude());
+            mMap.addMarker(new MarkerOptions().position(veterinaryLocation).title(veterinary.getName()));
+        }
     }
 }
