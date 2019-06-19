@@ -64,7 +64,7 @@
             android:textStyle="bold"
             android:maxLines="2"
             app:layout_constraintBottom_toTopOf="@+id/documentNumberTextView"
-            app:layout_constraintEnd_toEndOf="@+id/myPetsRecyclerView"
+            app:layout_constraintEnd_toEndOf="@+id/petsRecyclerView"
             app:layout_constraintStart_toEndOf="@+id/profileImageView" />
 
         <TextView
@@ -130,7 +130,7 @@
             android:text="My pets"
             android:textSize="22dp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/myPetsRecyclerView"
+            app:layout_constraintStart_toStartOf="@+id/petsRecyclerView"
             app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
 
         <TextView
@@ -140,11 +140,11 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:text="New Pet +"
-            app:layout_constraintBottom_toTopOf="@+id/myPetsRecyclerView"
-            app:layout_constraintEnd_toEndOf="@+id/myPetsRecyclerView" />
+            app:layout_constraintBottom_toTopOf="@+id/petsRecyclerView"
+            app:layout_constraintEnd_toEndOf="@+id/petsRecyclerView" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/myPetsRecyclerView"
+            android:id="@+id/petsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

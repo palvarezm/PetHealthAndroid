@@ -8,7 +8,7 @@
     tools:context="pe.edu.upc.pethealth.fragments.MyPetDescriptionFragment">
 
     <TextView
-        android:id="@+id/petTittleTextView"
+        android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My Pet"
@@ -19,15 +19,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
     <ImageView
-        android:id="@+id/myPetImageView"
+        android:id="@+id/petImageView"
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:layout_margin="@dimen/default_margin"
-        app:layout_constraintTop_toBottomOf="@id/petTittleTextView"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
     <TextView
-        android:id="@+id/petAnimalTypeTextView"
+        android:id="@+id/animalTypeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -36,7 +36,7 @@
         android:text="Animal Type: "
         android:textColor="@color/colorSecondaryText"
         android:textAppearance="?android:textAppearanceMedium"
-        app:layout_constraintTop_toBottomOf="@id/myPetImageView"
+        app:layout_constraintTop_toBottomOf="@id/petImageView"
         app:layout_constraintStart_toStartOf="parent"/>
     <TextView
         android:id="@+id/petAnimalTypeValueTextView"
@@ -46,10 +46,10 @@
         android:text="Animal Type"
         android:textColor="@color/colorSecondaryText"
         android:textAppearance="?android:textAppearanceMedium"
-        app:layout_constraintTop_toBottomOf="@id/myPetImageView"
-        app:layout_constraintStart_toEndOf="@id/petAnimalTypeTextView"/>
+        app:layout_constraintTop_toBottomOf="@id/petImageView"
+        app:layout_constraintStart_toEndOf="@id/animalTypeTextView"/>
     <TextView
-        android:id="@+id/petRaceTextView"
+        android:id="@+id/raceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -57,7 +57,7 @@
         android:text="Race: "
         android:textColor="@color/colorSecondaryText"
         android:textAppearance="?android:textAppearanceMedium"
-        app:layout_constraintTop_toBottomOf="@id/petAnimalTypeTextView"
+        app:layout_constraintTop_toBottomOf="@id/animalTypeTextView"
         app:layout_constraintStart_toStartOf="parent"/>
     <TextView
         android:id="@+id/petRaceValueTextView"
@@ -69,10 +69,10 @@
         android:textColor="@color/colorSecondaryText"
         android:textAppearance="?android:textAppearanceMedium"
         app:layout_constraintTop_toBottomOf="@id/petAnimalTypeValueTextView"
-        app:layout_constraintStart_toEndOf="@id/petRaceTextView"/>
+        app:layout_constraintStart_toEndOf="@id/raceTextView"/>
 
     <TextView
-        android:id="@+id/petDescriptionTextView"
+        android:id="@+id/descriptionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -80,10 +80,10 @@
         android:text="Description: "
         android:textColor="@color/colorSecondaryText"
         android:textAppearance="?android:textAppearanceMedium"
-        app:layout_constraintTop_toBottomOf="@id/petRaceTextView"
+        app:layout_constraintTop_toBottomOf="@id/raceTextView"
         app:layout_constraintStart_toStartOf="parent"/>
     <TextView
-        android:id="@+id/petDescriptionValueTextView"
+        android:id="@+id/descriptionValueTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -91,7 +91,7 @@
         android:text="Description"
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="@color/colorSecondaryText"
-        app:layout_constraintStart_toEndOf="@id/petDescriptionTextView"
+        app:layout_constraintStart_toEndOf="@id/descriptionTextView"
         app:layout_constraintTop_toBottomOf="@id/petRaceValueTextView"/>
 
 

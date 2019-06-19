@@ -48,7 +48,7 @@ class AppointmentFragment : Fragment() {
     private var answer: RestView<JsonArray>? = null
     private var sharedPreferencesManager: SharedPreferencesManager? = null
 
-    internal var dataClient: DataClient
+    internal lateinit var dataClient: DataClient
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -70,8 +70,7 @@ class AppointmentFragment : Fragment() {
     internal fun sendWearData(jsonArray: JsonArray) {
         val APPT_KEY = "appt.key"
         val APPT_PATH = "/appt"
-        val gson = Gson()
-        val response = gson.toJson(jsonArray, JsonArray::class.java)
+        val response = Gson().toJson(jsonArray, JsonArray::class.java)
         val putDataMapReq = PutDataMapRequest.create(APPT_PATH)
         putDataMapReq.dataMap.putString(APPT_KEY, response)
         val putDataReq = putDataMapReq.asPutDataRequest().setUrgent()

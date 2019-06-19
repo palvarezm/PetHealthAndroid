@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -28,6 +31,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.android.gms:play-services-wearable:16.0.1'
     implementation 'com.google.android.gms:play-services-maps:16.1.0'
     implementation 'com.google.android.material:material:1.0.0-rc01'
@@ -35,6 +39,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.github.salomonbrys.kotson:kotson:2.5.0'
 
     //Firebase
     implementation 'com.google.firebase:firebase-core:16.0.9'
@@ -52,7 +57,7 @@ dependencies {
     implementation 'com.amitshekhar.android:android-networking:1.0.0'
 
     implementation project(path: ':resources')
-    compile project(path: ':lib')
+    implementation project(path: ':lib')
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/petTittleTextView"
+            android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pet Name"
@@ -55,7 +55,7 @@
             android:textAppearance="?android:textAppearanceSmall"
             android:textColor="@color/colorSecondaryText"
             app:layout_constraintStart_toEndOf="@+id/myPetImageView"
-            app:layout_constraintTop_toBottomOf="@+id/petTittleTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
         <TextView
             android:id="@+id/moreTextView"
             android:layout_width="wrap_content"

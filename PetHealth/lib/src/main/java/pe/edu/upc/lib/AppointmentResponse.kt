@@ -1,7 +1,5 @@
 package pe.edu.upc.lib
 
-import java.util.*
-
 data class AppointmentResponse(
         val appointment: Appointment,
         val pet: Pet,

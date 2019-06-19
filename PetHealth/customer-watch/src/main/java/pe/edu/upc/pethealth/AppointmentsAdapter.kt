@@ -18,7 +18,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class AppointmentsAdapter(var appts: ArrayList<AppointmentResponse>,
-                          val context: Context
+                          private val context: Context
 ) : RecyclerView.Adapter<AppointmentsAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
