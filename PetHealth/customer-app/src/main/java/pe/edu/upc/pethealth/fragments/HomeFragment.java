@@ -2,13 +2,14 @@ package pe.edu.upc.pethealth.fragments;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -56,7 +57,7 @@ public class HomeFragment extends Fragment {
         myTipRecyclerView = (RecyclerView) view.findViewById(R.id.myTipRecyclerView);
         myTips = new ArrayList<>();
         myTipAdapters = new MyTipAdapters(myTips);
-        myTipLayoutManager = new LinearLayoutManager(view.getContext(),LinearLayoutManager.VERTICAL,false);
+        myTipLayoutManager = new LinearLayoutManager(view.getContext(),RecyclerView.VERTICAL,false);
         myTipRecyclerView.setAdapter(myTipAdapters);
         myTipRecyclerView.setLayoutManager(myTipLayoutManager);
         User user = SharedPreferencesManager.getInstance(this.getContext()).getUser();

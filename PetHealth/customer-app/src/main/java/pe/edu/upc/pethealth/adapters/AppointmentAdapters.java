@@ -1,26 +1,19 @@
 package pe.edu.upc.pethealth.adapters;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import java.util.List;
 
 import pe.edu.upc.pethealth.R;
-import pe.edu.upc.pethealth.activities.AddAppointmentActivity;
-import pe.edu.upc.pethealth.activities.AddPetActivity;
-import pe.edu.upc.pethealth.fragments.ChatsFragment;
-import pe.edu.upc.pethealth.models.Appointment;
 
 /**
  * Created by Usuario on 17/11/2017.
@@ -50,13 +43,7 @@ public class AppointmentAdapters extends RecyclerView.Adapter<AppointmentAdapter
         holder.dateTextView.setText(fullDate.substring(0, Math.min(fullDate.length(), 10)));
         holder.descriptionTextView.setText(jsonCardInfo.get("appointment").getAsJsonObject().get("desc").getAsString());
         holder.startTimeTextView.setText(fullStartTime.substring(11, Math.min(fullDate.length(), 16)));
-        /*holder.veterinarianButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                fragment.getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content,new ChatsFragment()).commit();
-            }
-        });*/
+
     }
 
     @Override

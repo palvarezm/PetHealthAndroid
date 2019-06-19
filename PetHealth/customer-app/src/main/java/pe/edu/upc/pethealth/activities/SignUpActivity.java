@@ -1,42 +1,29 @@
 package pe.edu.upc.pethealth.activities;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Date;
 import pe.edu.upc.pethealth.R;
-import pe.edu.upc.pethealth.models.DocumentType;
 import pe.edu.upc.pethealth.network.PetHealthApiService;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -56,23 +43,14 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_up);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        myToolbar.setNavigationIcon(R.drawable.ic_chevron_left_black_24dp);
-        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), StartActivity.class);
-                view.getContext().startActivity(intent);
-            }
-        });
-        setSupportActionBar(myToolbar);
-        usernameEditText =(EditText) findViewById(R.id.usernameEditText);
+
+        usernameEditText =(EditText) findViewById(R.id.usernameTextInputEditText);
         passwordEditText = (TextInputEditText) findViewById(R.id.passwordTextInputEditText);
-        emailEditText =(EditText) findViewById(R.id.emailEditText);
-        nameEditText =(EditText) findViewById(R.id.nameEditText);
-        lastNameEditText =(EditText) findViewById(R.id.lastNameEditText);
-        dniEditText =(EditText) findViewById(R.id.dniEditText);
-        phoneEditText =(EditText) findViewById(R.id.phoneEditText);
+        emailEditText =(EditText) findViewById(R.id.emailTextInputEditText);
+        nameEditText =(EditText) findViewById(R.id.nameTextInputEditText);
+        lastNameEditText =(EditText) findViewById(R.id.lastNameTextInputEditText);
+        dniEditText =(EditText) findViewById(R.id.docNumberTextInputEditText);
+        phoneEditText =(EditText) findViewById(R.id.phoneTextInputEditText);
         doneButton = (Button) findViewById(R.id.doneButton);
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override

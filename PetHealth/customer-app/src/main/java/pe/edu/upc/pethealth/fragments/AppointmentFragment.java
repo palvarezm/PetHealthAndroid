@@ -4,15 +4,15 @@ package pe.edu.upc.pethealth.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.wearable.DataClient;
 import com.google.android.gms.wearable.DataMap;
@@ -26,7 +26,6 @@ import com.google.gson.JsonObject;
 import java.util.ArrayList;
 
 import pe.edu.upc.pethealth.R;
-import pe.edu.upc.pethealth.activities.AddAppointmentActivity;
 import pe.edu.upc.pethealth.activities.MainActivity;
 import pe.edu.upc.pethealth.adapters.AppointmentAdapters;
 import pe.edu.upc.pethealth.network.LoggerCallback;
@@ -105,30 +104,5 @@ public class AppointmentFragment extends Fragment {
                 Log.d("FAILURE", t.toString());
             }
         });
-
-        /*AndroidNetworking.get(PetHealthApiService.APPOINTMENT_URL)
-                .addPathParameter("userId", Integer.toString(sharedPreferencesManager.getUser().getId()))
-                .addHeaders("access_token", sharedPreferencesManager.getAccessToken())
-                .setPriority(Priority.LOW)
-                .setTag(R.string.app_name)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            appointments = Appointment.from(response.getJSONArray("data"));
-                            appointmentAdapters.setAppointments(appointments);
-                            appointmentAdapters.notifyDataSetChanged();
-                        } catch (JSONException e){
-                            e.printStackTrace();
-                        }
-                    }
-
-                    @Override
-                    public void onError(ANError anError) {
-                        System.out.println(anError.toString());
-                    }
-                });*/
     }
-
 }
