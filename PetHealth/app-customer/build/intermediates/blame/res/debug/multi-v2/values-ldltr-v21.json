@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\DocumentosD\\UPC\\2019-1\\Implementacion_de_Dispositivos_Android_y_HTML\\PetHealth\\PetHealthAndroid\\PetHealth\\app-customer\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ldltr-v21\\values-ldltr-v21.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Intel\\.gradle\\caches\\transforms-2\\files-2.1\\a3c781c02884a3ef5e4769ef87c822e5\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "112",
+                        "endOffsets": "163"
+                    }
+                }
+            ]
+        }
+    ]
+}

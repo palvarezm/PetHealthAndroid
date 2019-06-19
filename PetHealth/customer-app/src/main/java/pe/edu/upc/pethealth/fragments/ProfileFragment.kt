@@ -16,7 +16,6 @@ import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.github.salomonbrys.kotson.fromJson
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import org.json.JSONException
