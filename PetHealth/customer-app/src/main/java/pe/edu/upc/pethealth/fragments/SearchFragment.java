@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +24,8 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -32,6 +35,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -65,6 +70,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
     private Double currentLocationLat = -12.0874509;
     private Double currentLocationLong = -77.0499422;
 
+    private LatLng currentLatLng;
+    private FusedLocationProviderClient mFusedLocationProviderClient;
     private Boolean mLocationPermissionsGranted = false;
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
@@ -133,6 +140,19 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
 
         if (permissionCourseLoc && permissionFineLoc){
             mLocationPermissionsGranted = true;
+            mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
+            final Task location = mFusedLocationProviderClient.getLastLocation();
+            location.addOnCompleteListener(new OnCompleteListener() {
+                @Override
+                public void onComplete(@NonNull Task task) {
+                    if (task.isSuccessful()){
+                        Log.d("TESTING", "onComplete: found location!");
+                        Location currentLocation = (Location) task.getResult();
+                        currentLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f));
+                    }
+                }
+            });
         }
         else{
             ActivityCompat.requestPermissions(this.getActivity(), PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE);
@@ -142,15 +162,19 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng currentLatLng = new LatLng(currentLocationLat, currentLocationLong);
+        currentLatLng = new LatLng(currentLocationLat, currentLocationLong);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f));
+        if (ActivityCompat.checkSelfPermission(getContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            mMap.setMyLocationEnabled(true);
+            mMap.getUiSettings().setMyLocationButtonEnabled(true);
+        }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch(requestCode){
             case LOCATION_PERMISSION_REQUEST_CODE:{
-                Log.d("TEST", "in");
                 if(grantResults.length > 0){
                     for(int i = 0; i < grantResults.length; i++){
                         if(grantResults[i] != PackageManager.PERMISSION_GRANTED){
