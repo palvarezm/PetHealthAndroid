@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,13 +17,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -32,12 +29,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,9 +59,13 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
 
     private List<pe.edu.upc.lib.Veterinary> veterinaries;
     private SharedPreferencesManager sharedPreferencesManager;
+    private LatLng currentLatLng;
     private Double currentLocationLat = -12.0874509;
     private Double currentLocationLong = -77.0499422;
+    private static final float DEFAULT_ZOOM = 12f;
+    private boolean completed = false;
 
+    private FusedLocationProviderClient mFusedLocationProviderClient;
     private Boolean mLocationPermissionsGranted = false;
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
@@ -75,11 +76,26 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        relocateWithPermissions();
+    }
+
+    private void relocateWithPermissions() {
+        if ((ContextCompat.checkSelfPermission(this.getContext(), FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) &&
+                (ContextCompat.checkSelfPermission(this.getContext(), COURSE_LOCATION) == PackageManager.PERMISSION_GRANTED)){
+            mLocationPermissionsGranted = true;
+            getDeviceLocation();
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ((MainActivity)getActivity()).setFragmentToolbar("Search",true,getFragmentManager());
+        ((MainActivity)getActivity()).setFragmentToolbar(getString(R.string.toolbar_title_search_veterinaries),true,getFragmentManager());
         View view = inflater.inflate(R.layout.fragment_search, container, false);
+        currentLatLng = new LatLng(currentLocationLat, currentLocationLong);
         getLocationPermission();
 
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this.getContext());
@@ -128,44 +144,52 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION
         };
-        Boolean permissionFineLoc = ContextCompat.checkSelfPermission(this.getContext(), FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
-        Boolean permissionCourseLoc = ContextCompat.checkSelfPermission(this.getContext(), COURSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
 
-        if (permissionCourseLoc && permissionFineLoc){
+        if ((ContextCompat.checkSelfPermission(this.getContext(), FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) &&
+                (ContextCompat.checkSelfPermission(this.getContext(), COURSE_LOCATION) == PackageManager.PERMISSION_GRANTED)){
             mLocationPermissionsGranted = true;
+            getDeviceLocation();
         }
         else{
             ActivityCompat.requestPermissions(this.getActivity(), PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE);
         }
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        LatLng currentLatLng = new LatLng(currentLocationLat, currentLocationLong);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f));
+    private void getDeviceLocation() {
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
+        try {
+            if (mLocationPermissionsGranted) {
+                final Task location = mFusedLocationProviderClient.getLastLocation();
+                location.addOnCompleteListener(new OnCompleteListener() {
+                    @Override
+                    public void onComplete(@NonNull Task task) {
+                        if (task.isSuccessful()) {
+                            Location currentLocation = (Location) task.getResult();
+                            currentLocationLat = currentLocation.getLatitude();
+                            currentLocationLong = currentLocation.getLongitude();
+                            moveCamera();
+                            mMap.getUiSettings().setMyLocationButtonEnabled(true);
+                            mMap.setMyLocationEnabled(true);
+                        }
+                    }
+                });
+            }
+        }
+        catch (SecurityException e){
+            Log.e("Location Permission", "getDevicesLocation: SecurityException: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void moveCamera() {
+        currentLatLng = new LatLng(currentLocationLat, currentLocationLong);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, DEFAULT_ZOOM));
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch(requestCode){
-            case LOCATION_PERMISSION_REQUEST_CODE:{
-                Log.d("TEST", "in");
-                if(grantResults.length > 0){
-                    for(int i = 0; i < grantResults.length; i++){
-                        if(grantResults[i] != PackageManager.PERMISSION_GRANTED){
-                            mLocationPermissionsGranted = false;
-                            Log.d("Permissions Result", "onRequestPermissionsResult: permission failed");
-                            return;
-                        }
-                    }
-                    Log.d("Permissions Result", "onRequestPermissionsResult: permission granted");
-                    mLocationPermissionsGranted = true;
-                    //initialize our map
-                    initMap();
-                }
-            }
-        }
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        moveCamera();
     }
 
     private void setVeterinariesMarkers(List<Veterinary> veterinaries) {
