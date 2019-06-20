@@ -106,11 +106,16 @@ class ProfileFragment : Fragment() {
     }
 
     private fun updateProfile() {
-        Picasso.get().load(sharedPreferencesManager!!.user!!.photo).error(R.mipmap.ic_launcher)
-                .transform(RoundedCornersTransformation(10, 0))
-                .resize(150, 170)
-                .centerCrop()
-                .into(profileImageView)
+        if (sharedPreferencesManager!!.user!!.photo.isNotEmpty()){
+            Picasso.get().load(sharedPreferencesManager!!.user!!.photo).error(R.mipmap.ic_launcher)
+                    .transform(RoundedCornersTransformation(10, 0))
+                    .resize(150, 170)
+                    .centerCrop()
+                    .into(profileImageView)
+        }
+        else{
+            profileImageView.setImageResource(R.mipmap.ic_launcher_round)
+        }
         nameTextView.text = person!!.name + " " + person!!.lastName
         documentNumberTextView.text = person!!.dni
         phoneTextView.text = person!!.phone
