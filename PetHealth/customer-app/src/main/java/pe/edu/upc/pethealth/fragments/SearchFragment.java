@@ -84,6 +84,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
 
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this.getContext());
         veterinaries = new ArrayList<>();
+        initMap();
         return view;
     }
 
@@ -140,6 +141,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
         LatLng currentLatLng = new LatLng(currentLocationLat, currentLocationLong);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f));
     }
