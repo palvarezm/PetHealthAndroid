@@ -8,5 +8,6 @@ data class Veterinary(
         val location: String,
         val opening_hours: String,
         val longitude: Double,
-        val latitude: Double
+        val latitude: Double,
+        var distance: Double
 )

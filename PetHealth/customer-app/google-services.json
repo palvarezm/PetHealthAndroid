@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "357330776201",
+    "firebase_url": "https://tikray.firebaseio.com",
+    "project_id": "tikray",
+    "storage_bucket": "tikray.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357330776201:android:cb204fe59b3ea54d",
+        "android_client_info": {
+          "package_name": "pe.edu.upc.pethealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "357330776201-juta24959uivokcu4cjt1urnltokuqh8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqSMe-H7GhXqYN6X0oMLiaZ62LvyJ7lnM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "357330776201-juta24959uivokcu4cjt1urnltokuqh8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
