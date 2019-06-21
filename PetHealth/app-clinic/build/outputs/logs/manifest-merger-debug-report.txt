@@ -1,0 +1,305 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:2:1-46:12
+INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:2:1-46:12
+INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:2:1-46:12
+INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:2:1-46:12
+MERGED from [:resources] /Users/developer/Documents/development/PetHealthAndroid/PetHealth/resources/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:design:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/bd0e73da190c20b8768ef001b0a7a5d1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/32f4ee6b8cf40c4778e38eac0d7b5cfa/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/developer/.gradle/caches/transforms-2/files-2.1/0f7a44c8f49d5ed103d51a44daee10b4/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/e80910639486fe62fc3ec989bd368a5c/AndroidManifest.xml:16:1-25:12
+MERGED from [com.google.android.gms:play-services-base:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/eaefbb4e6121cabf80b3d4f604eb30fc/AndroidManifest.xml:16:1-21:12
+MERGED from [com.google.android.gms:play-services-tasks:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/f4463d83040379f9bfeb4ef5de1d9e76/AndroidManifest.xml:2:1-5:12
+MERGED from [com.google.android.gms:play-services-basement:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/12e3d6d417426822f9830f2c3d4177dd/AndroidManifest.xml:16:1-23:12
+MERGED from [com.android.support:support-v4:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/118355e95af3fa3e81b0e63d4ef1ceab/AndroidManifest.xml:17:1-22:12
+MERGED from [com.wang.avi:library:2.1.3] /Users/developer/.gradle/caches/transforms-2/files-2.1/5d1ceb999077aaf0a1848e5a0e430c98/AndroidManifest.xml:2:1-11:12
+MERGED from [com.amitshekhar.android:android-networking:1.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/da27b274c98a7818655d58c8d7ab1143/AndroidManifest.xml:18:1-27:12
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/developer/.gradle/caches/transforms-2/files-2.1/ee17dc1e5031050764a75f3ceb4d6b4b/AndroidManifest.xml:2:1-14:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/79b618945c29b76a5d7df596954a08ae/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/218cef63d25868314e5a069511897fb5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/4a5f292647874e22c6204a0c5b0dd12a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/a71dc5e0e82d87e9de80957a76f6144e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/8f7fd75595037f958cd2739d10fdaed8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/88a15efb096056bd1181d3ece81740dd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/1826f5bf92b288722efd98ce4e9bfd0f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/127d08e8b046eefed60890518897e4e3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/807bd45934014c72ad9bc1d0148bbde5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/1780629acccdb1039382c6d7ea2d7c34/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/6711925cc70911b4c2ad657d014c6a75/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/5a461e30902480d588e358acfe019c04/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/2e65dedfb231ff6128939e04fb6baa4f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/e4df7d77ac58b4692200260121af74cf/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/9270d7c77d0641086c39e2d251f3ec77/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/f7711a7843f4e2112b4c1d43699f4c78/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/3989d70c01ca11267f2c3167188d7cc7/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/aad86c44403626923aaa6db1881f31b6/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/6ad6ab21f49481debbbb738e2870f82c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/bba49f865cd211bd052e3fa0204253b0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:exifinterface:27.1.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/4e1a6cb21f5b7a1738ec5a3c348e439f/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/developer/.gradle/caches/transforms-2/files-2.1/73348d5b27f7ad9eb4b85a120f9e05f9/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/59e92b4eb307516a638768b948ad63bd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/77000afd89ab84217df62ce7ad40dd6e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/26ea816c0643602d5d1b7afc139ab83c/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/developer/.gradle/caches/transforms-2/files-2.1/4362bdfb70194587c07228e2995fd5be/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/38d119914788e12e0bb210f148595c9c/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/developer/.gradle/caches/transforms-2/files-2.1/6831171f2510b5c8b2896476ec4badfb/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/developer/.gradle/caches/transforms-2/files-2.1/ddd6f68dbc029a8045760bec8ae2a9d8/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/developer/.gradle/caches/transforms-2/files-2.1/6b1e5f0c69e2bdb11b77e3d7064cb29b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-maps-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/246203f507178f8c4adf2837d24062e8/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-base-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/2e5e636e2018463c5f3db0cb8840b57a/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/d0e45e1a20c0db1490056cb5ebf4f56f/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-tasks-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/acc3da624461e4874ac3b8c078cfd432/AndroidManifest.xml:2:1-6:12
+INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:2:1-46:12
+INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:2:1-46:12
+INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:2:1-46:12
+	package
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:4:5-32
+		INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+		INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:2:1-46:12
+		INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:2:1-46:12
+		INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:5:5-68
+	android:name
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:5:22-65
+uses-permission#android.permission.INTERNET
+ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:6:5-67
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/e80910639486fe62fc3ec989bd368a5c/AndroidManifest.xml:20:5-66
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/e80910639486fe62fc3ec989bd368a5c/AndroidManifest.xml:20:5-66
+	android:name
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:6:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/e80910639486fe62fc3ec989bd368a5c/AndroidManifest.xml:19:5-78
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/e80910639486fe62fc3ec989bd368a5c/AndroidManifest.xml:19:5-78
+	android:name
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:7:22-76
+uses-permission#android.permission.CAMERA
+ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:8:5-65
+	android:name
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:8:22-62
+uses-feature#android.hardware.camera
+ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:10:5-60
+	android:name
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:10:19-57
+uses-feature#android.hardware.camera.autofocus
+ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:11:5-70
+	android:name
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:11:19-67
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:13:5-81
+	android:name
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:13:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:19:5-79
+	android:name
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:19:22-76
+application
+ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:20:5-44:19
+MERGED from [com.android.support:design:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/bd0e73da190c20b8768ef001b0a7a5d1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/bd0e73da190c20b8768ef001b0a7a5d1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/developer/.gradle/caches/transforms-2/files-2.1/0f7a44c8f49d5ed103d51a44daee10b4/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/developer/.gradle/caches/transforms-2/files-2.1/0f7a44c8f49d5ed103d51a44daee10b4/AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/e80910639486fe62fc3ec989bd368a5c/AndroidManifest.xml:24:5-19
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/e80910639486fe62fc3ec989bd368a5c/AndroidManifest.xml:24:5-19
+MERGED from [com.google.android.gms:play-services-base:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/eaefbb4e6121cabf80b3d4f604eb30fc/AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.android.gms:play-services-base:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/eaefbb4e6121cabf80b3d4f604eb30fc/AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.android.gms:play-services-tasks:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/f4463d83040379f9bfeb4ef5de1d9e76/AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-tasks:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/f4463d83040379f9bfeb4ef5de1d9e76/AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-basement:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/12e3d6d417426822f9830f2c3d4177dd/AndroidManifest.xml:19:5-21:19
+MERGED from [com.google.android.gms:play-services-basement:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/12e3d6d417426822f9830f2c3d4177dd/AndroidManifest.xml:19:5-21:19
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/developer/.gradle/caches/transforms-2/files-2.1/ee17dc1e5031050764a75f3ceb4d6b4b/AndroidManifest.xml:7:5-12:19
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/developer/.gradle/caches/transforms-2/files-2.1/ee17dc1e5031050764a75f3ceb4d6b4b/AndroidManifest.xml:7:5-12:19
+MERGED from [com.android.support:support-compat:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/3989d70c01ca11267f2c3167188d7cc7/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/3989d70c01ca11267f2c3167188d7cc7/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/aad86c44403626923aaa6db1881f31b6/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/aad86c44403626923aaa6db1881f31b6/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-maps-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/246203f507178f8c4adf2837d24062e8/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-maps-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/246203f507178f8c4adf2837d24062e8/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-base-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/2e5e636e2018463c5f3db0cb8840b57a/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-base-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/2e5e636e2018463c5f3db0cb8840b57a/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/d0e45e1a20c0db1490056cb5ebf4f56f/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/d0e45e1a20c0db1490056cb5ebf4f56f/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/acc3da624461e4874ac3b8c078cfd432/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/acc3da624461e4874ac3b8c078cfd432/AndroidManifest.xml:5:5-20
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/3989d70c01ca11267f2c3167188d7cc7/AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:25:9-35
+	android:label
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:23:9-41
+	tools:ignore
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:27:9-60
+	android:roundIcon
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:24:9-54
+	android:icon
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:22:9-43
+	android:allowBackup
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:21:9-35
+	android:theme
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:26:9-40
+activity#pe.edu.upc.clinic.activities.SignInActivity
+ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:28:9-34:20
+	android:name
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:28:19-60
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:29:13-33:29
+action#android.intent.action.MAIN
+ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:30:17-69
+	android:name
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:30:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:32:17-77
+	android:name
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:32:27-74
+activity#pe.edu.upc.clinic.activities.MainActivity
+ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:37:9-43:20
+	tools:ignore
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:37:59-93
+	android:name
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml:37:19-58
+uses-sdk
+INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+MERGED from [:resources] /Users/developer/Documents/development/PetHealthAndroid/PetHealth/resources/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:resources] /Users/developer/Documents/development/PetHealthAndroid/PetHealth/resources/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/bd0e73da190c20b8768ef001b0a7a5d1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/bd0e73da190c20b8768ef001b0a7a5d1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/32f4ee6b8cf40c4778e38eac0d7b5cfa/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/32f4ee6b8cf40c4778e38eac0d7b5cfa/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/developer/.gradle/caches/transforms-2/files-2.1/0f7a44c8f49d5ed103d51a44daee10b4/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/developer/.gradle/caches/transforms-2/files-2.1/0f7a44c8f49d5ed103d51a44daee10b4/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/e80910639486fe62fc3ec989bd368a5c/AndroidManifest.xml:23:5-43
+MERGED from [com.google.android.gms:play-services-maps:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/e80910639486fe62fc3ec989bd368a5c/AndroidManifest.xml:23:5-43
+MERGED from [com.google.android.gms:play-services-base:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/eaefbb4e6121cabf80b3d4f604eb30fc/AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-base:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/eaefbb4e6121cabf80b3d4f604eb30fc/AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-tasks:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/f4463d83040379f9bfeb4ef5de1d9e76/AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-tasks:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/f4463d83040379f9bfeb4ef5de1d9e76/AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-basement:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/12e3d6d417426822f9830f2c3d4177dd/AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-basement:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/12e3d6d417426822f9830f2c3d4177dd/AndroidManifest.xml:17:5-43
+MERGED from [com.android.support:support-v4:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/118355e95af3fa3e81b0e63d4ef1ceab/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/118355e95af3fa3e81b0e63d4ef1ceab/AndroidManifest.xml:20:5-44
+MERGED from [com.wang.avi:library:2.1.3] /Users/developer/.gradle/caches/transforms-2/files-2.1/5d1ceb999077aaf0a1848e5a0e430c98/AndroidManifest.xml:7:5-9:41
+MERGED from [com.wang.avi:library:2.1.3] /Users/developer/.gradle/caches/transforms-2/files-2.1/5d1ceb999077aaf0a1848e5a0e430c98/AndroidManifest.xml:7:5-9:41
+MERGED from [com.amitshekhar.android:android-networking:1.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/da27b274c98a7818655d58c8d7ab1143/AndroidManifest.xml:23:5-25:41
+MERGED from [com.amitshekhar.android:android-networking:1.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/da27b274c98a7818655d58c8d7ab1143/AndroidManifest.xml:23:5-25:41
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/developer/.gradle/caches/transforms-2/files-2.1/ee17dc1e5031050764a75f3ceb4d6b4b/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/developer/.gradle/caches/transforms-2/files-2.1/ee17dc1e5031050764a75f3ceb4d6b4b/AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/79b618945c29b76a5d7df596954a08ae/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/79b618945c29b76a5d7df596954a08ae/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/218cef63d25868314e5a069511897fb5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/218cef63d25868314e5a069511897fb5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/4a5f292647874e22c6204a0c5b0dd12a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/4a5f292647874e22c6204a0c5b0dd12a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/a71dc5e0e82d87e9de80957a76f6144e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/a71dc5e0e82d87e9de80957a76f6144e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/8f7fd75595037f958cd2739d10fdaed8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/8f7fd75595037f958cd2739d10fdaed8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/88a15efb096056bd1181d3ece81740dd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/88a15efb096056bd1181d3ece81740dd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/1826f5bf92b288722efd98ce4e9bfd0f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/1826f5bf92b288722efd98ce4e9bfd0f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/127d08e8b046eefed60890518897e4e3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/127d08e8b046eefed60890518897e4e3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/807bd45934014c72ad9bc1d0148bbde5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/807bd45934014c72ad9bc1d0148bbde5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/1780629acccdb1039382c6d7ea2d7c34/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/1780629acccdb1039382c6d7ea2d7c34/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/6711925cc70911b4c2ad657d014c6a75/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/6711925cc70911b4c2ad657d014c6a75/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/5a461e30902480d588e358acfe019c04/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/5a461e30902480d588e358acfe019c04/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/2e65dedfb231ff6128939e04fb6baa4f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/2e65dedfb231ff6128939e04fb6baa4f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/e4df7d77ac58b4692200260121af74cf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/e4df7d77ac58b4692200260121af74cf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/9270d7c77d0641086c39e2d251f3ec77/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/9270d7c77d0641086c39e2d251f3ec77/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/f7711a7843f4e2112b4c1d43699f4c78/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/f7711a7843f4e2112b4c1d43699f4c78/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/3989d70c01ca11267f2c3167188d7cc7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/3989d70c01ca11267f2c3167188d7cc7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/aad86c44403626923aaa6db1881f31b6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/aad86c44403626923aaa6db1881f31b6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/6ad6ab21f49481debbbb738e2870f82c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/6ad6ab21f49481debbbb738e2870f82c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/bba49f865cd211bd052e3fa0204253b0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/bba49f865cd211bd052e3fa0204253b0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:27.1.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/4e1a6cb21f5b7a1738ec5a3c348e439f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:27.1.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/4e1a6cb21f5b7a1738ec5a3c348e439f/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/developer/.gradle/caches/transforms-2/files-2.1/73348d5b27f7ad9eb4b85a120f9e05f9/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/developer/.gradle/caches/transforms-2/files-2.1/73348d5b27f7ad9eb4b85a120f9e05f9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/59e92b4eb307516a638768b948ad63bd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/59e92b4eb307516a638768b948ad63bd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/77000afd89ab84217df62ce7ad40dd6e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/77000afd89ab84217df62ce7ad40dd6e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/26ea816c0643602d5d1b7afc139ab83c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/26ea816c0643602d5d1b7afc139ab83c/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/developer/.gradle/caches/transforms-2/files-2.1/4362bdfb70194587c07228e2995fd5be/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/developer/.gradle/caches/transforms-2/files-2.1/4362bdfb70194587c07228e2995fd5be/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/38d119914788e12e0bb210f148595c9c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/developer/.gradle/caches/transforms-2/files-2.1/38d119914788e12e0bb210f148595c9c/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/developer/.gradle/caches/transforms-2/files-2.1/6831171f2510b5c8b2896476ec4badfb/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/developer/.gradle/caches/transforms-2/files-2.1/6831171f2510b5c8b2896476ec4badfb/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/developer/.gradle/caches/transforms-2/files-2.1/ddd6f68dbc029a8045760bec8ae2a9d8/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/developer/.gradle/caches/transforms-2/files-2.1/ddd6f68dbc029a8045760bec8ae2a9d8/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/developer/.gradle/caches/transforms-2/files-2.1/6b1e5f0c69e2bdb11b77e3d7064cb29b/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/developer/.gradle/caches/transforms-2/files-2.1/6b1e5f0c69e2bdb11b77e3d7064cb29b/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/246203f507178f8c4adf2837d24062e8/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-maps-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/246203f507178f8c4adf2837d24062e8/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-base-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/2e5e636e2018463c5f3db0cb8840b57a/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-base-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/2e5e636e2018463c5f3db0cb8840b57a/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/d0e45e1a20c0db1490056cb5ebf4f56f/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/d0e45e1a20c0db1490056cb5ebf4f56f/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/acc3da624461e4874ac3b8c078cfd432/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks-license:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/acc3da624461e4874ac3b8c078cfd432/AndroidManifest.xml:4:5-43
+INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+		INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+		ADDED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+		INJECTED from /Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/src/main/AndroidManifest.xml
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/e80910639486fe62fc3ec989bd368a5c/AndroidManifest.xml:21:5-77
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/e80910639486fe62fc3ec989bd368a5c/AndroidManifest.xml:21:19-51
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/e80910639486fe62fc3ec989bd368a5c/AndroidManifest.xml:21:52-75
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/eaefbb4e6121cabf80b3d4f604eb30fc/AndroidManifest.xml:19:9-172
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/eaefbb4e6121cabf80b3d4f604eb30fc/AndroidManifest.xml:19:146-170
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/eaefbb4e6121cabf80b3d4f604eb30fc/AndroidManifest.xml:19:86-145
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/eaefbb4e6121cabf80b3d4f604eb30fc/AndroidManifest.xml:19:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/12e3d6d417426822f9830f2c3d4177dd/AndroidManifest.xml:20:9-121
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/12e3d6d417426822f9830f2c3d4177dd/AndroidManifest.xml:20:66-119
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:11.4.2] /Users/developer/.gradle/caches/transforms-2/files-2.1/12e3d6d417426822f9830f2c3d4177dd/AndroidManifest.xml:20:20-65
+provider#com.squareup.picasso.PicassoProvider
+ADDED from [com.squareup.picasso:picasso:2.71828] /Users/developer/.gradle/caches/transforms-2/files-2.1/ee17dc1e5031050764a75f3ceb4d6b4b/AndroidManifest.xml:8:9-11:40
+	android:authorities
+		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/developer/.gradle/caches/transforms-2/files-2.1/ee17dc1e5031050764a75f3ceb4d6b4b/AndroidManifest.xml:10:13-72
+	android:exported
+		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/developer/.gradle/caches/transforms-2/files-2.1/ee17dc1e5031050764a75f3ceb4d6b4b/AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/developer/.gradle/caches/transforms-2/files-2.1/ee17dc1e5031050764a75f3ceb4d6b4b/AndroidManifest.xml:9:13-64
