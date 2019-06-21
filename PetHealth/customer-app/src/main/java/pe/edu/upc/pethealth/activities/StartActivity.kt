@@ -1,7 +1,8 @@
-package pe.edu.upc.phclinic.activities
+package pe.edu.upc.pethealth.activities
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Paint
 import android.os.Bundle
@@ -12,59 +13,67 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import com.google.android.material.button.MaterialButton
+
 import com.google.android.material.textfield.TextInputEditText
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
+
 import org.json.JSONException
 import org.json.JSONObject
-import pe.edu.upc.phclinic.R
-import pe.edu.upc.phclinic.network.Connection
-import pe.edu.upc.phclinic.network.LoggerCallback
-import pe.edu.upc.phclinic.network.RestClient
-import pe.edu.upc.phclinic.network.RestView
-import pe.edu.upc.phclinic.persistance.SharedPreferencesManager
-import pe.edu.upc.lib.User
-import pe.edu.upc.lib.Veterinary
+
+import pe.edu.upc.pethealth.R
+import pe.edu.upc.pethealth.models.Person
+import pe.edu.upc.pethealth.models.User
+import pe.edu.upc.pethealth.network.Connection
+import pe.edu.upc.pethealth.network.LoggerCallback
+import pe.edu.upc.pethealth.network.RestClient
+import pe.edu.upc.pethealth.network.RestView
+import pe.edu.upc.pethealth.persistence.SharedPreferencesManager
 import retrofit2.Call
 import retrofit2.Response
 
-class SignInActivity : AppCompatActivity() {
-
+class StartActivity : AppCompatActivity() {
 
     private lateinit var logoImageView: ImageView
     private lateinit var userEditText: TextInputEditText
     private lateinit var passwordTextInputEditText: TextInputEditText
-    private lateinit var signInButton: Button
-    private lateinit var veterinary: Veterinary
+    private lateinit var signInButton: MaterialButton
+    private lateinit var user: User
+    private lateinit var person: Person
     private lateinit var signUptextView: TextView
     private lateinit var sharedPreferencesManager: SharedPreferencesManager
-    private lateinit var user: User
     internal val context: Context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPreferencesManager = SharedPreferencesManager.getInstance(this.context)
+        sharedPreferencesManager = SharedPreferencesManager.getInstance(this)
         if (sharedPreferencesManager!!.isUserLogged) {
-            sendToApptsView()
+            sendToTipsView()
         }
-        setContentView(R.layout.activity_sign_in)
-
+        setContentView(R.layout.activity_start)
+        val toolbar = findViewById<View>(R.id.my_toolbar) as Toolbar
         logoImageView = findViewById<View>(R.id.logoImageView) as ImageView
         userEditText = findViewById<View>(R.id.usernameTextInputEditText) as TextInputEditText
         passwordTextInputEditText = findViewById<View>(R.id.passwordTextInputEditText) as TextInputEditText
-        signInButton = findViewById<View>(R.id.signInButton) as Button
-        signInButton!!.setOnClickListener { attemptLogin() }
+        signInButton = findViewById<View>(R.id.signInButton) as MaterialButton
         signUptextView = findViewById<View>(R.id.signUpTextView) as TextView
+
+        setSupportActionBar(toolbar)
+        signInButton!!.setOnClickListener { attemptLogin() }
         signUptextView!!.paintFlags = signUptextView!!.paintFlags or Paint.UNDERLINE_TEXT_FLAG
         signUptextView!!.setOnClickListener { view ->
             val context = view.context
-            //val intent = Intent(context, SignUpActivity::class.java)
+            val intent = Intent(context, SignUpActivity::class.java)
             context.startActivity(intent)
         }
     }
 
-     private fun attemptLogin() {
+    private fun attemptLogin() {
 
         // Reset errors.
         userEditText!!.error = null
@@ -105,7 +114,7 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-     private fun performLogin(email: String, password: String, context: Context) {
+    private fun performLogin(email: String, password: String, context: Context) {
         val bodyToSend = JsonObject()
         bodyToSend.addProperty("username", email)
         bodyToSend.addProperty("password", password)
@@ -116,28 +125,18 @@ class SignInActivity : AppCompatActivity() {
                 super.onResponse(call, response)
                 val answer = response.body()
 
-                if (answer != null && "{}" != answer.data?.getAsJsonObject("user").toString()) {
+                if (answer != null && "{}" != answer.data.getAsJsonObject("user").toString()) {
                     try {
-                        val userJSONObject = JSONObject(answer.data?.get("user").toString())
+                        val userJSONObject = JSONObject(answer.data.get("user").toString())
                         val gson = GsonBuilder().create()
-                        user = gson.fromJson<User>(userJSONObject.toString(), User::class.java)
+                        user = gson.fromJson(userJSONObject.toString(), User::class.java)
 
-                        val veterinaryJSONObject = JSONObject(answer.data?.get("person").toString())
-                        veterinary = gson.fromJson<Veterinary>(veterinaryJSONObject.toString(), Veterinary::class.java)
+                        val personJSONObject = JSONObject(answer.data.get("person").toString())
+                        person = Person.from(personJSONObject)
 
-                        sharedPreferencesManager!!.saveUser(
-                                gson.toJson(user),
-                                gson.toJson(veterinary),
-                                answer.data!!.get("access_token").asString
-                        )
-
-                        Log.d("TESTING", "sharedpreferences")
-                        Log.d("user sp", sharedPreferencesManager?.user.toString())
-                        Log.d("veterinary sp", sharedPreferencesManager?.veterinary.toString())
-                        Log.d("accesstoken sp", sharedPreferencesManager?.accessToken.toString())
-
+                        sharedPreferencesManager!!.saveUser(user!!.toString(), person!!.toString(), answer.data.get("access_token").asString)
                         val intent = Intent(context, MainActivity::class.java)
-                        intent.putExtra("user", user!!)
+                        intent.putExtras(user!!.toBundle())
                         context.startActivity(intent)
                         finish()
                     } catch (e: JSONException) {
@@ -148,14 +147,11 @@ class SignInActivity : AppCompatActivity() {
                     Log.d(getString(R.string.app_name), "User and password are incorrect")
                     val builder = AlertDialog.Builder(context)
                     builder.setMessage("User and password are incorrect")
-                    builder.setPositiveButton(
-                            "OK"
-                    ) { dialogInterface, i -> dialogInterface.cancel() }
+                    builder.setPositiveButton("OK") { dialogInterface, i -> dialogInterface.cancel() }
                     val alertDialog = builder.create()
                     alertDialog.show()
                 }
             }
-
 
             override fun onFailure(call: Call<RestView<JsonObject>>, t: Throwable) {
                 super.onFailure(call, t)
@@ -163,13 +159,11 @@ class SignInActivity : AppCompatActivity() {
         })
     }
 
-
-    private fun sendToApptsView() {
+    private fun sendToTipsView() {
         val intent = Intent(context, MainActivity::class.java)
         context.startActivity(intent)
         finish()
     }
-
 
     override fun onBackPressed() {
 

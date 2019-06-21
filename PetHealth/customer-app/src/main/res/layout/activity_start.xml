@@ -24,6 +24,8 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_signin" />
+    <include
+        android:id="@+id/contentInclude"
+        layout="@layout/content_signin" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
