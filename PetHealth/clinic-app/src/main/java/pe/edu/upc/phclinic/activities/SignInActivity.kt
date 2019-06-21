@@ -9,7 +9,6 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -54,10 +53,10 @@ class SignInActivity : AppCompatActivity() {
         userEditText = findViewById<View>(R.id.usernameTextInputEditText) as TextInputEditText
         passwordTextInputEditText = findViewById<View>(R.id.passwordTextInputEditText) as TextInputEditText
         signInButton = findViewById<View>(R.id.signInButton) as Button
-        signInButton!!.setOnClickListener { attemptLogin() }
+        signInButton.setOnClickListener { attemptLogin() }
         signUptextView = findViewById<View>(R.id.signUpTextView) as TextView
-        signUptextView!!.paintFlags = signUptextView!!.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-        signUptextView!!.setOnClickListener { view ->
+        signUptextView.paintFlags = signUptextView!!.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+        signUptextView.setOnClickListener { view ->
             val context = view.context
             //val intent = Intent(context, SignUpActivity::class.java)
             context.startActivity(intent)
@@ -67,26 +66,26 @@ class SignInActivity : AppCompatActivity() {
      private fun attemptLogin() {
 
         // Reset errors.
-        userEditText!!.error = null
-        passwordTextInputEditText!!.error = null
+        userEditText.error = null
+        passwordTextInputEditText.error = null
 
         // Store values at the time of the login attempt.
-        val email = userEditText!!.text.toString()
-        val password = passwordTextInputEditText!!.text.toString()
+        val email = userEditText.text.toString()
+        val password = passwordTextInputEditText.text.toString()
 
         var cancel = false
         var focusView: View? = null
 
         // Check for a valid password.
         if (TextUtils.isEmpty(password)) {
-            userEditText!!.error = getString(R.string.error_field_required)
+            userEditText.error = getString(R.string.error_field_required)
             focusView = userEditText
             cancel = true
         }
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
-            userEditText!!.error = getString(R.string.error_field_required)
+            userEditText.error = getString(R.string.error_field_required)
             focusView = userEditText
             cancel = true
         }

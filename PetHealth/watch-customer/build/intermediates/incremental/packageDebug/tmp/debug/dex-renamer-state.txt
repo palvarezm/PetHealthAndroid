@@ -1,0 +1,13 @@
+#Mon Jun 17 10:44:41 PET 2019
+path.3=classes_1.dex
+path.2=classes_0.dex
+path.1=classes.dex
+path.0=classes.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+base.3=/Users/developer/Documents/development/PetHealthAndroid/PetHealth/watch-customer/build/intermediates/dex/debug/mergeLibDexDebug/out
+base.2=/Users/developer/Documents/development/PetHealthAndroid/PetHealth/watch-customer/build/intermediates/dex/debug/mergeLibDexDebug/out
+base.1=/Users/developer/Documents/development/PetHealthAndroid/PetHealth/watch-customer/build/intermediates/dex/debug/mergeProjectDexDebug/out
+base.0=/Users/developer/Documents/development/PetHealthAndroid/PetHealth/watch-customer/build/intermediates/dex/debug/mergeExtDexDebug/out
