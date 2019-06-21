@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import com.google.gson.JsonArray
@@ -52,6 +53,8 @@ class AppointmentsFragment : Fragment() {
         appointmentLayoutManager = GridLayoutManager(view.context, 1)
         return view
     }
+
+
 
     override fun onResume() {
         super.onResume()

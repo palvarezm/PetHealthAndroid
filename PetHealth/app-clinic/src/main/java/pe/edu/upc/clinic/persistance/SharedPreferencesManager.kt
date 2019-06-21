@@ -7,7 +7,9 @@ import android.util.Log
 
 
 import com.google.gson.Gson
+import com.google.gson.JsonObject
 import com.google.gson.JsonParseException
+import pe.edu.upc.lib.AppointmentResponse
 import pe.edu.upc.lib.User
 import pe.edu.upc.lib.Veterinary
 
@@ -41,6 +43,8 @@ class SharedPreferencesManager(context: Context) {
             return veterinary
         }
 
+    var currentAppt: JsonObject? = null
+
     val isUserLogged: Boolean
         get() = user != null
 
@@ -60,6 +64,7 @@ class SharedPreferencesManager(context: Context) {
         editor.apply()
     }
 
+
     fun closeSession() {
         val editor = mPreferences.edit()
         editor.putString(CURRENT_USER, null)
@@ -74,6 +79,7 @@ class SharedPreferencesManager(context: Context) {
         private val CURRENT_VETERINARY = "current_veterinary"
         private val ACCESS_TOKEN = "access_token"
         private val COMPLETED_REGISTER = "current_register"
+        private val CURRENT_APPOINTMENT = "current_appointment"
 
         private var self: SharedPreferencesManager? = null
 

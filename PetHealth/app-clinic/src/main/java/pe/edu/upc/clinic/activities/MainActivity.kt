@@ -10,11 +10,14 @@ import pe.edu.upc.clinic.fragments.AppointmentsFragment
 import pe.edu.upc.clinic.fragments.ChatFragment
 import pe.edu.upc.clinic.fragments.ProfileFragment
 import pe.edu.upc.clinic.persistance.SharedPreferencesManager
+import pe.edu.upc.lib.Appointment
 import pe.edu.upc.lib.User
+import pe.edu.upc.lib.Veterinary
 
 class MainActivity : AppCompatActivity() {
     private var user: User? = null
     private var sharedPreferencesManager: SharedPreferencesManager? = null
+    private var veterinary: Veterinary? = null
 
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item->
@@ -45,7 +48,8 @@ class MainActivity : AppCompatActivity() {
 
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this.applicationContext)
         user = sharedPreferencesManager!!.user
-
+        veterinary = sharedPreferencesManager!!.veterinary
+        replaceFragment(AppointmentsFragment())
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         /*val host = NavHostFragment.create(R.navigation.nav_graph)
         supportFragmentManager

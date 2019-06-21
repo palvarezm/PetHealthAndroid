@@ -139,6 +139,7 @@ class SignInActivity : AppCompatActivity() {
 
                         val intent = Intent(context, MainActivity::class.java)
                         intent.putExtra("user", user!!)
+                        intent.putExtra("veterinary", veterinary!!)
                         context.startActivity(intent)
                         finish()
                     } catch (e: JSONException) {

@@ -1,5 +1,7 @@
 package pe.edu.upc.clinic.adapters
 
+import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,8 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import com.google.gson.Gson
 import com.google.gson.JsonArray
+import com.google.gson.JsonObject
 import pe.edu.upc.clinic.R
+import pe.edu.upc.clinic.fragments.DetailFragment
+import pe.edu.upc.clinic.persistance.SharedPreferencesManager
 
 class AppointmentAdapters(private val fragment: Fragment) : RecyclerView.Adapter<AppointmentAdapters.ViewHolder>() {
     override fun getItemCount(): Int{
@@ -16,6 +22,9 @@ class AppointmentAdapters(private val fragment: Fragment) : RecyclerView.Adapter
     }
 
     private var cardInfo: JsonArray? = null
+    private var selectedAppointment: JsonObject? = null
+    var sharedPreferences : SharedPreferencesManager? = null
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_appointment, parent, false))
@@ -38,6 +47,7 @@ class AppointmentAdapters(private val fragment: Fragment) : RecyclerView.Adapter
         this.cardInfo = cardInfo
     }
 
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         internal var vetTextView: TextView
         internal var veterinaryTextView: TextView
@@ -53,6 +63,21 @@ class AppointmentAdapters(private val fragment: Fragment) : RecyclerView.Adapter
             startTimeTextView = itemView.findViewById<View>(R.id.startTimeTextView) as TextView
             descriptionTextView = itemView.findViewById<View>(R.id.descriptionTextView) as TextView
             veterinarianButton = itemView.findViewById<View>(R.id.veterinarianButton) as Button
+
+            itemView.setOnClickListener { v: View ->
+                var position: Int = adapterPosition
+                Snackbar.make(v, "Click detected on item $position",
+                        Snackbar.LENGTH_LONG).setAction("Action", null).show()
+                var apptString = Gson().toJson(cardInfo!!.get(position))
+                val newFrag = DetailFragment()
+                val bundle = Bundle()
+                bundle.putString("appointment", apptString)
+                newFrag.arguments = bundle
+                fragment.fragmentManager!!.beginTransaction().addToBackStack(null).replace(R.id.fragment_container, newFrag).commit()
+            }
         }
+
+
+
     }
 }

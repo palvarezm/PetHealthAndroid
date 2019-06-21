@@ -1,4 +1,5 @@
 package pe.edu.upc.lib
+import java.io.Serializable
 
 data class Veterinary(
         val id: Int,
@@ -9,4 +10,4 @@ data class Veterinary(
         val opening_hours: String,
         val longitude: Double,
         val latitude: Double
-)
+) : Serializable
