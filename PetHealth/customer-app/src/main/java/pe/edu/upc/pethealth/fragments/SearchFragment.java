@@ -64,6 +64,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
     private Double currentLocationLong = -77.0499422;
     private static final float DEFAULT_ZOOM = 12f;
     private boolean completed = false;
+    private Call<RestView<JsonArray>> call;
 
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private Boolean mLocationPermissionsGranted = false;
@@ -112,7 +113,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
     }
 
     private void getVeterinaries(){
-        Call<RestView<JsonArray>> call = new RestClient().getWebServices().getCloseVeterinaries(sharedPreferencesManager.getAccessToken(), currentLocationLat, currentLocationLong);
+        call = new RestClient().getWebServices().getCloseVeterinaries(sharedPreferencesManager.getAccessToken(), currentLocationLat, currentLocationLong);
         call.enqueue(new LoggerCallback<RestView<JsonArray>>(){
             @Override
             public void onResponse(Call<RestView<JsonArray>> call, Response<RestView<JsonArray>> response) {
@@ -196,7 +197,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
         for (Veterinary veterinary :
                 veterinaries) {
             LatLng veterinaryLocation = new LatLng(veterinary.getLatitude(), veterinary.getLongitude());
-            BitmapDescriptor markerIcon = getMarkerIconFromDrawable(ResourcesCompat.getDrawable(getResources(), R.mipmap.veterinary_marker, null));
+            BitmapDescriptor markerIcon = getMarkerIconFromDrawable(ResourcesCompat.getDrawable(getResources(), R.mipmap.pin, null));
             MarkerOptions markerOptions = new MarkerOptions().
                     position(veterinaryLocation).
                     title(veterinary.getName()).
@@ -214,5 +215,11 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
         drawable.draw(canvas);
         return BitmapDescriptorFactory.fromBitmap(bitmap);
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        call.cancel();
     }
 }

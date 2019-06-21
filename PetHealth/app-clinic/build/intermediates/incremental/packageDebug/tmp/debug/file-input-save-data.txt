@@ -1,0 +1,19 @@
+#Internal package file, do not edit.
+#Mon Jun 17 10:45:41 PET 2019
+1.base=/Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/build/intermediates/dex/debug/mergeExtDexDebug/out
+2.path=classes_1.dex
+0.baseType=DIRECTORY
+3.baseType=DIRECTORY
+2.base=/Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/build/intermediates/dex/debug/mergeLibDexDebug/out
+3.set=DEX
+2.set=DEX
+1.baseType=DIRECTORY
+3.path=classes.dex
+count=4
+1.set=DEX
+0.path=classes_0.dex
+3.base=/Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/build/intermediates/dex/debug/mergeProjectDexDebug/out
+0.set=DEX
+0.base=/Users/developer/Documents/development/PetHealthAndroid/PetHealth/app-clinic/build/intermediates/dex/debug/mergeLibDexDebug/out
+2.baseType=DIRECTORY
+1.path=classes.dex
