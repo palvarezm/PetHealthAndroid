@@ -1,5 +1,6 @@
 package pe.edu.upc.phclinic.adapters
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,11 +8,14 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
 import com.google.gson.JsonArray
+import pe.edu.upc.phclinic.fragments.DetailFragment
 import pe.edu.upc.phclinic.R
 
 class AppointmentAdapters(private val fragment: Fragment) : RecyclerView.Adapter<AppointmentAdapters.ViewHolder>() {
-    override fun getItemCount(): Int{
+    override fun getItemCount(): Int {
         return cardInfo!!.size()
     }
 
@@ -53,6 +57,20 @@ class AppointmentAdapters(private val fragment: Fragment) : RecyclerView.Adapter
             startTimeTextView = itemView.findViewById<View>(R.id.startTimeTextView) as TextView
             descriptionTextView = itemView.findViewById<View>(R.id.descriptionTextView) as TextView
             veterinarianButton = itemView.findViewById<View>(R.id.veterinarianButton) as Button
+
+
+
+            itemView.setOnClickListener { v: View ->
+                var position: Int = adapterPosition
+                Snackbar.make(v, "Click detected on item $position",
+                        Snackbar.LENGTH_LONG).setAction("Action", null).show()
+                var apptString = Gson().toJson(cardInfo!!.get(position))
+                val newFrag = DetailFragment()
+                val bundle = Bundle()
+                bundle.putString("appointment", apptString)
+                newFrag.arguments = bundle
+                fragment.fragmentManager!!.beginTransaction().addToBackStack(null).replace(R.id.fragment_container, newFrag).commit()
+            }
         }
     }
 }
