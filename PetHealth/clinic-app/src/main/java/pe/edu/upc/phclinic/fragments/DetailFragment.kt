@@ -13,7 +13,7 @@ import com.github.salomonbrys.kotson.fromJson
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
-import pe.edu.upc.lib.AppointmentResponse
+import pe.edu.upc.lib.ApptModel
 import pe.edu.upc.phclinic.R
 import pe.edu.upc.phclinic.adapters.HistoriesAdapter
 
@@ -43,7 +43,7 @@ class DetailFragment : Fragment() {
         historiesLayoutManager = GridLayoutManager(view.context, 1)
 
         val apptString = arguments!!.getString("appointment")
-        val appt = Gson().fromJson<AppointmentResponse>(apptString)
+        val appt = Gson().fromJson<ApptModel.AppointmentResponse>(apptString)
 
         vetName?.text = appt.pet.name
         race?.text = appt.pet.race
@@ -58,7 +58,7 @@ class DetailFragment : Fragment() {
         return view
     }
 
-    private fun updateHistories(appt: AppointmentResponse){
+    private fun updateHistories(appt: ApptModel.AppointmentResponse){
         val histories = appt.pet.history
         historiesAdapter = HistoriesAdapter(fragment)
         historiesRecyclerView?.adapter = historiesAdapter

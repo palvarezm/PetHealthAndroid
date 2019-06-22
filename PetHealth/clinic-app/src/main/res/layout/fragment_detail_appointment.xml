@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="+@id/petCardView" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/petNameTextView"
@@ -31,7 +31,7 @@
             android:layout_margin="@dimen/default_margin"
             android:text="Michifus"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="+@id/petCardView"
+            app:layout_constraintTop_toBottomOf="@id/petImageView"
             tools:ignore="MissingConstraints" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
             android:text="Michifus"
-            app:layout_constraintStart_toStartOf="+@id/petCardView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/petNameTextView" />
 
         <TextView
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
             android:text="Michifus"
-            app:layout_constraintStart_toStartOf="+@id/petCardView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/raceTextView" />
 
         <TextView
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
             android:text="Michifus"
-            app:layout_constraintStart_toStartOf="+@id/petCardView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/petDescriptionTextView" />
 
         <TextView
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
             android:text="Michifus"
-            app:layout_constraintStart_toStartOf="+@id/petCardView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/birthDateTextView" />
 
         <TextView
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
             android:text="Michifus"
-            app:layout_constraintStart_toStartOf="+@id/petCardView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appointmentDateTextView" />
 
         <TextView
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
             android:text="Michifus"
-            app:layout_constraintStart_toStartOf="+@id/petCardView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/startTimeTextView" />
 
         <TextView
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
             android:text="Michifus"
-            app:layout_constraintStart_toStartOf="+@id/petCardView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/finishTimeTextView" />
    <!-- </com.google.android.material.card.MaterialCardView> -->
 

@@ -34,7 +34,6 @@ class AppointmentAdapters(private val fragment: Fragment) : RecyclerView.Adapter
         holder.vetTextView.text = jsonCardInfo.get("veterinarian").asJsonObject.get("name").asString
         holder.dateTextView.text = fullDate.substring(0, Math.min(fullDate.length, 10))
         holder.descriptionTextView.text = jsonCardInfo.get("appointment").asJsonObject.get("desc").asString
-        holder.startTimeTextView.text = fullStartTime.substring(11, Math.min(fullDate.length, 16))
 
     }
 
@@ -46,17 +45,14 @@ class AppointmentAdapters(private val fragment: Fragment) : RecyclerView.Adapter
         internal var vetTextView: TextView
         internal var veterinaryTextView: TextView
         internal var dateTextView: TextView
-        internal var startTimeTextView: TextView
         internal var descriptionTextView: TextView
-        internal var veterinarianButton: Button
+
 
         init {
             vetTextView = itemView.findViewById<View>(R.id.vetTextView) as TextView
             veterinaryTextView = itemView.findViewById<View>(R.id.veterinaryTextView) as TextView
             dateTextView = itemView.findViewById<View>(R.id.dateTextView) as TextView
-            startTimeTextView = itemView.findViewById<View>(R.id.startTimeTextView) as TextView
             descriptionTextView = itemView.findViewById<View>(R.id.descriptionTextView) as TextView
-            veterinarianButton = itemView.findViewById<View>(R.id.veterinarianButton) as Button
 
 
 
