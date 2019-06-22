@@ -12,7 +12,7 @@ data class ApptVeterinarian(
 )
 
 data class ApptVeterinary (
-        val logo: String= "",
+        val logo: String?,
         val name: String ="",
         val phone: String ="",
         val location: String ="",

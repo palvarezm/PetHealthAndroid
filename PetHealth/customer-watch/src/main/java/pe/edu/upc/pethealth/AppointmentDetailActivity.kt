@@ -45,7 +45,12 @@ class AppointmentDetailActivity : WearableActivity() {
         scheduleTextView.text = schedule
         vetTextView.text = appt.veterinarian.name
         veterinaryTextView.text = appt.veterinary.name
-        Picasso.get().load(appt.veterinary.logo).transform(CropCircleTransformation()).into(veterinaryImageView)
+        Picasso.get()
+                .load(appt.veterinary.logo)
+                .error(R.mipmap.ic_launcher)
+                .placeholder(R.mipmap.ic_launcher)
+                .transform(CropCircleTransformation())
+                .into(veterinaryImageView)
         locationButton.setOnClickListener{
             this@AppointmentDetailActivity.startActivity(
                     Intent(this@AppointmentDetailActivity, MapsActivity::class.java)

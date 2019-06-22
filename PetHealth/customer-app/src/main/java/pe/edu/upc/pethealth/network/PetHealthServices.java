@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 
+import pe.edu.upc.lib.VeterinaryModel;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -22,5 +23,5 @@ public interface PetHealthServices {
     Call<RestView<JsonArray>> getAppts(@Header("access_token") String accessToken, @Path("user_id") int userId);
 
     @GET(EndpointUrls.VETERINARIES)
-    Call<RestView<JsonArray>> getCloseVeterinaries(@Header("access_token") String accessToken, @Query("latitude") Double latitude, @Query("longitude") Double longitude);
+    Call<VeterinaryModel.Response> getCloseVeterinaries(@Header("access_token") String accessToken, @Query("latitude") Double latitude, @Query("longitude") Double longitude);
 }
