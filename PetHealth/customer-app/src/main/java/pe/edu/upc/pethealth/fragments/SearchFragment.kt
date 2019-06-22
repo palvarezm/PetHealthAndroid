@@ -24,18 +24,16 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.main.fragment_about_veterinary.*
-import kotlinx.android.synthetic.main.fragment_search.*
 import java.util.ArrayList
 
 import pe.edu.upc.lib.VeterinaryDistance
 import pe.edu.upc.lib.VeterinaryModel
 import pe.edu.upc.pethealth.R
 import pe.edu.upc.pethealth.activities.MainActivity
-import pe.edu.upc.pethealth.network.LoggerCallback
 import pe.edu.upc.pethealth.network.RestClient
 import pe.edu.upc.pethealth.persistence.SharedPreferencesManager
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 /**
@@ -61,10 +59,10 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        (activity as MainActivity).setFragmentToolbar(getString(R.string.toolbar_title_search_veterinaries), true, fragmentManager)
+        (activity as MainActivity).setFragmentToolbar(getString(R.string.toolbar_title_search_veterinaries), true, fragmentManager!!)
         val view = inflater.inflate(R.layout.fragment_search, container, false)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this.context!!)
-        sharedPreferencesManager = SharedPreferencesManager.getInstance(this.context)
+        sharedPreferencesManager = SharedPreferencesManager.getInstance(this.context!!)
         veterinariesArray = ArrayList()
         mapFragment = childFragmentManager.findFragmentById(R.id.veterinariesMap) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -93,15 +91,13 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
 
     private fun getVeterinaries() {
         call = RestClient().webServices.getCloseVeterinaries(sharedPreferencesManager!!.accessToken, currentLatLng.latitude, currentLatLng.longitude)
-        call.enqueue(object : LoggerCallback<VeterinaryModel.Response>() {
+        call.enqueue(object : Callback<VeterinaryModel.Response> {
             override fun onResponse(call: Call<VeterinaryModel.Response>, response: Response<VeterinaryModel.Response>) {
-                super.onResponse(call, response)
                 response.body()!!.data.forEach { veterinariesArray.add(it) }
                 setVeterinariesMarkers(veterinariesArray)
             }
 
             override fun onFailure(call: Call<VeterinaryModel.Response>, t: Throwable) {
-                super.onFailure(call, t)
                 Log.d("FAILURE", t.toString())
             }
         })

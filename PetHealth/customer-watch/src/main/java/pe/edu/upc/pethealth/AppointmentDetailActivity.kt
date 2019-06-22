@@ -10,7 +10,7 @@ import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.activity_appointment_detail.*
-import pe.edu.upc.lib.AppointmentResponse
+import pe.edu.upc.lib.ApptModel.AppointmentResponse
 import java.text.SimpleDateFormat
 import java.time.Instant
 import java.util.*
