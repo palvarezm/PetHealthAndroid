@@ -58,7 +58,7 @@ public class UserInformationFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user_information, container, false);
         ((MainActivity)getActivity()).setFragmentToolbar("Edit Profile",true,getFragmentManager());
         //Initiate models
-        sharedPreferencesManager = SharedPreferencesManager.getInstance(this.getContext());
+        sharedPreferencesManager = SharedPreferencesManager.Companion.getInstance(this.getContext());
         person = sharedPreferencesManager.getPerson();
         jsonPerson = new JSONObject();
 

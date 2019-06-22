@@ -10,7 +10,7 @@ import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.activity_appointment_detail.*
-import pe.edu.upc.lib.AppointmentResponse
+import pe.edu.upc.lib.ApptModel.AppointmentResponse
 import java.text.SimpleDateFormat
 import java.time.Instant
 import java.util.*
@@ -45,7 +45,12 @@ class AppointmentDetailActivity : WearableActivity() {
         scheduleTextView.text = schedule
         vetTextView.text = appt.veterinarian.name
         veterinaryTextView.text = appt.veterinary.name
-        Picasso.get().load(appt.veterinary.logo).transform(CropCircleTransformation()).into(veterinaryImageView)
+        Picasso.get()
+                .load(appt.veterinary.logo)
+                .error(R.mipmap.ic_launcher)
+                .placeholder(R.mipmap.ic_launcher)
+                .transform(CropCircleTransformation())
+                .into(veterinaryImageView)
         locationButton.setOnClickListener{
             this@AppointmentDetailActivity.startActivity(
                     Intent(this@AppointmentDetailActivity, MapsActivity::class.java)

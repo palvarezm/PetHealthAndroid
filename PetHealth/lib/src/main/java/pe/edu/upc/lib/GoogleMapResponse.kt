@@ -2,7 +2,6 @@ package pe.edu.upc.lib
 
 data class GoogleMapResponse (
         var routes: ArrayList<Routes>
-
 )
 
 data class Routes (
