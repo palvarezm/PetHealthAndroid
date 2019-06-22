@@ -2,15 +2,12 @@ package pe.edu.upc.pethealth.activities
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Paint
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 
@@ -20,7 +17,6 @@ import com.google.android.material.button.MaterialButton
 
 import com.google.android.material.textfield.TextInputEditText
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 
 import org.json.JSONException
@@ -30,11 +26,11 @@ import pe.edu.upc.pethealth.R
 import pe.edu.upc.pethealth.models.Person
 import pe.edu.upc.pethealth.models.User
 import pe.edu.upc.pethealth.network.Connection
-import pe.edu.upc.pethealth.network.LoggerCallback
 import pe.edu.upc.pethealth.network.RestClient
 import pe.edu.upc.pethealth.network.RestView
 import pe.edu.upc.pethealth.persistence.SharedPreferencesManager
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class StartActivity : AppCompatActivity() {
@@ -45,14 +41,14 @@ class StartActivity : AppCompatActivity() {
     private lateinit var signInButton: MaterialButton
     private lateinit var user: User
     private lateinit var person: Person
-    private lateinit var signUptextView: TextView
+    private lateinit var signUpTextView: TextView
     private lateinit var sharedPreferencesManager: SharedPreferencesManager
     internal val context: Context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this)
-        if (sharedPreferencesManager!!.isUserLogged) {
+        if (sharedPreferencesManager.isUserLogged) {
             sendToTipsView()
         }
         setContentView(R.layout.activity_start)
@@ -61,12 +57,12 @@ class StartActivity : AppCompatActivity() {
         userEditText = findViewById<View>(R.id.usernameTextInputEditText) as TextInputEditText
         passwordTextInputEditText = findViewById<View>(R.id.passwordTextInputEditText) as TextInputEditText
         signInButton = findViewById<View>(R.id.signInButton) as MaterialButton
-        signUptextView = findViewById<View>(R.id.signUpTextView) as TextView
+        signUpTextView = findViewById<View>(R.id.signUpTextView) as TextView
 
         setSupportActionBar(toolbar)
         signInButton!!.setOnClickListener { attemptLogin() }
-        signUptextView!!.paintFlags = signUptextView!!.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-        signUptextView!!.setOnClickListener { view ->
+        signUpTextView!!.paintFlags = signUpTextView!!.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+        signUpTextView!!.setOnClickListener { view ->
             val context = view.context
             val intent = Intent(context, SignUpActivity::class.java)
             context.startActivity(intent)
@@ -120,20 +116,16 @@ class StartActivity : AppCompatActivity() {
         bodyToSend.addProperty("password", password)
 
         val call = RestClient().webServices.login(bodyToSend)
-        call.enqueue(object : LoggerCallback<RestView<JsonObject>>() {
+        call.enqueue(object : Callback<RestView<JsonObject>> {
             override fun onResponse(call: Call<RestView<JsonObject>>, response: Response<RestView<JsonObject>>) {
-                super.onResponse(call, response)
                 val answer = response.body()
 
                 if (answer != null && "{}" != answer.data.getAsJsonObject("user").toString()) {
                     try {
                         val userJSONObject = JSONObject(answer.data.get("user").toString())
-                        val gson = GsonBuilder().create()
-                        user = gson.fromJson(userJSONObject.toString(), User::class.java)
-
+                        user = Gson().fromJson(userJSONObject.toString(), User::class.java)
                         val personJSONObject = JSONObject(answer.data.get("person").toString())
                         person = Person.from(personJSONObject)
-
                         sharedPreferencesManager!!.saveUser(user!!.toString(), person!!.toString(), answer.data.get("access_token").asString)
                         val intent = Intent(context, MainActivity::class.java)
                         intent.putExtras(user!!.toBundle())
@@ -154,7 +146,6 @@ class StartActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<RestView<JsonObject>>, t: Throwable) {
-                super.onFailure(call, t)
             }
         })
     }

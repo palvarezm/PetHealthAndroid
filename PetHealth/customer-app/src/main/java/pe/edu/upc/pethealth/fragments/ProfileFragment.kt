@@ -73,7 +73,7 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         (activity as MainActivity).setFragmentToolbar("Profile", true, fragmentManager)
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-        sharedPreferencesManager = SharedPreferencesManager.getInstance(this.context)
+        sharedPreferencesManager = this.context?.let { SharedPreferencesManager.getInstance(it) }
         person = sharedPreferencesManager!!.person
         petsAdapter = PetsAdapter(ArrayList())
         setHasOptionsMenu(true)

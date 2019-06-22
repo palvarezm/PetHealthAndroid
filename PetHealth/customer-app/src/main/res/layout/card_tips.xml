@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tipsCardView"
+    android:id="@+id/newsMaterialCardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -19,20 +19,18 @@
             android:layout_height="35dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:visibility="visible"
             app:indicatorColor="@color/colorPrimaryDark"
             app:indicatorName="BallScaleIndicator"
-            app:layout_constraintBottom_toBottomOf="@+id/tipImageView"
-            app:layout_constraintEnd_toEndOf="@+id/tipImageView"
-            app:layout_constraintStart_toStartOf="@+id/tipImageView"
-            app:layout_constraintTop_toTopOf="@+id/tipImageView" />
+            app:layout_constraintBottom_toBottomOf="@id/tipImageView"
+            app:layout_constraintEnd_toEndOf="@id/tipImageView"
+            app:layout_constraintStart_toStartOf="@id/tipImageView"
+            app:layout_constraintTop_toTopOf="@id/tipImageView" />
         <ImageView
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/tipImageView"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:src="@mipmap/ic_launcher"
-            android:visibility="invisible"
             android:scaleType="centerCrop"/>
         <TextView
             android:id="@+id/tipDescriptionTextView"
