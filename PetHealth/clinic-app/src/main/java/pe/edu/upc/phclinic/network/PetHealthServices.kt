@@ -4,6 +4,7 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import pe.edu.upc.phclinic.network.RestClient.Companion.APPOINTMENTS
 import pe.edu.upc.phclinic.network.RestClient.Companion.LOGIN
+import pe.edu.upc.phclinic.network.RestClient.Companion.SIGNUP_USER
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Header
@@ -16,4 +17,7 @@ interface PetHealthServices {
 
     @POST(APPOINTMENTS)
     fun getAppts(@Header("access_token") accessToken: String?, @Path("user_id") userId: Int?): Call<RestView<JsonArray>>
+
+    @POST(SIGNUP_USER)
+    fun signup(@Body requestBody: JsonObject): Call<RestView<JsonObject>>
 }

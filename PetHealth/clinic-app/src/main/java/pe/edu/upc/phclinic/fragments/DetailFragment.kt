@@ -30,7 +30,7 @@ class DetailFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_detail_appointment, container, false)
 
-        val vetName = view?.findViewById<View>(R.id.nameTextView) as TextView?
+        val vetName = view?.findViewById<View>(R.id.petNameTextView) as TextView?
         val race  = view?.findViewById<View>(R.id.raceTextView) as TextView?
         val pDescription  = view?.findViewById<View>(R.id.petDescriptionTextView) as TextView?
         val bDate  = view?.findViewById<View>(R.id.birthDateTextView) as TextView?
