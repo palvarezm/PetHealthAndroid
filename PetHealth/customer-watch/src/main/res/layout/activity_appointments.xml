@@ -17,6 +17,7 @@
         android:background="@color/darker_ui_element">
 
         <androidx.wear.widget.WearableRecyclerView
+            tools:listitem="@layout/item_appointment"
             android:id="@+id/AppointmentsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

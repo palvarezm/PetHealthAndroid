@@ -22,6 +22,8 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
+import com.squareup.picasso.Picasso
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.activity_sing_up.*
 
 import org.json.JSONException
@@ -40,13 +42,22 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sing_up)
         storageRef = FirebaseStorage.getInstance().reference
+
+        Picasso.get().load(R.mipmap.ic_default_profile_image_foreground).
+                transform(RoundedCornersTransformation(10,5))
+                .fit().centerCrop().into(profileImageView)
         doneButton.setOnClickListener { attemptToSignUp() }
         profileImageView.setOnClickListener { chooseImage()}
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when(requestCode){
             GALLERY_IMAGE -> {
-                profileImageView.setImageURI(data?.data)
+                Picasso.get().load(data?.data)
+                        .transform(RoundedCornersTransformation(10,5))
+                        .fit().centerCrop()
+                        .into(profileImageView)
+                //profileImageView.setImageURI(data?.data)
                 profileUri = data!!.data
             }
         }
