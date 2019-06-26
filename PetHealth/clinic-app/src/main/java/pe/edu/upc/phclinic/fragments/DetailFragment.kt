@@ -13,6 +13,7 @@ import com.github.salomonbrys.kotson.fromJson
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
 import pe.edu.upc.lib.ApptModel
 import pe.edu.upc.phclinic.R
 import pe.edu.upc.phclinic.adapters.HistoriesAdapter
@@ -53,7 +54,8 @@ class DetailFragment : Fragment() {
         startTime?.text = appt.appointment.start_t
         endTime?.text = appt.appointment.end_t
         apptDescription?.text = appt.appointment.desc
-        Picasso.get().load(appt.pet.image_url).transform(CropCircleTransformation()).into(petImageView)
+        Picasso.get().load(appt.pet.image_url).transform(RoundedCornersTransformation(10, 20))
+                .resize(600, 600).centerCrop().into(petImageView)
         updateHistories(appt)
         return view
     }
