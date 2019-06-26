@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
+import android.text.TextWatcher
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -20,6 +21,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
@@ -39,7 +41,8 @@ class SignUpActivity : AppCompatActivity() {
     internal val context: Context = this
     lateinit var storageRef: StorageReference
     private val GALLERY_IMAGE = 1
-    private var fields = ArrayList<TextInputEditText>()
+    private var fields = ArrayList<Field>()
+    class Field( var layout: TextInputLayout, var data: TextInputEditText)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sing_up)
@@ -48,15 +51,24 @@ class SignUpActivity : AppCompatActivity() {
                 transform(RoundedCornersTransformation(10,5))
                 .fit().centerCrop().into(profileImageView)
 
-        fields.add(usernameTextInputEditText)
-        fields.add(passwordTextInputEditText)
-        fields.add(emailTextInputEditText)
-        fields.add(nameTextInputEditText)
-        fields.add(lastNameTextInputEditText)
-        fields.add(docNumberTextInputEditText)
-        fields.add(addressTextInputEditText)
-        fields.add(phoneTextInputEditText)
+        fields.add(Field(phoneTextInputLayout,phoneTextInputEditText))
+        fields.add(Field(docNumberTextInputLayout, docNumberTextInputEditText))
+        fields.add(Field(lastNameTextInputLayout, lastNameTextInputEditText))
+        fields.add(Field(nameTextInputLayout, nameTextInputEditText))
+        fields.add(Field(emailTextInputLayout, emailTextInputEditText))
+        fields.add(Field(addressTextInputLayout, addressTextInputEditText))
+        fields.add(Field(passwordTextInputLayout, passwordTextInputEditText))
+        fields.add(Field(usernameTextInputLayout, usernameTextInputEditText))
+        this.fields.forEach {
+            it.data.addTextChangedListener(object: TextWatcher{
+                override fun afterTextChanged(s: Editable?) { }
 
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    it.layout.error = null
+                }
+            }) }
         doneButton.setOnClickListener { attemptToSignUp() }
         profileImageView.setOnClickListener { chooseImage()}
     }
@@ -96,11 +108,10 @@ class SignUpActivity : AppCompatActivity() {
         var focusView: View? = null
         var cancel: Boolean? = false
 
-
         this.fields.forEach{ field  ->
-            if (TextUtils.isEmpty(field.text)){
-                field.error = "${field.hint} is empty"
-                focusView = field
+            if (TextUtils.isEmpty(field.data.text)){
+                field.layout.error = "${field.data.hint} is empty"
+                focusView = field.layout
                 cancel = true
             }
         }

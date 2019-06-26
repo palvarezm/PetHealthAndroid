@@ -44,6 +44,19 @@
             android:layout_margin="@dimen/default_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dateTextView"/>
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            style="@style/AVLoadingIndicatorView"
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:indicatorColor="@color/colorPrimaryDark"
+            app:indicatorName="BallScaleIndicator"
+            app:layout_constraintBottom_toBottomOf="@+id/petImageView"
+            app:layout_constraintEnd_toEndOf="@+id/petImageView"
+            app:layout_constraintStart_toStartOf="@+id/petImageView"
+            app:layout_constraintTop_toTopOf="@+id/petImageView" />
         <ImageView
             android:id="@+id/petImageView"
             android:layout_width="wrap_content"
