@@ -4,6 +4,20 @@
         <item name="android:layout_marginTop">24dp</item>
         <item name="android:layout_marginStart">36dp</item>
         <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorIcons</item>
+    </style>
+
+    <style name="profileText2">
+        <item name="android:layout_marginTop">7dp</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+    </style>
+
+    <style name="profileText3">
+        <item name="android:paddingStart">10sp</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:paddingBottom">@dimen/default_margin</item>
     </style>
 
 </resources>

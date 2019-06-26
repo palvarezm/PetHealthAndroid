@@ -14,6 +14,7 @@ class RestClient {
         val BASE_URL = "https://pethealthapi.herokuapp.com/api/"
         const val LOGIN = "login"
         const val APPOINTMENTS = "user/{user_id}/appts"
+        const val SIGNUP_USER = "signup"
         private val MAX_TIME = 300
     }
     val webServices: PetHealthServices

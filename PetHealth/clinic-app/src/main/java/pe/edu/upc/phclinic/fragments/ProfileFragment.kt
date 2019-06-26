@@ -11,8 +11,11 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.BitmapRequestListener
+import com.squareup.picasso.Picasso
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
 
 import kotlinx.android.synthetic.main.fragment_profile.*
+import pe.edu.upc.lib.User
 import pe.edu.upc.phclinic.R
 import pe.edu.upc.phclinic.persistance.SharedPreferencesManager
 import pe.edu.upc.lib.Veterinary
@@ -29,7 +32,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class ProfileFragment : Fragment() {
     private var veterinary: Veterinary? = null
-
+    private var user : User? = null
     private var sharedPreferencesManager: SharedPreferencesManager? = null
 
     override fun onCreateView(
@@ -43,34 +46,20 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         sharedPreferencesManager = SharedPreferencesManager.getInstance(context!!)
         veterinary = sharedPreferencesManager?.veterinary
+        user = sharedPreferencesManager?.user
         updateProfile()
-        sharedPreferencesManager?.user?.photo?.let { loadImage(it) }
-        vetImageView?.visibility = View.INVISIBLE
+        Picasso.get().load(sharedPreferencesManager!!.user!!.photo).error(R.mipmap.ic_launcher)
+                .transform(RoundedCornersTransformation(10, 0))
+                .resize(250, 170)
+                .centerCrop()
+                .into(vetImageView)
     }
 
     private fun updateProfile() {
         nameTextView.text = veterinary?.name
         contactTextView.text = veterinary?.phone
-        addressTextView.text = veterinary?.location
+        addressTextView.text = user?.mail
         scheduleTextView.text = veterinary?.opening_hours
     }
 
-    private fun loadImage(imageUrl: String) {
-        AndroidNetworking.get(imageUrl)
-                .setTag("imageRequest")
-                .setPriority(Priority.MEDIUM)
-                .setBitmapMaxHeight(120)
-                .setBitmapMaxWidth(120)
-                .build()
-                .getAsBitmap(object : BitmapRequestListener {
-                    override fun onResponse(response: Bitmap) {
-                        vetImageView.setImageBitmap(response)
-                        vetImageView.visibility = View.VISIBLE
-                    }
-
-                    override fun onError(anError: ANError) {
-                        println(anError.toString())
-                    }
-                })
-    }
 }

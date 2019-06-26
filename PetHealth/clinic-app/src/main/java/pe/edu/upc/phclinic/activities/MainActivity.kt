@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this.applicationContext)
         user = sharedPreferencesManager!!.user
+        replaceFragment(AppointmentsFragment())
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         /*val host = NavHostFragment.create(R.navigation.nav_graph)
         supportFragmentManager
