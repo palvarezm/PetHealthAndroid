@@ -36,8 +36,6 @@ class DetailFragment : Fragment() {
         val pDescription  = view?.findViewById<View>(R.id.petDescriptionTextView) as TextView?
         val bDate  = view?.findViewById<View>(R.id.birthDateTextView) as TextView?
         val apptDate = view?.findViewById<View>(R.id.appointmentDateTextView) as TextView?
-        val startTime = view?.findViewById<View>(R.id.startTimeTextView) as TextView?
-        val endTime = view?.findViewById<View>(R.id.finishTimeTextView) as TextView?
         val apptDescription = view?.findViewById<View>(R.id.appointmentDescriptionTextView) as TextView?
         val petImageView = view?.findViewById<View>(R.id.petImageView) as ImageView?
         historiesRecyclerView = view.findViewById(R.id.historiesRecyclerView)
@@ -51,8 +49,6 @@ class DetailFragment : Fragment() {
         pDescription?.text = appt.pet.description
         bDate?.text = appt.pet.birth_date
         apptDate?.text = appt.appointment.appt_date
-        startTime?.text = appt.appointment.start_t
-        endTime?.text = appt.appointment.end_t
         apptDescription?.text = appt.appointment.desc
         Picasso.get().load(appt.pet.image_url).transform(RoundedCornersTransformation(10, 20))
                 .resize(600, 600).centerCrop().into(petImageView)

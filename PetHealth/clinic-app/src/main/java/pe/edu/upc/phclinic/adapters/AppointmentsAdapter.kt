@@ -1,25 +1,21 @@
 package pe.edu.upc.phclinic.adapters
 
-import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.squareup.picasso.Picasso
-import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
 import pe.edu.upc.phclinic.fragments.DetailFragment
 import pe.edu.upc.phclinic.R
 
-class AppointmentAdapters(private val fragment: Fragment) : RecyclerView.Adapter<AppointmentAdapters.ViewHolder>() {
+class AppointmentsAdapter(private val fragment: Fragment) : RecyclerView.Adapter<AppointmentsAdapter.ViewHolder>() {
     override fun getItemCount(): Int {
         return cardInfo!!.size()
     }
@@ -65,8 +61,6 @@ class AppointmentAdapters(private val fragment: Fragment) : RecyclerView.Adapter
 
             itemView.setOnClickListener { v: View ->
                 var position: Int = adapterPosition
-                Snackbar.make(v, "Click detected on item $position",
-                        Snackbar.LENGTH_LONG).setAction("Action", null).show()
                 var apptString = Gson().toJson(cardInfo!!.get(position))
                 val newFrag = DetailFragment()
                 val bundle = Bundle()

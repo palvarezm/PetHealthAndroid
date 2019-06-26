@@ -37,7 +37,6 @@ class AppointmentsActivity : WearableActivity(), DataClient.OnDataChangedListene
             isEdgeItemsCenteringEnabled = true
             layoutManager = WearableLinearLayoutManager(this@AppointmentsActivity).apply {
                 stackFromEnd = true
-                reverseLayout = true
             }
             adapter = apptsAdapter
         }

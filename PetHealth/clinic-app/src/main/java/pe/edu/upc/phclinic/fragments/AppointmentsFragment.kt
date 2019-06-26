@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.JsonArray
-import pe.edu.upc.phclinic.adapters.AppointmentAdapters
+import pe.edu.upc.phclinic.adapters.AppointmentsAdapter
 import pe.edu.upc.phclinic.network.LoggerCallback
 import pe.edu.upc.phclinic.network.RestView
 import pe.edu.upc.phclinic.persistance.SharedPreferencesManager
@@ -31,7 +31,7 @@ private const val ARG_PARAM2 = "param2"
 class AppointmentsFragment : Fragment() {
 
     private var appointmentRecyclerView: RecyclerView? = null
-    private var appointmentAdapters: AppointmentAdapters? = null
+    private var appointmentAdapters: AppointmentsAdapter? = null
     private var appointmentLayoutManager: RecyclerView.LayoutManager? = null
     private val fragment = this
 
@@ -65,7 +65,7 @@ class AppointmentsFragment : Fragment() {
             override fun onResponse(call: Call<RestView<JsonArray>>, response: Response<RestView<JsonArray>>) {
                 super.onResponse(call, response)
                 answer = response.body()
-                appointmentAdapters = AppointmentAdapters(fragment)
+                appointmentAdapters = AppointmentsAdapter(fragment)
                 appointmentRecyclerView?.adapter = appointmentAdapters
                 appointmentRecyclerView?.layoutManager = appointmentLayoutManager
                 answer?.data?.let { appointmentAdapters?.setAppointments(it) }

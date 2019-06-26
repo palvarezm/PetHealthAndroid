@@ -29,11 +29,10 @@ import retrofit2.Response
  * A simple [Fragment] subclass.
  */
 class AppointmentFragment : Fragment() {
+
     private lateinit var appointmentAdapter: AppointmentAdapter
-
-    private var sharedPreferencesManager: SharedPreferencesManager? = null
-
-    internal lateinit var dataClient: DataClient
+    private lateinit var sharedPreferencesManager: SharedPreferencesManager
+    private lateinit var dataClient: DataClient
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -70,7 +69,7 @@ class AppointmentFragment : Fragment() {
     }
 
     private fun updateAppointment() {
-        val call = RestClient().webServices.getAppts(sharedPreferencesManager!!.accessToken, sharedPreferencesManager!!.user!!.id)
+        val call = RestClient().webServices.getAppts(sharedPreferencesManager.accessToken!!, sharedPreferencesManager!!.user!!.id)
         call.enqueue(object : Callback<ApptModel.Response> {
             override fun onResponse(call: Call<ApptModel.Response>, response: Response<ApptModel.Response>) {
                 val appts = response.body()!!.data
@@ -84,4 +83,4 @@ class AppointmentFragment : Fragment() {
             }
         })
     }
-}// Required empty public constructor
+}
