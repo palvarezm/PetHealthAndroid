@@ -19,6 +19,7 @@ import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
@@ -38,14 +39,24 @@ class SignUpActivity : AppCompatActivity() {
     internal val context: Context = this
     lateinit var storageRef: StorageReference
     private val GALLERY_IMAGE = 1
+    private var fields = ArrayList<TextInputEditText>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sing_up)
         storageRef = FirebaseStorage.getInstance().reference
-
         Picasso.get().load(R.mipmap.ic_default_profile_image_foreground).
                 transform(RoundedCornersTransformation(10,5))
                 .fit().centerCrop().into(profileImageView)
+
+        fields.add(usernameTextInputEditText)
+        fields.add(passwordTextInputEditText)
+        fields.add(emailTextInputEditText)
+        fields.add(nameTextInputEditText)
+        fields.add(lastNameTextInputEditText)
+        fields.add(docNumberTextInputEditText)
+        fields.add(addressTextInputEditText)
+        fields.add(phoneTextInputEditText)
+
         doneButton.setOnClickListener { attemptToSignUp() }
         profileImageView.setOnClickListener { chooseImage()}
     }
@@ -82,55 +93,17 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun attemptToSignUp() {
 
-        //Reset Errors
-        passwordTextInputEditText.error = null
-        usernameTextInputEditText.error = null
-        emailTextInputEditText.error = null
-        nameTextInputEditText.error = null
-        lastNameTextInputEditText.error = null
-        docNumberTextInputEditText.error = null
-        phoneTextInputEditText.error = null
-
-
         var focusView: View? = null
         var cancel: Boolean? = false
 
-        if (TextUtils.isEmpty(usernameTextInputEditText.text)) {
-            usernameTextInputEditText.error = "This field is empty"
-            focusView = usernameTextInputEditText
-            cancel = true
-        }
-        if (TextUtils.isEmpty(passwordTextInputEditText.text)) {
-            passwordTextInputEditText.error = "This field is empty"
-            focusView = passwordTextInputEditText
-            cancel = true
-        }
-        if (TextUtils.isEmpty(emailTextInputEditText.text)) {
-            emailTextInputEditText.error = "This field is empty"
-            focusView = emailTextInputEditText
-            cancel = true
-        }
-        if (TextUtils.isEmpty(nameTextInputEditText.text)) {
-            nameTextInputEditText.error = "This field is empty"
-            focusView = nameTextInputEditText
-            cancel = true
-        }
-        if (TextUtils.isEmpty(lastNameTextInputEditText.text)) {
-            lastNameTextInputEditText.error = "This field is empty"
-            focusView = lastNameTextInputEditText
-            cancel = true
-        }
-        if (TextUtils.isEmpty(docNumberTextInputEditText.text)) {
-            docNumberTextInputEditText.error = "This field is empty"
-            focusView = docNumberTextInputEditText
-            cancel = true
-        }
-        if (TextUtils.isEmpty(phoneTextInputEditText.text)) {
-            phoneTextInputEditText.error = "This field is empty"
-            focusView = phoneTextInputEditText
-            cancel = true
-        }
 
+        this.fields.forEach{ field  ->
+            if (TextUtils.isEmpty(field.text)){
+                field.error = "${field.hint} is empty"
+                focusView = field
+                cancel = true
+            }
+        }
         if (cancel!!) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
@@ -148,8 +121,10 @@ class SignUpActivity : AppCompatActivity() {
                     bodyToSend.put("last_name", lastNameTextInputEditText.text)
                     bodyToSend.put("dni", docNumberTextInputEditText.text)
                     bodyToSend.put("phone", phoneTextInputEditText.text)
-                    bodyToSend.put("address", phoneTextInputEditText.text)
+                    bodyToSend.put("address", addressTextInputEditText.text)
 //                    bodyToSend.put("linkedin_link", "")
+                } catch (e: JSONException) {
+                    e.printStackTrace()
 //                    bodyToSend.put("degree", "")
 //                    bodyToSend.put("location", "")
 //                    bodyToSend.put("opening_hours", "")
@@ -157,50 +132,13 @@ class SignUpActivity : AppCompatActivity() {
 //                    bodyToSend.put("youtube_url", "")
 //                    bodyToSend.put("twitter_url", "")
 
-                } catch (e: JSONException) {
-                    e.printStackTrace()
                 }
-
-                AndroidNetworking.post(PetHealthApiService.SIGNUP_USER)
-                        .addJSONObjectBody(bodyToSend)
-                        .setTag(getString(R.string.app_name))
-                        .setPriority(Priority.MEDIUM)
-                        .build()
-                        .getAsJSONObject(object : JSONObjectRequestListener {
-                            override fun onResponse(response: JSONObject) {
-                                // do anything with response
-                                try {
-                                    if ("ok".equals(response.getString("status"), ignoreCase = true)) {
-                                        val builder = AlertDialog.Builder(context)
-                                        builder.setMessage("User Corretly Created")
-                                        builder.setPositiveButton("OK") { dialogInterface, i ->
-                                            dialogInterface.cancel()
-                                            val intent = Intent(context, StartActivity::class.java)
-                                            context.startActivity(intent)
-                                            finish()
-                                        }
-                                        val alertDialog = builder.create()
-                                        alertDialog.show()
-
-                                    } else {
-                                        Log.d(getString(R.string.app_name), "Error with the Resgistration of User")
-                                    }
-
-                                } catch (e: JSONException) {
-                                    e.printStackTrace()
-                                }
-
-                            }
-
-                            override fun onError(anError: ANError) {
-                                Log.d(getString(R.string.app_name), anError.localizedMessage)
-                            }
-                        })
+                sendUserData(bodyToSend)
             }
         }
     }
     private fun prepareImage(username: Editable?, callback: (profileDownloadUri: String)-> Unit) {
-        val ref = storageRef.child("images/${username.toString()}")
+        val ref = storageRef.child("images/clients/${username.toString()}")
         var uploadTask = ref.putFile(profileUri)
 
         val urlTask = uploadTask.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
@@ -216,5 +154,43 @@ class SignUpActivity : AppCompatActivity() {
                 callback(downloadUri.toString())
             }
         }
+    }
+    private fun sendUserData(body: JSONObject){
+
+        AndroidNetworking.post(PetHealthApiService.SIGNUP_USER)
+                .addJSONObjectBody(body)
+                .setTag(getString(R.string.app_name))
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(object : JSONObjectRequestListener {
+                    override fun onResponse(response: JSONObject) {
+                        // do anything with response
+                        try {
+                            if ("ok".equals(response.getString("status"), ignoreCase = true)) {
+                                val builder = AlertDialog.Builder(context)
+                                builder.setMessage("User Corretly Created")
+                                builder.setPositiveButton("OK") { dialogInterface, i ->
+                                    dialogInterface.cancel()
+                                    val intent = Intent(context, StartActivity::class.java)
+                                    context.startActivity(intent)
+                                    finish()
+                                }
+                                val alertDialog = builder.create()
+                                alertDialog.show()
+
+                            } else {
+                                Log.d(getString(R.string.app_name), "Error with the Resgistration of User")
+                            }
+
+                        } catch (e: JSONException) {
+                            e.printStackTrace()
+                        }
+
+                    }
+
+                    override fun onError(anError: ANError) {
+                        Log.d(getString(R.string.app_name), anError.localizedMessage)
+                    }
+                })
     }
 }
