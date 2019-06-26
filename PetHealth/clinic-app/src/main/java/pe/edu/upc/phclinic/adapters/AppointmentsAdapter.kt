@@ -65,8 +65,6 @@ class AppointmentAdapters(private val fragment: Fragment) : RecyclerView.Adapter
 
             itemView.setOnClickListener { v: View ->
                 var position: Int = adapterPosition
-                Snackbar.make(v, "Click detected on item $position",
-                        Snackbar.LENGTH_LONG).setAction("Action", null).show()
                 var apptString = Gson().toJson(cardInfo!!.get(position))
                 val newFrag = DetailFragment()
                 val bundle = Bundle()
