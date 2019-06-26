@@ -1,6 +1,5 @@
 package pe.edu.upc.pethealth.adapters
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import com.google.android.material.card.MaterialCardView
 
 import com.squareup.picasso.Picasso
 
-import pe.edu.upc.lib.NewsModel
+import pe.edu.upc.lib.models.NewsModel
 import pe.edu.upc.pethealth.R
 import pe.edu.upc.pethealth.activities.MainActivity
 import pe.edu.upc.pethealth.fragments.NewsDetailFragment

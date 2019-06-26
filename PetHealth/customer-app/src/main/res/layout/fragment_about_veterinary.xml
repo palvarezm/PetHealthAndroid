@@ -12,7 +12,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        tools:context="pe.edu.upc.pethealth.fragments.AboutVeterinaryFragment" />
+        tools:ignore="MissingConstraints" />
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"

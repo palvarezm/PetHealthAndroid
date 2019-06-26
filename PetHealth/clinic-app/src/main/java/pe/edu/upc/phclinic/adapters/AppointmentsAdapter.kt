@@ -28,13 +28,13 @@ class AppointmentsAdapter(private val fragment: Fragment) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val jsonCardInfo = cardInfo!!.get(position).asJsonObject
-        val fullDate = jsonCardInfo.get("appointment").asJsonObject.get("appt_date").asString
+        val fullDate = jsonCardInfo.get("appt").asJsonObject.get("appt_date").asString
         val petPhoto = jsonCardInfo.get("pet").asJsonObject.get("image_url").asString
 
         holder.veterinaryTextView.text = jsonCardInfo.get("veterinary").asJsonObject.get("name").asString
         holder.vetTextView.text = jsonCardInfo.get("veterinarian").asJsonObject.get("name").asString
         holder.dateTextView.text = fullDate.substring(0, Math.min(fullDate.length, 10))
-        holder.descriptionTextView.text = jsonCardInfo.get("appointment").asJsonObject.get("desc").asString
+        holder.descriptionTextView.text = jsonCardInfo.get("appt").asJsonObject.get("desc").asString
         Picasso.get().load(petPhoto).transform(RoundedCornersTransformation(10, 20))
                 .resize(430, 410).into(holder.petImageView)
 
@@ -64,7 +64,7 @@ class AppointmentsAdapter(private val fragment: Fragment) : RecyclerView.Adapter
                 var apptString = Gson().toJson(cardInfo!!.get(position))
                 val newFrag = DetailFragment()
                 val bundle = Bundle()
-                bundle.putString("appointment", apptString)
+                bundle.putString("appt", apptString)
                 newFrag.arguments = bundle
                 fragment.fragmentManager!!.beginTransaction().addToBackStack(null).replace(R.id.fragment_container, newFrag).commit()
             }

@@ -9,7 +9,7 @@ import androidx.wear.widget.WearableLinearLayoutManager
 import com.google.android.gms.wearable.*
 import kotlinx.android.synthetic.main.activity_appointments.*
 
-import pe.edu.upc.lib.ApptModel.AppointmentResponse
+import pe.edu.upc.lib.models.ApptModel.AppointmentResponse
 import com.github.salomonbrys.kotson.*
 import com.google.gson.Gson
 

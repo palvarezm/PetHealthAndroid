@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.github.salomonbrys.kotson.*
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
-import pe.edu.upc.lib.Pet
+import pe.edu.upc.lib.models.Pet
 
 
 import pe.edu.upc.pethealth.R

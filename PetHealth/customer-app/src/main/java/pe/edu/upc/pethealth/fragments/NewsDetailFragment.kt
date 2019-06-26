@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_my_tip_detail.*
-import pe.edu.upc.lib.NewsModel
+import pe.edu.upc.lib.models.NewsModel
 
 import pe.edu.upc.pethealth.R
 import pe.edu.upc.pethealth.activities.MainActivity

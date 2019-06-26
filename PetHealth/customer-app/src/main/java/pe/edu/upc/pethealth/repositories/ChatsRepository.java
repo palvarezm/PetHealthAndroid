@@ -15,7 +15,7 @@ public class ChatsRepository {
         chats.add(new Chat(1,1,"Doc tores","hola"));
         chats.add(new Chat(1,2,"Pet Health","message"));
         chats.add(new Chat(1,3,"Dr","message"));
-        chats.add(new Chat(1,4,"Dr Vet","message"));
+        chats.add(new Chat(1,4,"Dr Veterinarian","message"));
         chats.add(new Chat(1,5,"Verinary 5","message"));
         chats.add(new Chat(1,6,"Verinary 6","message"));
         chats.add(new Chat(1,7,"Verinary 7","message"));

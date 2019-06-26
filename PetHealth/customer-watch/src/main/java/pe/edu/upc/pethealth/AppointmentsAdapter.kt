@@ -11,7 +11,7 @@ import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.item_appointment.view.*
-import pe.edu.upc.lib.ApptModel.AppointmentResponse
+import pe.edu.upc.lib.models.ApptModel.AppointmentResponse
 import java.text.SimpleDateFormat
 import java.time.Instant
 import java.util.*
@@ -53,18 +53,18 @@ class AppointmentsAdapter(var appts: ArrayList<AppointmentResponse>,
                 val dateFormatter = SimpleDateFormat("dd/MM, ")
                 val timeFormatter = SimpleDateFormat("h:mm aaa")
 
-                apptDate = Date.from(Instant.parse(apptResponse.appointment.appt_date))
-                apptStart = Date.from(Instant.parse(apptResponse.appointment.start_t))
-                apptEnd = Date.from(Instant.parse(apptResponse.appointment.end_t))
+                apptDate = Date.from(Instant.parse(apptResponse.appt.appt_date))
+                apptStart = Date.from(Instant.parse(apptResponse.appt.start_t))
+                apptEnd = Date.from(Instant.parse(apptResponse.appt.end_t))
                 schedule = dateFormatter.format(apptDate) + timeFormatter.format(apptStart) + '-'+ timeFormatter.format(apptEnd)
 
             } else {
-                val date = apptResponse.appointment.appt_date.substring(0, min(apptResponse.appointment.appt_date.length, 10));
-                val start = apptResponse.appointment.start_t.substring(11, min(apptResponse.appointment.start_t.length, 16));
-                val end = apptResponse.appointment.end_t.substring(11, min(apptResponse.appointment.end_t.length, 16));
+                val date = apptResponse.appt.appt_date.substring(0, min(apptResponse.appt.appt_date.length, 10));
+                val start = apptResponse.appt.start_t.substring(11, min(apptResponse.appt.start_t.length, 16));
+                val end = apptResponse.appt.end_t.substring(11, min(apptResponse.appt.end_t.length, 16));
                 schedule = "$date $start - $end"
             }
-            type.text = apptResponse.appointment.type
+            type.text = apptResponse.appt.type
             date.text = schedule
             Picasso.get().load(apptResponse.pet.image_url).transform(CropCircleTransformation()).into(petImage)
             layout.setOnClickListener { view->

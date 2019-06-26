@@ -3,8 +3,8 @@ package pe.edu.upc.pethealth.network
 import com.google.gson.JsonObject
 
 
-import pe.edu.upc.lib.ApptModel
-import pe.edu.upc.lib.VeterinaryModel
+import pe.edu.upc.lib.models.ApptModel
+import pe.edu.upc.lib.models.VeterinaryModel
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

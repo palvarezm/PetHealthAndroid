@@ -14,7 +14,7 @@ import com.google.android.gms.wearable.DataClient
 import com.google.android.gms.wearable.PutDataMapRequest
 import com.google.android.gms.wearable.Wearable
 import kotlinx.android.synthetic.main.fragment_appointment.*
-import pe.edu.upc.lib.ApptModel
+import pe.edu.upc.lib.models.ApptModel
 
 import pe.edu.upc.pethealth.R
 import pe.edu.upc.pethealth.activities.MainActivity

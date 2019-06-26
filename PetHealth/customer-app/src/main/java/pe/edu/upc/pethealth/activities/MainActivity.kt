@@ -22,7 +22,6 @@ import pe.edu.upc.pethealth.fragments.HomeFragment
 import pe.edu.upc.pethealth.fragments.ProfileFragment
 import pe.edu.upc.pethealth.fragments.SearchFragment
 import pe.edu.upc.pethealth.models.User
-import pe.edu.upc.pethealth.network.Connection
 import pe.edu.upc.pethealth.persistence.SharedPreferencesManager
 
 class MainActivity : AppCompatActivity() {

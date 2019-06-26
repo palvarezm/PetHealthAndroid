@@ -23,7 +23,7 @@ import org.json.JSONObject
 
 import java.util.ArrayList
 
-import pe.edu.upc.lib.NewsModel
+import pe.edu.upc.lib.models.NewsModel
 import pe.edu.upc.pethealth.R
 import pe.edu.upc.pethealth.activities.MainActivity
 import pe.edu.upc.pethealth.adapters.NewsAdapters

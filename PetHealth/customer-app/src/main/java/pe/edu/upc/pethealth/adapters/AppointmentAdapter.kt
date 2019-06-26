@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import pe.edu.upc.lib.ApptModel.AppointmentResponse
+import pe.edu.upc.lib.models.ApptModel.AppointmentResponse
 import pe.edu.upc.pethealth.R
 import java.text.SimpleDateFormat
 import java.time.Instant
@@ -38,7 +38,7 @@ class AppointmentAdapter(var appts: ArrayList<AppointmentResponse> = ArrayList()
         fun updateFrom(appt: AppointmentResponse){
             veterinaryTextView.text = appt.veterinary.name
             vetTextView.text = appt.veterinarian.name
-            descriptionTextView.text = appt.appointment.desc
+            descriptionTextView.text = appt.appt.desc
             var apptDate: Date
             var apptStart: Date
             var apptEnd: Date
@@ -46,9 +46,9 @@ class AppointmentAdapter(var appts: ArrayList<AppointmentResponse> = ArrayList()
             val dateFormatter = SimpleDateFormat("dd/MM, ")
             val timeFormatter = SimpleDateFormat("h:mm aaa")
 
-            apptDate = Date.from(Instant.parse(appt.appointment.appt_date))
-            apptStart = Date.from(Instant.parse(appt.appointment.start_t))
-            apptEnd = Date.from(Instant.parse(appt.appointment.end_t))
+            apptDate = Date.from(Instant.parse(appt.appt.appt_date))
+            apptStart = Date.from(Instant.parse(appt.appt.start_t))
+            apptEnd = Date.from(Instant.parse(appt.appt.end_t))
             dateTextView.text = dateFormatter.format(apptDate) + timeFormatter.format(apptStart) + '-'+ timeFormatter.format(apptEnd)
         }
     }

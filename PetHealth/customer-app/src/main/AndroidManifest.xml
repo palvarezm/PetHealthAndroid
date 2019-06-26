@@ -63,11 +63,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <!--
-            -fragment
-            android:name=".fragments.AboutVeterinaryFragment"
-            android:label="@string/title_activity_about_veterinary"></fragment
-        -->
         <activity
             android:name=".activities.AddPetActivity"
             android:parentActivityName=".activities.MainActivity"

@@ -1,4 +1,4 @@
-package pe.edu.upc.lib
+package pe.edu.upc.lib.models
 
 import java.io.Serializable
 

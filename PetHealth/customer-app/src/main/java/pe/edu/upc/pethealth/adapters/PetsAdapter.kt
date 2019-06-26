@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 import com.squareup.picasso.Picasso
-import pe.edu.upc.lib.Pet
+import pe.edu.upc.lib.models.Pet
 
 import pe.edu.upc.pethealth.R
 import pe.edu.upc.pethealth.activities.MainActivity

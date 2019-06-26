@@ -10,7 +10,7 @@ import pe.edu.upc.phclinic.fragments.AppointmentsFragment
 import pe.edu.upc.phclinic.fragments.ChatFragment
 import pe.edu.upc.phclinic.fragments.ProfileFragment
 import pe.edu.upc.phclinic.persistance.SharedPreferencesManager
-import pe.edu.upc.lib.User
+import pe.edu.upc.lib.models.User
 
 class MainActivity : AppCompatActivity() {
     private var user: User? = null

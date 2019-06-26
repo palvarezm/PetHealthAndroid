@@ -1,21 +1,16 @@
 package pe.edu.upc.phclinic.fragments
 
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
-import com.androidnetworking.AndroidNetworking
-import com.androidnetworking.common.Priority
-import com.androidnetworking.error.ANError
-import com.androidnetworking.interfaces.BitmapRequestListener
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
 
 import kotlinx.android.synthetic.main.fragment_profile.*
-import pe.edu.upc.lib.User
+import pe.edu.upc.lib.models.User
 import pe.edu.upc.phclinic.R
 import pe.edu.upc.phclinic.persistance.SharedPreferencesManager
 import pe.edu.upc.lib.Veterinary

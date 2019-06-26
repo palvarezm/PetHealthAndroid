@@ -22,7 +22,7 @@ import org.json.JSONException
 import org.json.JSONObject
 import kotlinx.android.synthetic.main.fragment_profile.*
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
-import pe.edu.upc.lib.Pet
+import pe.edu.upc.lib.models.Pet
 import pe.edu.upc.pethealth.R
 import pe.edu.upc.pethealth.activities.AddPetActivity
 import pe.edu.upc.pethealth.activities.MainActivity

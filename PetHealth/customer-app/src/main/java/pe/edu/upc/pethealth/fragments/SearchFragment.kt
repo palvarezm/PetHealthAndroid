@@ -26,8 +26,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import java.util.ArrayList
 
-import pe.edu.upc.lib.VeterinaryDistance
-import pe.edu.upc.lib.VeterinaryModel
+import pe.edu.upc.lib.models.VeterinaryModel
+import pe.edu.upc.lib.models.VeterinaryModel.VeterinaryDistance
 import pe.edu.upc.pethealth.R
 import pe.edu.upc.pethealth.activities.MainActivity
 import pe.edu.upc.pethealth.network.RestClient

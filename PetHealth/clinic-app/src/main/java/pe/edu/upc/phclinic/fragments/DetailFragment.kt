@@ -12,9 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.salomonbrys.kotson.fromJson
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
-import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
-import pe.edu.upc.lib.ApptModel
+import pe.edu.upc.lib.models.ApptModel
 import pe.edu.upc.phclinic.R
 import pe.edu.upc.phclinic.adapters.HistoriesAdapter
 
@@ -41,15 +40,15 @@ class DetailFragment : Fragment() {
         historiesRecyclerView = view.findViewById(R.id.historiesRecyclerView)
         historiesLayoutManager = GridLayoutManager(view.context, 1)
 
-        val apptString = arguments!!.getString("appointment")
+        val apptString = arguments!!.getString("appt")
         val appt = Gson().fromJson<ApptModel.AppointmentResponse>(apptString)
 
         vetName?.text = appt.pet.name
         race?.text = appt.pet.race
         pDescription?.text = appt.pet.description
         bDate?.text = appt.pet.birth_date
-        apptDate?.text = appt.appointment.appt_date
-        apptDescription?.text = appt.appointment.desc
+        apptDate?.text = appt.appt.appt_date
+        apptDescription?.text = appt.appt.desc
         Picasso.get().load(appt.pet.image_url).transform(RoundedCornersTransformation(10, 20))
                 .resize(600, 600).centerCrop().into(petImageView)
         updateHistories(appt)

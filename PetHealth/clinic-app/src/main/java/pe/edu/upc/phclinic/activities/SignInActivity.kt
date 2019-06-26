@@ -23,7 +23,7 @@ import pe.edu.upc.phclinic.network.LoggerCallback
 import pe.edu.upc.phclinic.network.RestClient
 import pe.edu.upc.phclinic.network.RestView
 import pe.edu.upc.phclinic.persistance.SharedPreferencesManager
-import pe.edu.upc.lib.User
+import pe.edu.upc.lib.models.User
 import pe.edu.upc.lib.Veterinary
 import retrofit2.Call
 import retrofit2.Response

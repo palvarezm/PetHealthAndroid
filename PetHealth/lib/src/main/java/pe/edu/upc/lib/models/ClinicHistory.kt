@@ -1,4 +1,4 @@
-package pe.edu.upc.lib
+package pe.edu.upc.lib.models
 
 data class ClinicHistory(
         val history_id: Int,

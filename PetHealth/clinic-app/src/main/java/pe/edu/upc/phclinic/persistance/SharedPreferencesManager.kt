@@ -6,7 +6,7 @@ import android.content.SharedPreferences
 
 
 import com.google.gson.Gson
-import pe.edu.upc.lib.User
+import pe.edu.upc.lib.models.User
 import pe.edu.upc.lib.Veterinary
 
 class SharedPreferencesManager(context: Context) {

@@ -1,21 +1,13 @@
 package pe.edu.upc.phclinic.adapters
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
-import com.google.gson.Gson
-import com.google.gson.JsonArray
-import com.squareup.picasso.Picasso
-import pe.edu.upc.lib.ClinicHistory
+import pe.edu.upc.lib.models.ClinicHistory
 import pe.edu.upc.phclinic.R
-import pe.edu.upc.phclinic.fragments.DetailFragment
 
 
 class HistoriesAdapter(private val fragment: Fragment) : RecyclerView.Adapter<HistoriesAdapter.ViewHolder>() {

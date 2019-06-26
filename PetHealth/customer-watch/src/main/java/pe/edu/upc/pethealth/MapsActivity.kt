@@ -1,18 +1,14 @@
 package pe.edu.upc.pethealth
 
 import android.Manifest
-import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.Location
-import android.location.LocationListener
-import android.location.LocationManager
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
@@ -24,11 +20,10 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.PolylineOptions
-import com.google.gson.Gson
 
 import kotlinx.android.synthetic.main.activity_maps.*
-import pe.edu.upc.lib.GoogleMapResponse
-import pe.edu.upc.lib.decodePolyline
+import pe.edu.upc.lib.models.GoogleMapModel
+import pe.edu.upc.lib.Utils.decodePolyline
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -123,8 +118,8 @@ class MapsActivity : WearableActivity(), OnMapReadyCallback {
                 "${orig.latitude},${orig.longitude}",
                 "${dest.latitude},${dest.longitude}",
                 "AIzaSyBqSMe-H7GhXqYN6X0oMLiaZ62LvyJ7lnM")
-                .enqueue(object : Callback<GoogleMapResponse> {
-                    override fun onResponse(call: Call<GoogleMapResponse>?, response: Response<GoogleMapResponse>?){
+                .enqueue(object : Callback<GoogleMapModel.Response> {
+                    override fun onResponse(call: Call<GoogleMapModel.Response>?, response: Response<GoogleMapModel.Response>?){
                         val path =  ArrayList<LatLng>()
                         if (response!!.body()!!.routes.isEmpty()) return
                         response!!.body()!!.routes[0].legs[0].steps.forEach {step ->
@@ -137,7 +132,7 @@ class MapsActivity : WearableActivity(), OnMapReadyCallback {
                         map.addPolyline(rectLine)
                     }
 
-                    override fun onFailure(call: Call<GoogleMapResponse>, t: Throwable) {
+                    override fun onFailure(call: Call<GoogleMapModel.Response>, t: Throwable) {
                         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                     }
                 })
