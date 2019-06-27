@@ -11,10 +11,6 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.androidnetworking.AndroidNetworking
-import com.androidnetworking.common.Priority
-import com.androidnetworking.error.ANError
-import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.github.salomonbrys.kotson.put
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
@@ -24,14 +20,7 @@ import com.google.firebase.storage.UploadTask
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_sing_up.*
 import org.json.JSONException
-import org.json.JSONObject
 import pe.edu.upc.phclinic.R
-import pe.edu.upc.phclinic.network.LoggerCallback
-import pe.edu.upc.phclinic.network.RestClient
-import pe.edu.upc.phclinic.network.RestView
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class SignUpActivity : AppCompatActivity() {
@@ -153,7 +142,7 @@ class SignUpActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
 /*
-                val call = RestClient().webServices.signup(bodyToSend)
+                val call = RestClient().service.signup(bodyToSend)
                 call.enqueue( Callback<>(){
                     override fun onResponse(call: Call<RestView<JsonObject>>, response: Response<RestView<JsonObject>>) {
                         super.onResponse(call, response)
@@ -169,7 +158,7 @@ class SignUpActivity : AppCompatActivity() {
         val ref = storageRef.child("images/${username.toString()}")
         var uploadTask = ref.putFile(profileUri)
 
-        val urlTask = uploadTask.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
+        uploadTask.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
             if (!task.isSuccessful) {
                 task.exception?.let {
                     throw it

@@ -30,7 +30,11 @@ import retrofit2.Response
  */
 class AppointmentFragment : Fragment() {
 
-    private lateinit var appointmentAdapter: AppointmentAdapter
+    companion object{
+        val APPT_KEY = "appointment.key"
+        val APPT_PATH = "/appointment"
+    }
+    private lateinit var appointmentsAdapter: AppointmentAdapter
     private lateinit var sharedPreferencesManager: SharedPreferencesManager
     private lateinit var dataClient: DataClient
 
@@ -46,9 +50,9 @@ class AppointmentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        appointmentAdapter = AppointmentAdapter()
+        appointmentsAdapter = AppointmentAdapter()
         appointmentRecyclerView.apply {
-            adapter = appointmentAdapter
+            adapter = appointmentsAdapter
             layoutManager = GridLayoutManager(view.context, 1)
         }
         updateAppointment()
@@ -59,9 +63,8 @@ class AppointmentFragment : Fragment() {
         updateAppointment()
     }
 
-    internal fun sendWearData(appt: ArrayList<ApptModel.AppointmentResponse>) {
-        val APPT_KEY = "appt.key"
-        val APPT_PATH = "/appt"
+    internal fun sendWearData(appt: ArrayList<ApptModel.ApptResponse>) {
+
         val putDataMapReq = PutDataMapRequest.create(APPT_PATH)
         putDataMapReq.dataMap.putString(APPT_KEY, appt.toString())
         val putDataReq = putDataMapReq.asPutDataRequest().setUrgent()
@@ -69,13 +72,13 @@ class AppointmentFragment : Fragment() {
     }
 
     private fun updateAppointment() {
-        val call = RestClient().webServices.getAppts(sharedPreferencesManager.accessToken!!, sharedPreferencesManager.user!!.id)
+        val call = RestClient().service.getAppts(sharedPreferencesManager.accessToken!!, sharedPreferencesManager.user!!.id)
         call.enqueue(object : Callback<ApptModel.Response> {
             override fun onResponse(call: Call<ApptModel.Response>, response: Response<ApptModel.Response>) {
                 val appts = response.body()!!.data
                 sendWearData(appts)
-                appointmentAdapter.appts = appts
-                appointmentAdapter.notifyDataSetChanged()
+                appointmentsAdapter.appts = appts
+                appointmentsAdapter.notifyDataSetChanged()
             }
 
             override fun onFailure(call: Call<ApptModel.Response>, t: Throwable) {

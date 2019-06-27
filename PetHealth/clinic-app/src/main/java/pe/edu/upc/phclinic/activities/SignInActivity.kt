@@ -19,13 +19,13 @@ import org.json.JSONException
 import org.json.JSONObject
 import pe.edu.upc.phclinic.R
 import pe.edu.upc.phclinic.network.Connection
-import pe.edu.upc.phclinic.network.LoggerCallback
 import pe.edu.upc.phclinic.network.RestClient
 import pe.edu.upc.phclinic.network.RestView
 import pe.edu.upc.phclinic.persistance.SharedPreferencesManager
 import pe.edu.upc.lib.models.User
-import pe.edu.upc.lib.Veterinary
+import pe.edu.upc.lib.models.VeterinaryModel.Veterinary
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class SignInActivity : AppCompatActivity() {
@@ -44,7 +44,7 @@ class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this.context)
-        if (sharedPreferencesManager!!.isUserLogged) {
+        if (sharedPreferencesManager.isUserLogged) {
             sendToApptsView()
         }
         setContentView(R.layout.activity_sign_in)
@@ -91,7 +91,6 @@ class SignInActivity : AppCompatActivity() {
         }
 
         if (!Connection.isOnline(applicationContext)) {
-            cancel = true
             return
         }
 
@@ -109,10 +108,9 @@ class SignInActivity : AppCompatActivity() {
         bodyToSend.addProperty("username", email)
         bodyToSend.addProperty("password", password)
 
-        val call = RestClient().webServices.login(bodyToSend)
-        call.enqueue(object : LoggerCallback<RestView<JsonObject>>() {
+        val call = RestClient().service.login(bodyToSend)
+        call.enqueue(object : Callback<RestView<JsonObject>> {
             override fun onResponse(call: Call<RestView<JsonObject>>, response: Response<RestView<JsonObject>>) {
-                super.onResponse(call, response)
                 val answer = response.body()
 
                 if (answer != null && "{}" != answer.data?.getAsJsonObject("user").toString()) {
@@ -131,9 +129,9 @@ class SignInActivity : AppCompatActivity() {
                         )
 
                         Log.d("TESTING", "sharedpreferences")
-                        Log.d("user sp", sharedPreferencesManager?.user.toString())
-                        Log.d("veterinary sp", sharedPreferencesManager?.veterinary.toString())
-                        Log.d("accesstoken sp", sharedPreferencesManager?.accessToken.toString())
+                        Log.d("user sp", sharedPreferencesManager.user.toString())
+                        Log.d("veterinary sp", sharedPreferencesManager.veterinary.toString())
+                        Log.d("accesstoken sp", sharedPreferencesManager.accessToken.toString())
 
                         val intent = Intent(context, MainActivity::class.java)
                         intent.putExtra("user", user!!)
@@ -149,7 +147,7 @@ class SignInActivity : AppCompatActivity() {
                     builder.setMessage("User and password are incorrect")
                     builder.setPositiveButton(
                             "OK"
-                    ) { dialogInterface, i -> dialogInterface.cancel() }
+                    ) { dialogInterface, _ -> dialogInterface.cancel() }
                     val alertDialog = builder.create()
                     alertDialog.show()
                 }
@@ -157,7 +155,6 @@ class SignInActivity : AppCompatActivity() {
 
 
             override fun onFailure(call: Call<RestView<JsonObject>>, t: Throwable) {
-                super.onFailure(call, t)
             }
         })
     }

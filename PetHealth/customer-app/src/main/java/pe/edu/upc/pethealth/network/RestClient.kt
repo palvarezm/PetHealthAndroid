@@ -5,12 +5,11 @@ import com.androidnetworking.interceptors.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
 import okhttp3.OkHttpClient
-import pe.edu.upc.pethealth.utils.Constants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RestClient {
-    val webServices: PetHealthServices
+    val service: PetHealthServices
 
     init {
         val interceptor = HttpLoggingInterceptor()
@@ -20,7 +19,7 @@ class RestClient {
 
         val retrofit = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).client(okHttpClient).build()
 
-        webServices = retrofit.create(PetHealthServices::class.java)
+        service = retrofit.create(PetHealthServices::class.java)
     }
 
     companion object {

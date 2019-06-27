@@ -4,16 +4,16 @@ object ApptModel{
     data class Response(
             val message: String,
             val status: String,
-            val data: ArrayList<AppointmentResponse>
+            val data: ArrayList<ApptResponse>
     )
-    data class AppointmentResponse(
-            val appt: Appt,
+    data class ApptResponse(
+            val appointment: Appt,
             val pet: Pet,
             val veterinarian: Veterinarian,
             val veterinary: VeterinaryModel.Veterinary
     )
     data class Appt(
-            val id: String = "",
+            val id: Int?,
             val appt_date: String = "",
             val desc: String = "",
             val status: String = "",
@@ -21,8 +21,9 @@ object ApptModel{
             val end_t: String = "",
             val register_date: String = "",
             val pet_photo: String = "",
-            val pet_id: String = "",
-            val vet_id: String = "",
+            val pet_id: Int?,
+            val vet_id: Int?,
+            val veterinary_id: Int?,
             val type: String = ""
     )
 }

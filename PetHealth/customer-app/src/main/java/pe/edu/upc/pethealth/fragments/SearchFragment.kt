@@ -90,7 +90,7 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun getVeterinaries() {
-        call = RestClient().webServices.getCloseVeterinaries(sharedPreferencesManager.accessToken!!, currentLatLng.latitude, currentLatLng.longitude)
+        call = RestClient().service.getCloseVeterinaries(sharedPreferencesManager.accessToken!!, currentLatLng.latitude, currentLatLng.longitude)
         call.enqueue(object : Callback<VeterinaryModel.Response> {
             override fun onResponse(call: Call<VeterinaryModel.Response>, response: Response<VeterinaryModel.Response>) {
                 response.body()!!.data.forEach { veterinariesArray.add(it) }

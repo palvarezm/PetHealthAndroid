@@ -115,7 +115,7 @@ class StartActivity : AppCompatActivity() {
         bodyToSend.addProperty("username", email)
         bodyToSend.addProperty("password", password)
 
-        val call = RestClient().webServices.login(bodyToSend)
+        val call = RestClient().service.login(bodyToSend)
         call.enqueue(object : Callback<RestView<JsonObject>> {
             override fun onResponse(call: Call<RestView<JsonObject>>, response: Response<RestView<JsonObject>>) {
                 val answer = response.body()
