@@ -14,7 +14,7 @@
     <RelativeLayout
         android:id="@+id/vetBasicInfo"
         android:layout_width="match_parent"
-        android:layout_height="277dp"
+        android:layout_height="280dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,7 +24,6 @@
             android:layout_height="50dp"
             android:layout_marginTop="220dp"
             android:layout_centerHorizontal="true"
-
             app:cardCornerRadius="@dimen/default_margin"
             >
             <TextView
@@ -59,7 +58,7 @@
 
             <ImageView
                 android:id="@+id/vetImageView"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="170dp"
                 android:layout_marginTop="36dp"
                 android:layout_marginBottom="12dp"

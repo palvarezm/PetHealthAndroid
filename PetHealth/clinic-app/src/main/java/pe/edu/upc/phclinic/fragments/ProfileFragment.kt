@@ -39,7 +39,7 @@ class ProfileFragment : Fragment() {
         updateProfile()
         Picasso.get().load(sharedPreferencesManager!!.user!!.photo).error(R.mipmap.ic_launcher)
                 .transform(RoundedCornersTransformation(10, 0))
-                .resize(250, 170)
+                .resize(400, 170)
                 .centerCrop()
                 .into(vetImageView)
     }
