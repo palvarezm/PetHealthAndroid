@@ -1,71 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:layout_height="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_height="match_parent"
     android:id="@+id/popUpConstraint"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="200dp"
-    android:layout_height="200dp"
-    app:cardCornerRadius="@dimen/default_margin"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Diagnosis:"
-            android:paddingVertical="@dimen/default_margin"/>
 
-        <com.google.android.material.textfield.TextInputEditText
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/diagnoseTextInputLayout"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:paddingVertical="@dimen/default_margin"/>
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Prescription:"
-            android:paddingVertical="@dimen/default_margin"/>
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:paddingVertical="@dimen/default_margin"/>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_marginVertical="@dimen/big_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_marginHorizontal="@dimen/big_margin"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/diagnoseTextInputEditText"
+                android:layout_width="match_parent"
+                android:hint="Diagnose"
+                android:layout_height="50dp"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/prescriptionTextInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/diagnoseTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/big_margin"
+            android:layout_marginHorizontal="@dimen/big_margin"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/prescriptionTextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:hint="Prescription"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/acceptButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="9dp"
                 android:text="Confirmar"
-                android:layout_marginStart="@dimen/default_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/cancelButton"
+                app:layout_constraintTop_toBottomOf="@+id/prescriptionTextInputLayout"
+                android:layout_marginStart="70dp"
                 android:layout_marginEnd="@dimen/default_margin"
+                android:layout_marginVertical="@dimen/big_margin"
                 android:backgroundTint="@color/colorPrimaryLight"
                 />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/cancelButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginVertical="@dimen/big_margin"
                 android:textSize="9dp"
                 android:text="Cancelar"
                 android:paddingVertical="@dimen/default_margin"
+                app:layout_constraintTop_toBottomOf="@+id/prescriptionTextInputLayout"
+                app:layout_constraintStart_toEndOf="@id/acceptButton"
                 />
-        </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </LinearLayout>
-
-</com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,6 +15,7 @@ class RestClient {
         const val LOGIN = "login"
         const val APPOINTMENTS = "users/{user_id}/appointments"
         const val SIGNUP_USER = "signup"
+        const val FINISH_APPOINTMENT = "appointments/{appt_id}/history"
         private val MAX_TIME = 300
     }
     val service: PetHealthServices
