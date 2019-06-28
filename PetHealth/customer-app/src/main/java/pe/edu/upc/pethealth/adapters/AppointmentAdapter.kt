@@ -3,8 +3,10 @@ package pe.edu.upc.pethealth.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import pe.edu.upc.lib.models.ApptModel.ApptResponse
 import pe.edu.upc.pethealth.R
 import java.text.SimpleDateFormat
@@ -34,6 +36,7 @@ class AppointmentAdapter(var appts: ArrayList<ApptResponse> = ArrayList()) : Rec
         private var vetTextView: TextView = itemView.findViewById<View>(R.id.apptTypeTextView) as TextView
         private var veterinaryTextView: TextView = itemView.findViewById<View>(R.id.apptVeterinaryTextView) as TextView
         private var dateTextView: TextView = itemView.findViewById<View>(R.id.apptDateTextView) as TextView
+        private var petImageView: ImageView = itemView.findViewById(R.id.petImageView) as ImageView
         fun updateFrom(response: ApptResponse){
 
             veterinaryTextView.text = response.veterinary.name
@@ -46,6 +49,7 @@ class AppointmentAdapter(var appts: ArrayList<ApptResponse> = ArrayList()) : Rec
             val timeFormatter = SimpleDateFormat("h:mm aaa")
 
             dateTextView.text = dateFormatter.format(apptDate) + timeFormatter.format(apptStart) + '-'+ timeFormatter.format(apptEnd)
+            Picasso.get().load(response.veterinary.logo).into(petImageView)
         }
     }
 }

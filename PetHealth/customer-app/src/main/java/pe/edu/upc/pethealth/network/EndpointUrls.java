@@ -3,6 +3,7 @@ package pe.edu.upc.pethealth.network;
 public interface EndpointUrls {
     String BASE_URL = "https://pethealthapi.herokuapp.com/api/";
     String LOGIN ="login";
-    String APPOINTMENTS = "user/{user_id}/appts";
+    String APPOINTMENTS = "users/{user_id}/appointments";
     String VETERINARIES = "veterinaries";
+    String EDIT_USER = "customers/{user_id}";
 }
