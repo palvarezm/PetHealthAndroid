@@ -17,6 +17,7 @@ import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.github.salomonbrys.kotson.fromJson
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_main.view.*
 
 import org.json.JSONException
 import org.json.JSONObject
@@ -44,8 +45,9 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        (activity as MainActivity).setFragmentToolbar("Home", false, fragmentManager!!)
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+        //(activity as MainActivity).setFragmentToolbar(resources.getString(R.string.pet_tips_title), false, fragmentManager!!)
+        activity?.title = resources.getString(R.string.pet_tips_title)
         myTipRecyclerView = view.findViewById<View>(R.id.myTipRecyclerView) as RecyclerView
         news = ArrayList()
         newsAdapters = NewsAdapters(news)

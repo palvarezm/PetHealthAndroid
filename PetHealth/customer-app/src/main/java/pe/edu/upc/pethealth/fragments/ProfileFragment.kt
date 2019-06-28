@@ -71,7 +71,7 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        (activity as MainActivity).setFragmentToolbar("Profile", true, fragmentManager)
+        (activity as MainActivity).setFragmentToolbar(resources.getString(R.string.title_profile), false, fragmentManager)
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         sharedPreferencesManager = this.context?.let { SharedPreferencesManager.getInstance(it) }
         person = sharedPreferencesManager!!.person
