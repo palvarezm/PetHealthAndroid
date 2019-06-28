@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".AppointmentDetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appointmentDetailConstraintLayout"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/infoCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/big_margin"
+            android:layout_marginTop="41dp"
+            app:layout_constraintVertical_bias="0.0"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:layout_marginBottom="@dimen/default_margin"
+            app:layout_constraintTop_toTopOf="@id/petImageView"
+            app:cardCornerRadius="@dimen/default_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/historiesRecyclerView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/petNameTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/big_padding"
+                    android:textAlignment="textEnd"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorIcons"
+                    android:text="Pet Name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/apptTypeTextView"
+                    app:layout_constraintEnd_toStartOf="@id/petRaceTextView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/petRaceTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/big_padding"
+                    android:layout_marginTop="101dp"
+                    android:layout_marginBottom="@dimen/minimun_margin"
+                    android:textColor="@color/colorIcons"
+                    android:text="Race"
+                    app:layout_constraintBottom_toBottomOf="@id/petNameTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/petNameTextView"
+                    app:layout_constraintTop_toTopOf="@id/petNameTextView" />
+
+                <TextView
+                    android:id="@+id/apptTypeTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/default_margin"
+                    android:layout_marginHorizontal="@dimen/big_padding"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorIcons"
+                    android:text="Appt Type"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/apptDateTextView"
+                    app:layout_constraintTop_toTopOf="@id/petNameTextView" />
+
+
+                <TextView
+                    android:id="@+id/apptDateTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_marginHorizontal="@dimen/big_padding"
+                    android:layout_marginBottom="@dimen/minimun_margin"
+                    android:textColor="@color/colorIcons"
+                    android:text="Mar, 14 8:00 am - 10:00 pm"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/apptTypeTextView"
+                    app:layout_constraintTop_toTopOf="@id/apptTypeTextView" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <ImageView
+            android:id="@+id/petImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/big_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="11dp"/>
+
+        <androidx.wear.widget.WearableRecyclerView
+            android:id="@+id/historiesRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/minimun_margin"
+            android:layout_marginHorizontal="@dimen/big_margin"
+            app:layout_constraintTop_toBottomOf="@id/infoCardView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_appointment">
+        </androidx.wear.widget.WearableRecyclerView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.wear.widget.BoxInsetLayout>

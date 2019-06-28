@@ -1,6 +1,5 @@
-package pe.edu.upc.pethealth
+package pe.edu.upc.phclinic
 
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
@@ -34,23 +33,14 @@ class AppointmentDetailActivity(var appt: ApptResponse) : WearableActivity() {
             schedule = "$date $start - $end"
         }
         apptTypeTextView.text = appt.appointment.type
-        descriptionTextView.text = appt. appointment.desc
-        scheduleTextView.text = schedule
-        vetTextView.text = appt.veterinarian.name
-        veterinaryTextView.text = appt.veterinary.name
+        //vetTextView.text = appt.veterinarian.name
+        //veterinaryTextView.text = appt.veterinary.name
         Picasso.get()
                 .load(appt.veterinary.logo)
                 .error(R.mipmap.ic_launcher)
                 .placeholder(R.mipmap.ic_launcher)
                 .transform(CropCircleTransformation())
-                .into(veterinaryImageView)
-        locationButton.setOnClickListener{
-            this@AppointmentDetailActivity.startActivity(
-                    Intent(this@AppointmentDetailActivity, MapsActivity::class.java)
-                            .putExtra("latitude",appt.veterinary.latitude)
-                            .putExtra("longitude",appt.veterinary.longitude)
-                            .putExtra("veterinaryName",appt.veterinary.name))
-        }
+                .into(petImageView)
         setAmbientEnabled()
     }
 }

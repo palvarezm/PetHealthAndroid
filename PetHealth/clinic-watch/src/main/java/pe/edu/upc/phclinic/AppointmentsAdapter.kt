@@ -1,4 +1,4 @@
-package pe.edu.upc.pethealth
+package pe.edu.upc.phclinic
 
 import android.content.Context
 import android.content.Intent
