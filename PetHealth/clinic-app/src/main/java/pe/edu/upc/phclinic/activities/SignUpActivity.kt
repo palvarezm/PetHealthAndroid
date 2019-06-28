@@ -11,18 +11,23 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.github.salomonbrys.kotson.put
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
+import com.google.firebase.FirebaseApp
+
+import com.google.firebase.firestore.auth.User
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
+import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_sing_up.*
 import org.json.JSONException
+import org.json.JSONObject
 import pe.edu.upc.phclinic.R
 import pe.edu.upc.phclinic.network.RestClient
 import pe.edu.upc.phclinic.network.RestView
+import pe.edu.upc.phclinic.persistance.SharedPreferencesManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,13 +39,29 @@ class SignUpActivity : AppCompatActivity() {
     internal val context: Context = this
     lateinit var storageRef: StorageReference
     private val GALLERY_IMAGE = 1
+    lateinit var username : String
+    lateinit var password : String
+    lateinit var mail : String
+    lateinit var photo : String
+    var userable_type : Int = 1
+    lateinit var name : String
+    lateinit var last_name : String
+    lateinit var dni : String
+    lateinit var phone : String
+    lateinit var sharedPreferencesManager : SharedPreferencesManager
+    private lateinit var user: pe.edu.upc.lib.models.User
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sing_up)
+        FirebaseApp.initializeApp(this.context)
         storageRef = FirebaseStorage.getInstance().reference
+        sharedPreferencesManager = SharedPreferencesManager.getInstance(this.applicationContext)
         doneButton.setOnClickListener { attemptToSignUp() }
         profileImageView.setOnClickListener { chooseImage()}
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when(requestCode){
             GALLERY_IMAGE -> {
@@ -49,6 +70,7 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun chooseImage() {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "image/*"
@@ -125,32 +147,30 @@ class SignUpActivity : AppCompatActivity() {
         } else {
             prepareImage(usernameTextInputEditText.text){profileDownloadUri ->
                 val bodyToSend = JsonObject()
-                try {
-                    bodyToSend.put(Pair("username", usernameTextInputEditText.text))
-                    bodyToSend.put(Pair("password", passwordTextInputEditText.text))
-                    bodyToSend.put(Pair("mail", emailTextInputEditText.text))
-                    bodyToSend.put(Pair("photo", profileDownloadUri))
-                    bodyToSend.put(Pair("userable_type", 2))
-                    bodyToSend.put(Pair("name", nameTextInputEditText.text))
-                    bodyToSend.put(Pair("last_name", lastNameTextInputEditText.text))
-                    bodyToSend.put(Pair("dni", docNumberTextInputEditText.text))
-                    bodyToSend.put(Pair("phone,address", phoneTextInputEditText.text))
-                    bodyToSend.put(Pair("linkedin_link", ""))
-                    bodyToSend.put(Pair("degree", ""))
-                    bodyToSend.put(Pair("location", ""))
-                    bodyToSend.put(Pair("opening_hours", ""))
-                    bodyToSend.put(Pair("website_url", ""))
-                    bodyToSend.put(Pair("youtube_url", ""))
-                    bodyToSend.put(Pair("twitter_url", ""))
 
+                try {
+                    bodyToSend.addProperty("username", username)
+                    bodyToSend.addProperty("password", password)
+                    bodyToSend.addProperty("mail", mail)
+                    bodyToSend.addProperty("photo", photo)
+                    bodyToSend.addProperty("userable_type", userable_type)
+                    bodyToSend.addProperty("name", name)
+                    bodyToSend.addProperty("last_name", last_name)
+                    bodyToSend.addProperty("dni", dni)
+                    bodyToSend.addProperty("phone", phone)
+                    bodyToSend.addProperty("address", "")
+                    bodyToSend.addProperty("linkedin_link", "")
+                    bodyToSend.addProperty("degree", "")
+                    bodyToSend.addProperty("location", "")
+                    bodyToSend.addProperty("opening_hours", "")
+                    bodyToSend.addProperty("website_url", "")
+                    bodyToSend.addProperty("youtube_url", "")
+                    bodyToSend.addProperty("twitter_url", "")
+                    bodyToSend.addProperty("latitude", "")
+                    bodyToSend.addProperty("longitude", "")
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
-
-                val call = RestClient().service.signup(bodyToSend)
-
-
-
 
             }
         }
@@ -172,5 +192,36 @@ class SignUpActivity : AppCompatActivity() {
                 callback(downloadUri.toString())
             }
         }
+    }
+
+    private fun sendUserData(body: JsonObject){
+        val call = RestClient().service.signup(body)
+        call.enqueue(object : Callback<RestView<JsonObject>>{
+            override fun onResponse(call: Call<RestView<JsonObject>>, response: Response<RestView<JsonObject>>){
+                val answer = response.body()
+                if(answer!!.status == "ok"){
+                    val builder = AlertDialog.Builder(context)
+                    builder.setMessage("User Corretly Created")
+                    builder.setPositiveButton("OK") { dialogInterface, i ->
+                        dialogInterface.cancel()
+                        val intent = Intent(context, SignInActivity::class.java)
+                        context.startActivity(intent)
+                        finish()
+                    }
+                    val alertDialog = builder.create()
+                    alertDialog.show()
+                }
+                else{
+                    Log.d(getString(R.string.app_name), "Error with the Resgistration of User")
+                }
+            }
+
+            override fun onFailure(call: Call<RestView<JsonObject>>, t: Throwable) {
+
+            }
+        })
+
+
+
     }
 }
