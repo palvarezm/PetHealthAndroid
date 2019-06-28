@@ -12,24 +12,25 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import pe.edu.upc.lib.models.VeterinaryModel.Veterinary;
 import pe.edu.upc.pethealth.R;
 
 public class SearchAdapters extends RecyclerView.Adapter<SearchAdapters.ViewHolder> {
 
-    private List<pe.edu.upc.lib.Veterinary> veterinaries;
+    private List<Veterinary> veterinaries;
 
     public SearchAdapters() {
     }
 
-    public SearchAdapters(List<pe.edu.upc.lib.Veterinary> veterinaries) {
+    public SearchAdapters(List<Veterinary> veterinaries) {
         this.veterinaries = veterinaries;
     }
 
-    public List<pe.edu.upc.lib.Veterinary> getVeterinaries() {
+    public List<Veterinary> getVeterinaries() {
         return veterinaries;
     }
 
-    public SearchAdapters setVeterinaries(List<pe.edu.upc.lib.Veterinary> veterinaries) {
+    public SearchAdapters setVeterinaries(List<Veterinary> veterinaries) {
         this.veterinaries = veterinaries;
         return this;
     }
@@ -42,7 +43,7 @@ public class SearchAdapters extends RecyclerView.Adapter<SearchAdapters.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final pe.edu.upc.lib.Veterinary veterinary = veterinaries.get(position);
+        final Veterinary veterinary = veterinaries.get(position);
         Picasso.get().load("https://static.interbankbenefit.pe/public/web/images/evales/ficha-tecnica/groomers-ficha-tecnica.jpg").into(holder.ivVet);
         holder.nameTextView.setText(veterinary.getName());
         holder.locationTextView.setText("Jesus Maria");

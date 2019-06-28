@@ -16,7 +16,7 @@
             android:layout_height="1.2dp"
             android:layout_marginBottom="4dp"
             android:layout_marginHorizontal="36dp"
-            android:background="@color/colorPrimaryLight"
+            android:background="@color/colorPrimaryDark"
             app:layout_constraintBottom_toTopOf="@+id/textView"/>
         <com.wang.avi.AVLoadingIndicatorView
             android:id="@+id/avi"

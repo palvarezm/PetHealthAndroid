@@ -1,5 +1,6 @@
 package pe.edu.upc.phclinic.fragments
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.transition.Slide
 import android.view.Gravity
@@ -14,34 +15,49 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionManager
 import com.squareup.picasso.Picasso
+import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.fragment_detail_appointment.*
 import pe.edu.upc.lib.models.ApptModel.ApptResponse
 import pe.edu.upc.phclinic.R
 import pe.edu.upc.phclinic.adapters.HistoriesAdapter
+import pe.edu.upc.phclinic.graphics.CircleTransform
 
-class DetailFragment(var appt: ApptResponse) : Fragment() {
+class DetailFragment(var apptResponse: ApptResponse) : Fragment() {
 
     private lateinit var historiesAdapter : HistoriesAdapter
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_detail_appointment, container, false)
-        view.foreground.alpha = 0
+        historiesAdapter = HistoriesAdapter(fragment = this)
+
+        this.activity!!.window.decorView.foreground = ColorDrawable(0xCC000000.toInt())
+        this.activity!!.window.decorView.foreground.alpha = 0
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        apptVetTextView.text = appt.pet.name
-        petRaceTextView.text = appt.pet.race
-        petDescTextView.text = appt.pet.description
-        petBirthTextView.text = appt.pet.birth_date
-        apptDateTextView.text = appt.appointment.appt_date
-        apptDescTextView.text = appt.appointment.desc
-        Picasso.get().load(appt.pet.image_url).transform(RoundedCornersTransformation(10, 20))
-                .resize(600, 600).centerCrop().into(petImageView)
-        updateHistories(appt)
+
+        historiesRecyclerView.apply {
+            adapter = historiesAdapter
+            layoutManager = GridLayoutManager(this.context, 1)
+        }
+        petNameTextView.text = apptResponse.pet.name
+        petRaceTextView.text = apptResponse.pet.race
+        petDescTextView.text = apptResponse.pet.description
+        petBirthTextView.text = apptResponse.pet.birth_date
+
+        apptTypeTextView.text = apptResponse.appointment.type
+        apptDateTextView.text = apptResponse.appointment.appt_date
+        apptDescTextView.text = apptResponse.appointment.desc
+        apptVetTextView.text = apptResponse.veterinarian.name
+
+        Picasso.get().load(apptResponse.pet.image_url)
+                .transform(CircleTransform())
+                .into(petImageView)
+        updateHistories(apptResponse)
         apptFinishButton.setOnClickListener{
             val finishApptView = LayoutInflater.from(this.activity).inflate(R.layout.popup_finish_appointment, null)
             val popupWindow = PopupWindow(finishApptView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
@@ -63,11 +79,10 @@ class DetailFragment(var appt: ApptResponse) : Fragment() {
                     0, // X offset
                     0 // Y offset
             )
-
-            view.foreground.alpha = 220
+            this.activity!!.window.decorView.foreground.alpha = 220
             buttonPopup.setOnClickListener {
                 popupWindow.dismiss()
-                view.foreground.alpha = 0
+                this.activity!!.window.decorView.foreground.alpha = 0
             }
 
         }
@@ -75,10 +90,7 @@ class DetailFragment(var appt: ApptResponse) : Fragment() {
 
     private fun updateHistories(appt: ApptResponse){
         val histories = appt.pet.history
-        historiesAdapter = HistoriesAdapter(this)
-        historiesRecyclerView.adapter = historiesAdapter
-        historiesRecyclerView.layoutManager = GridLayoutManager(this.context, 1)
-        historiesAdapter.setHistories(histories)
+        historiesAdapter.histories = histories
         historiesAdapter.notifyDataSetChanged()
     }
 
