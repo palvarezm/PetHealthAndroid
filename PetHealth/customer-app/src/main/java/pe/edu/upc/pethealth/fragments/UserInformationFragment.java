@@ -17,6 +17,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,7 +28,12 @@ import pe.edu.upc.pethealth.R;
 import pe.edu.upc.pethealth.activities.MainActivity;
 import pe.edu.upc.pethealth.models.Person;
 import pe.edu.upc.pethealth.network.PetHealthApiService;
+import pe.edu.upc.pethealth.network.RestClient;
+import pe.edu.upc.pethealth.network.RestView;
 import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -90,16 +96,27 @@ public class UserInformationFragment extends Fragment {
         final SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
-            jsonPerson.put("userId",person.getId());
             jsonPerson.put("name", name);
             jsonPerson.put("lastName",lastName);
-            jsonPerson.put("nrodocumento",documentNumber);
+            jsonPerson.put("dni",documentNumber);
             jsonPerson.put("adress",address);
             jsonPerson.put("phone",phone);
         }catch (JSONException e){
             e.printStackTrace();
         }
 
+        Call<RestView<JsonObject>> call = new RestClient().getService().editProfileData(sharedPreferencesManager.getAccessToken(), sharedPreferencesManager.getUser().getId() ,jsonPerson);
+        call.enqueue(new Callback<RestView<JsonObject>>() {
+            @Override
+            public void onResponse(Call<RestView<JsonObject>> call, Response<RestView<JsonObject>> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<RestView<JsonObject>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void updateProfile() {

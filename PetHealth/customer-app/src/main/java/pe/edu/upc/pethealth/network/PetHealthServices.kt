@@ -1,17 +1,13 @@
 package pe.edu.upc.pethealth.network
 
 import com.google.gson.JsonObject
+import org.json.JSONObject
 
 
 import pe.edu.upc.lib.models.ApptModel
 import pe.edu.upc.lib.models.VeterinaryModel
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface PetHealthServices {
     @POST(EndpointUrls.LOGIN)
@@ -22,4 +18,7 @@ interface PetHealthServices {
 
     @GET(EndpointUrls.VETERINARIES)
     fun getCloseVeterinaries(@Header("access_token") accessToken: String, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?): Call<VeterinaryModel.Response>
+
+    @PUT(EndpointUrls.EDIT_USER)
+    fun editProfileData(@Header("access_token") accessToken: String, @Path("user_id") id: Int, @Body requestBody: JSONObject): Call<RestView<JsonObject>>
 }

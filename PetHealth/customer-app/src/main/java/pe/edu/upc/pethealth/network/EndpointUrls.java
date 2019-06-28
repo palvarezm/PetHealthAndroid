@@ -5,4 +5,5 @@ public interface EndpointUrls {
     String LOGIN ="login";
     String APPOINTMENTS = "users/{user_id}/appointments";
     String VETERINARIES = "veterinaries";
+    String EDIT_USER = "customers/{user_id}";
 }
