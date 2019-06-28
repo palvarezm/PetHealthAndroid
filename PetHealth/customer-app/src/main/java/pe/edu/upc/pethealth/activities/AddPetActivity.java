@@ -68,7 +68,7 @@ public class AddPetActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pet);
-        sharedPreferencesManager = SharedPreferencesManager.getInstance(this.getApplicationContext());
+        sharedPreferencesManager = SharedPreferencesManager.Companion.getInstance(this.getApplicationContext());
         user = sharedPreferencesManager.getUser();
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_petToolbar);

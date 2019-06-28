@@ -6,8 +6,8 @@ import android.content.SharedPreferences
 
 
 import com.google.gson.Gson
-import pe.edu.upc.lib.User
-import pe.edu.upc.lib.Veterinary
+import pe.edu.upc.lib.models.User
+import pe.edu.upc.lib.models.VeterinaryModel.Veterinary
 
 class SharedPreferencesManager(context: Context) {
     private val mPreferences: SharedPreferences

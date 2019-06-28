@@ -1,4 +1,0 @@
-#Wed Jun 19 18:06:56 COT 2019
-base.0=D\:\\DocumentosD\\UPC\\2019-1\\Implementacion_de_Dispositivos_Android_y_HTML\\PetHealth\\PetHealthAndroid\\PetHealth\\app-customer\\build\\intermediates\\transforms\\dexMerger\\debug\\9
-path.0=classes.dex
-renamed.0=classes.dex

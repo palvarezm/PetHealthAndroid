@@ -51,7 +51,6 @@
         <activity
             android:name=".activities.SignUpActivity"
             android:screenOrientation="portrait" />
-        <!-- fragment android:name=".fragments.MyTipDetailFragment" / -->
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -64,19 +63,12 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <!--
-            -fragment
-            android:name=".fragments.AboutVeterinaryFragment"
-            android:label="@string/title_activity_about_veterinary"></fragment
-        -->
         <activity
             android:name=".activities.AddPetActivity"
             android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.AddTipActivity"
-            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

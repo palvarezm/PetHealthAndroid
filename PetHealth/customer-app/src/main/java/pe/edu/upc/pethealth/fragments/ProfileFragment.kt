@@ -22,7 +22,7 @@ import org.json.JSONException
 import org.json.JSONObject
 import kotlinx.android.synthetic.main.fragment_profile.*
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
-import pe.edu.upc.lib.Pet
+import pe.edu.upc.lib.models.Pet
 import pe.edu.upc.pethealth.R
 import pe.edu.upc.pethealth.activities.AddPetActivity
 import pe.edu.upc.pethealth.activities.MainActivity
@@ -71,9 +71,9 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        (activity as MainActivity).setFragmentToolbar("Profile", true, fragmentManager)
+        (activity as MainActivity).setFragmentToolbar(resources.getString(R.string.title_profile), false, fragmentManager)
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-        sharedPreferencesManager = SharedPreferencesManager.getInstance(this.context)
+        sharedPreferencesManager = this.context?.let { SharedPreferencesManager.getInstance(it) }
         person = sharedPreferencesManager!!.person
         petsAdapter = PetsAdapter(ArrayList())
         setHasOptionsMenu(true)

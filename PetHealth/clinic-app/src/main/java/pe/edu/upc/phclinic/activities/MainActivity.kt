@@ -1,16 +1,16 @@
 package pe.edu.upc.phclinic.activities
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import pe.edu.upc.phclinic.R
 import pe.edu.upc.phclinic.fragments.AppointmentsFragment
 import pe.edu.upc.phclinic.fragments.ChatFragment
 import pe.edu.upc.phclinic.fragments.ProfileFragment
 import pe.edu.upc.phclinic.persistance.SharedPreferencesManager
-import pe.edu.upc.lib.User
+import pe.edu.upc.lib.models.User
 
 class MainActivity : AppCompatActivity() {
     private var user: User? = null
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this.applicationContext)
         user = sharedPreferencesManager!!.user
-
+        replaceFragment(AppointmentsFragment())
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         /*val host = NavHostFragment.create(R.navigation.nav_graph)
         supportFragmentManager

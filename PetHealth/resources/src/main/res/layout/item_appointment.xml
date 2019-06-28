@@ -1,65 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
     android:layout_margin="@dimen/default_margin">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/minimun_margin">
         <TextView
-            android:id="@+id/veterinaryTextView"
+            android:id="@+id/apptTypeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintStart_toEndOf="@id/petImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="24dp" />
+        <TextView
+            android:id="@+id/apptVeterinaryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Veterinary"
             android:layout_margin="@dimen/default_margin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textSize="24dp" />
+            app:layout_constraintStart_toEndOf="@id/petImageView"
+            app:layout_constraintTop_toBottomOf="@id/apptTypeTextView"/>
         <TextView
-            android:id="@+id/vetTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Vet"
-            android:layout_margin="@dimen/default_margin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/veterinaryTextView"/>
-        <TextView
-            android:id="@+id/dateTextView"
+            android:id="@+id/apptDateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="06/06/06"
             android:layout_margin="@dimen/default_margin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vetTextView"/>
-        <TextView
-            android:id="@+id/startTimeTextView"
+            app:layout_constraintStart_toEndOf="@id/petImageView"
+            app:layout_constraintTop_toBottomOf="@id/apptVeterinaryTextView"/>
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            style="@style/AVLoadingIndicatorView"
+            android:visibility="visible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="startTime"
-            android:layout_margin="@dimen/default_margin"
+            app:indicatorColor="@color/colorPrimaryDark"
+            app:indicatorName="BallScaleIndicator"
+            app:layout_constraintBottom_toBottomOf="@id/petImageView"
+            app:layout_constraintEnd_toEndOf="@id/petImageView"
+            app:layout_constraintStart_toStartOf="@id/petImageView"
+            app:layout_constraintTop_toTopOf="@id/petImageView" />
+
+        <ImageView
+            android:id="@+id/petImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dateTextView"/>
-        <TextView
-            android:id="@+id/descriptionTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="content"
-            android:layout_margin="@dimen/default_margin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/startTimeTextView"/>
-        <Button
-            android:id="@+id/veterinarianButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Info Veterinaria"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginEnd="@dimen/default_margin"
-            android:visibility="gone"/>
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

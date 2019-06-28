@@ -13,10 +13,12 @@ class RestClient {
 
         val BASE_URL = "https://pethealthapi.herokuapp.com/api/"
         const val LOGIN = "login"
-        const val APPOINTMENTS = "user/{user_id}/appts"
+        const val APPOINTMENTS = "users/{user_id}/appointments"
+        const val SIGNUP_USER = "signup"
+        const val FINISH_APPOINTMENT = "appointments/{appt_id}/history"
         private val MAX_TIME = 300
     }
-    val webServices: PetHealthServices
+    val service: PetHealthServices
 
     init {
         val interceptor = HttpLoggingInterceptor()
@@ -29,6 +31,6 @@ class RestClient {
                 Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).client(okHttpClient)
                         .build()
 
-        webServices = retrofit.create(PetHealthServices::class.java)
+        service = retrofit.create(PetHealthServices::class.java)
     }
 }

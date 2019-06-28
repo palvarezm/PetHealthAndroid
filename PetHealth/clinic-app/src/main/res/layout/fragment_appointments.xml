@@ -6,11 +6,12 @@
     tools:context="pe.edu.upc.phclinic.fragments.AppointmentsFragment"
     android:background="@color/colorPrimaryLight">
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/appointmentRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_appointment">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>

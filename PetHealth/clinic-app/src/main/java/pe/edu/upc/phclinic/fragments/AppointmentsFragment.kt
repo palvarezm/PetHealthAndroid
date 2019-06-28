@@ -1,79 +1,75 @@
 package pe.edu.upc.phclinic.fragments
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.gson.JsonArray
-import pe.edu.upc.phclinic.adapters.AppointmentAdapters
-import pe.edu.upc.phclinic.network.LoggerCallback
-import pe.edu.upc.phclinic.network.RestView
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.gms.wearable.DataClient
+import com.google.android.gms.wearable.PutDataMapRequest
+import com.google.android.gms.wearable.Wearable
+import kotlinx.android.synthetic.main.fragment_appointments.*
+import pe.edu.upc.lib.models.ApptModel
+import pe.edu.upc.phclinic.adapters.AppointmentsAdapter
 import pe.edu.upc.phclinic.persistance.SharedPreferencesManager
 import pe.edu.upc.phclinic.R
 import pe.edu.upc.phclinic.network.RestClient
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- *b
- */
 class AppointmentsFragment : Fragment() {
 
-    private var appointmentRecyclerView: RecyclerView? = null
-    private var appointmentAdapters: AppointmentAdapters? = null
-    private var appointmentLayoutManager: RecyclerView.LayoutManager? = null
-    private val fragment = this
-
-    private var answer: RestView<JsonArray>? = null
-    private var sharedPreferencesManager: SharedPreferencesManager? = null
-
-
-
-    override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        this.sharedPreferencesManager = this.context?.let { SharedPreferencesManager.getInstance(it) }
-        val view = inflater.inflate(R.layout.fragment_appointments, container, false)
-        updateAppointment()
-        appointmentRecyclerView = view.findViewById(R.id.appointmentRecyclerView)
-        appointmentLayoutManager = GridLayoutManager(view.context, 1)
-        return view
+    companion object{
+        val APPT_KEY = "appointment.key"
+        val APPT_PATH = "/appointment"
     }
+    private lateinit var appointmentsAdapter: AppointmentsAdapter
+    private lateinit var sharedPreferencesManager: SharedPreferencesManager
+    private lateinit var dataClient: DataClient
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+
+        sharedPreferencesManager = SharedPreferencesManager.getInstance(this.context!!)
+        val view = inflater.inflate(R.layout.fragment_appointments, container, false)
+        dataClient = Wearable.getDataClient(this.context!!)
+        return view
+
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        appointmentsAdapter = AppointmentsAdapter(fragment = this)
+        appointmentRecyclerView.apply {
+            adapter = appointmentsAdapter
+            layoutManager = GridLayoutManager(view.context, 1)
+        }
+        updateAppointment()
+    }
     override fun onResume() {
         super.onResume()
         updateAppointment()
     }
-
+    internal fun sendWearData(appt: ArrayList<ApptModel.ApptResponse>) {
+        val putDataMapReq = PutDataMapRequest.create(APPT_PATH)
+        putDataMapReq.dataMap.putString(APPT_KEY, appt.toString())
+        val putDataReq = putDataMapReq.asPutDataRequest().setUrgent()
+        dataClient.putDataItem(putDataReq)
+    }
     private fun updateAppointment() {
-        val call = RestClient().webServices
-                .getAppts(sharedPreferencesManager?.accessToken, sharedPreferencesManager?.user?.id)
-        call.enqueue(object : LoggerCallback<RestView<JsonArray>>() {
-            override fun onResponse(call: Call<RestView<JsonArray>>, response: Response<RestView<JsonArray>>) {
-                super.onResponse(call, response)
-                answer = response.body()
-                appointmentAdapters = AppointmentAdapters(fragment)
-                appointmentRecyclerView?.adapter = appointmentAdapters
-                appointmentRecyclerView?.layoutManager = appointmentLayoutManager
-                answer?.data?.let { appointmentAdapters?.setAppointments(it) }
-                appointmentAdapters?.notifyDataSetChanged()
+        val call = RestClient().service.getAppts(sharedPreferencesManager.accessToken!!, sharedPreferencesManager.user!!.id)
+        call.enqueue(object : Callback<ApptModel.Response> {
+            override fun onResponse(call: Call<ApptModel.Response>, response: Response<ApptModel.Response>) {
+
+                val appts = response.body()!!.data
+                sendWearData(appts)
+                appointmentsAdapter.appts = appts
+                appointmentsAdapter.notifyDataSetChanged()
             }
 
-            override fun onFailure(call: Call<RestView<JsonArray>>, t: Throwable) {
-                super.onFailure(call, t)
+            override fun onFailure(call: Call<ApptModel.Response>, t: Throwable) {
                 Log.d("FAILURE", t.toString())
             }
         })

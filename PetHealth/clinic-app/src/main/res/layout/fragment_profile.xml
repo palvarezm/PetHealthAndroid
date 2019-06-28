@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,70 +8,132 @@
     android:background="@color/colorPrimaryLight"
     tools:context=".fragments.ProfileFragment">
 
+    
     <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:id="@+id/vetImageView"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="12dp"
-        android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/nameTextView"
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            style="@style/AVLoadingIndicatorView"
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:indicatorColor="@color/colorPrimaryDark"
+            app:indicatorName="BallScaleIndicator"
+            app:layout_constraintBottom_toBottomOf="@+id/vetImageView"
+            app:layout_constraintEnd_toEndOf="@+id/vetImageView"
+            app:layout_constraintStart_toStartOf="@+id/vetImageView"
+            app:layout_constraintTop_toTopOf="@+id/vetImageView" />
+
+        <ImageView
+            android:id="@+id/vetImageView"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/nameCardView"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:elevation="10dp"
+            app:cardCornerRadius="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/vetImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+            <TextView
+                android:id="@+id/nameTextView"
+                style="@style/profileText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/name" />
+        </androidx.cardview.widget.CardView>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="250dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/profileText"
-        android:text="@string/name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/vetImageView" />
+        android:layout_height="match_parent"
+        android:background="@color/colorIcons"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameCardView"
+        >
+        <ImageView
+            android:id="@+id/contactImageView"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_phone_in_talk"
+            android:layout_marginStart="70dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/contactTextView"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginVertical="88dp"/>
+        <TextView
+            android:id="@+id/contactTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/profileText3"
+            android:layout_marginVertical="80dp"
+            android:text="@string/contact"
+            app:layout_constraintStart_toEndOf="@id/contactImageView"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/addressImageView"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_work"
+            android:layout_marginStart="70dp"
+            app:layout_constraintEnd_toStartOf="@id/addressTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contactImageView"/>
+        <TextView
+            android:id="@+id/addressTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/profileText3"
+            android:text="@string/contact"
+            app:layout_constraintStart_toEndOf="@id/addressImageView"
+            app:layout_constraintTop_toBottomOf="@+id/contactTextView" />
+        <ImageView
+            android:id="@+id/scheduleImageView"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_schedule"
+            android:layout_marginStart="70dp"
+            app:layout_constraintEnd_toStartOf="@id/scheduleTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addressImageView"
+            />
+        <TextView
+            android:id="@+id/scheduleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/profileText3"
+            android:text="@string/contact"
 
-    <TextView
-        android:id="@+id/contactTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/profileText"
-        android:text="@string/contact"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+            app:layout_constraintStart_toEndOf="@id/scheduleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/addressTextView" />
 
-    <TextView
-        android:id="@+id/addressTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/profileText"
-        android:text="@string/social_url"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactTextView" />
-
-    <TextView
-        android:id="@+id/scheduleTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/profileText"
-        android:text="@string/schedule"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressTextView" />
-
-    <android.support.design.button.MaterialButton
-        android:id="@+id/editProfileButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
-        android:text="Editar Perfil"
-        android:textColor="#FFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scheduleTextView" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/editProfileButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:text="Editar Perfil"
+            android:textColor="#FFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scheduleTextView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

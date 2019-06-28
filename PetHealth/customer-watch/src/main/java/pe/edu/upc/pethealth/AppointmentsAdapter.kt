@@ -11,13 +11,14 @@ import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.item_appointment.view.*
-import pe.edu.upc.lib.AppointmentResponse
+import pe.edu.upc.lib.models.ApptModel.ApptResponse
 import java.text.SimpleDateFormat
 import java.time.Instant
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.min
 
-class AppointmentsAdapter(var appts: ArrayList<AppointmentResponse>,
+class AppointmentsAdapter(var appts: ArrayList<ApptResponse>,
                           private val context: Context
 ) : RecyclerView.Adapter<AppointmentsAdapter.ViewHolder>(){
 
@@ -31,7 +32,7 @@ class AppointmentsAdapter(var appts: ArrayList<AppointmentResponse>,
     override fun getItemCount() = appts.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val junction = appts.get(position)
+        val junction = appts[position]
         holder.updateFrom(junction)
     }
 
@@ -41,8 +42,7 @@ class AppointmentsAdapter(var appts: ArrayList<AppointmentResponse>,
         val petImage = view.petImageView
         val type= view.AppointmentTextView
 
-        fun updateFrom(apptResponse: AppointmentResponse){
-
+        fun updateFrom(apptResponse: ApptResponse){
 
             val schedule: String
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -59,9 +59,9 @@ class AppointmentsAdapter(var appts: ArrayList<AppointmentResponse>,
                 schedule = dateFormatter.format(apptDate) + timeFormatter.format(apptStart) + '-'+ timeFormatter.format(apptEnd)
 
             } else {
-                val date = apptResponse.appointment.appt_date.substring(0, Math.min(apptResponse.appointment.appt_date.length, 10));
-                val start = apptResponse.appointment.start_t.substring(11, Math.min(apptResponse.appointment.start_t.length, 16));
-                val end = apptResponse.appointment.end_t.substring(11, Math.min(apptResponse.appointment.end_t.length, 16));
+                val date = apptResponse.appointment.appt_date.substring(0, min(apptResponse.appointment.appt_date.length, 10));
+                val start = apptResponse.appointment.start_t.substring(11, min(apptResponse.appointment.start_t.length, 16));
+                val end = apptResponse.appointment.end_t.substring(11, min(apptResponse.appointment.end_t.length, 16));
                 schedule = "$date $start - $end"
             }
             type.text = apptResponse.appointment.type
@@ -72,7 +72,7 @@ class AppointmentsAdapter(var appts: ArrayList<AppointmentResponse>,
                 val appt = Gson().toJson(apptResponse)
                 context.startActivity(
                         Intent(context, AppointmentDetailActivity::class.java).
-                                putExtra("appt", appt))
+                                putExtra("appointment", appt))
             }
         }
 
