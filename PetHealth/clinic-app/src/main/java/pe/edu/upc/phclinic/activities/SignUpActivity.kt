@@ -21,6 +21,11 @@ import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_sing_up.*
 import org.json.JSONException
 import pe.edu.upc.phclinic.R
+import pe.edu.upc.phclinic.network.RestClient
+import pe.edu.upc.phclinic.network.RestView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class SignUpActivity : AppCompatActivity() {
@@ -141,15 +146,11 @@ class SignUpActivity : AppCompatActivity() {
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
-/*
-                val call = RestClient().service.signup(bodyToSend)
-                call.enqueue( Callback<>(){
-                    override fun onResponse(call: Call<RestView<JsonObject>>, response: Response<RestView<JsonObject>>) {
-                        super.onResponse(call, response)
 
-                    }
-                }
-                )*/
+                val call = RestClient().service.signup(bodyToSend)
+
+
+
 
             }
         }
