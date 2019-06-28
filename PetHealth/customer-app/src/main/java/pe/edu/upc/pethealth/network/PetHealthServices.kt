@@ -17,7 +17,7 @@ interface PetHealthServices {
     @POST(EndpointUrls.LOGIN)
     fun login(@Body requestBody: JsonObject): Call<RestView<JsonObject>>
 
-    @POST(EndpointUrls.APPOINTMENTS)
+    @GET(EndpointUrls.APPOINTMENTS)
     fun getAppts(@Header("access_token") accessToken: String, @Path("user_id") userId: Int): Call<ApptModel.Response>
 
     @GET(EndpointUrls.VETERINARIES)
