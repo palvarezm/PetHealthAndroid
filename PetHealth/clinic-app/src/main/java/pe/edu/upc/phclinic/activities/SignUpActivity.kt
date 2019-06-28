@@ -34,6 +34,18 @@ class SignUpActivity : AppCompatActivity() {
     internal val context: Context = this
     lateinit var storageRef: StorageReference
     private val GALLERY_IMAGE = 1
+    lateinit var username : String
+    lateinit var password : String
+    lateinit var mail : String
+    lateinit var photo : String
+    lateinit var userable_type : String
+    lateinit var name : String
+    lateinit var last_name : String
+    lateinit var dni : String
+    lateinit var phone : String
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sing_up)
@@ -125,29 +137,27 @@ class SignUpActivity : AppCompatActivity() {
         } else {
             prepareImage(usernameTextInputEditText.text){profileDownloadUri ->
                 val bodyToSend = JsonObject()
-                try {
-                    bodyToSend.put(Pair("username", usernameTextInputEditText.text))
-                    bodyToSend.put(Pair("password", passwordTextInputEditText.text))
-                    bodyToSend.put(Pair("mail", emailTextInputEditText.text))
-                    bodyToSend.put(Pair("photo", profileDownloadUri))
-                    bodyToSend.put(Pair("userable_type", 2))
-                    bodyToSend.put(Pair("name", nameTextInputEditText.text))
-                    bodyToSend.put(Pair("last_name", lastNameTextInputEditText.text))
-                    bodyToSend.put(Pair("dni", docNumberTextInputEditText.text))
-                    bodyToSend.put(Pair("phone,address", phoneTextInputEditText.text))
-                    bodyToSend.put(Pair("linkedin_link", ""))
-                    bodyToSend.put(Pair("degree", ""))
-                    bodyToSend.put(Pair("location", ""))
-                    bodyToSend.put(Pair("opening_hours", ""))
-                    bodyToSend.put(Pair("website_url", ""))
-                    bodyToSend.put(Pair("youtube_url", ""))
-                    bodyToSend.put(Pair("twitter_url", ""))
 
+                try {
+                    bodyToSend.addProperty("username", username)
+                    bodyToSend.addProperty("password", username)
+                    bodyToSend.addProperty("mail", username)
+                    bodyToSend.addProperty("photo", username)
+                    bodyToSend.addProperty("userable_type", username)
+                    bodyToSend.addProperty("name", username)
+                    bodyToSend.addProperty("last_name", username)
+                    bodyToSend.addProperty("dni", username)
+                    bodyToSend.addProperty("phone", username)
+                    bodyToSend.addProperty("linkedin_link", "")
+                    bodyToSend.addProperty("degree", "")
+                    bodyToSend.addProperty("location", "")
+                    bodyToSend.addProperty("opening_hours", "")
+                    bodyToSend.addProperty("website_url", "")
+                    bodyToSend.addProperty("youtube_url", "")
+                    bodyToSend.addProperty("twitter_url", "")
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
-
-                val call = RestClient().service.signup(bodyToSend)
 
 
 
@@ -172,5 +182,22 @@ class SignUpActivity : AppCompatActivity() {
                 callback(downloadUri.toString())
             }
         }
+    }
+
+    private fun sendUserData(body: JsonObject){
+        val call = RestClient().service.signup(body)
+        call.enqueue(object : Callback<RestView<JsonObject>>{
+            override fun onResponse(call: Call<RestView<JsonObject>>, response: Response<RestView<JsonObject>>){
+                val answer = response.body()
+
+            }
+
+            override fun onFailure(call: Call<RestView<JsonObject>>, t: Throwable) {
+
+            }
+        })
+
+
+
     }
 }

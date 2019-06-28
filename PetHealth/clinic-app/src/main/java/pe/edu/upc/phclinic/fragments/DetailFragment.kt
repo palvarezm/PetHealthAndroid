@@ -82,7 +82,6 @@ class DetailFragment(var appt: ApptResponse) : Fragment() {
             val diagnoseEditText  = finishApptView.findViewById<TextInputEditText>(R.id.diagnoseTextInputEditText)
             val prescriptionEditText  = finishApptView.findViewById<TextInputEditText>(R.id.prescriptionTextInputEditText)
 
-
             val dialog = alert.create()
             dialog.setView(finishApptView)
             dialog.show()
@@ -108,8 +107,11 @@ class DetailFragment(var appt: ApptResponse) : Fragment() {
             )
             */
             buttonAccept.setOnClickListener{
-
+                val diagnose = diagnoseEditText.text.toString()
+                val prescription = prescriptionEditText.text.toString()
+                finishAppt(diagnose, prescription)
                 dialog.hide()
+                replaceFragment(AppointmentsFragment())
                 view.foreground.alpha = 0
             }
 
@@ -139,52 +141,34 @@ class DetailFragment(var appt: ApptResponse) : Fragment() {
         val call = RestClient().service.finishAppointment(sharedPreferencesManager.accessToken!!, appt.appointment.id!!, bodyToSend)
         call.enqueue(object : Callback<RestView<JsonObject>> {
             override fun onResponse(call: Call<RestView<JsonObject>>, response: Response<RestView<JsonObject>>) {
-                /*val answer
+                val answer = response.body()!!.status
 
-                if (answer != null && "{}" != answer.data?.getAsJsonObject("user").toString()) {
-                    try {
-                        val userJSONObject = JSONObject(answer.data?.get("user").toString())
-                        val gson = GsonBuilder().create()
-                        user = gson.fromJson<User>(userJSONObject.toString(), User::class.java)
-
-                        val veterinaryJSONObject = JSONObject(answer.data?.get("person").toString())
-                        veterinary = gson.fromJson<VeterinaryModel.Veterinary>(veterinaryJSONObject.toString(), VeterinaryModel.Veterinary::class.java)
-
-                        sharedPreferencesManager!!.saveUser(
-                                gson.toJson(user),
-                                gson.toJson(veterinary),
-                                answer.data!!.get("access_token").asString
-                        )
-
-                        Log.d("TESTING", "sharedpreferences")
-                        Log.d("user sp", sharedPreferencesManager.user.toString())
-                        Log.d("veterinary sp", sharedPreferencesManager.veterinary.toString())
-                        Log.d("accesstoken sp", sharedPreferencesManager.accessToken.toString())
-
-                        val intent = Intent(context, MainActivity::class.java)
-                        intent.putExtra("user", user!!)
-                        context.startActivity(intent)
-                        finish()
-                    } catch (e: JSONException) {
-                        e.printStackTrace()
-                    }
-
-                } else {
-                    Log.d(getString(R.string.app_name), "User and password are incorrect")
+                if(answer != null && answer == "OK"){
+                    Log.d("Oshe", "funcionó")
+                }
+                else {
+                    Log.d(getString(R.string.app_name), "There was a problem")
                     val builder = android.app.AlertDialog.Builder(context)
-                    builder.setMessage("User and password are incorrect")
+                    builder.setMessage("There's a problem with the content")
                     builder.setPositiveButton(
                             "OK"
                     ) { dialogInterface, _ -> dialogInterface.cancel() }
                     val alertDialog = builder.create()
                     alertDialog.show()
-                }*/
+                }
             }
 
 
             override fun onFailure(call: Call<RestView<JsonObject>>, t: Throwable) {
             }
         })
+    }
+
+
+    private fun replaceFragment(fragment: Fragment){
+        val fragmentTransaction = this.fragmentManager!!.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_container, fragment)
+        fragmentTransaction.commit()
     }
 
 }
