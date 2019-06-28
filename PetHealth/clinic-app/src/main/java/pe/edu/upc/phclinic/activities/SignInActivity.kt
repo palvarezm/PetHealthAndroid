@@ -58,7 +58,7 @@ class SignInActivity : AppCompatActivity() {
         signUptextView.paintFlags = signUptextView!!.paintFlags or Paint.UNDERLINE_TEXT_FLAG
         signUptextView.setOnClickListener { view ->
             val context = view.context
-            //val intent = Intent(context, SignUpActivity::class.java)
+            val intent = Intent(context, SignUpActivity::class.java)
             context.startActivity(intent)
         }
     }
