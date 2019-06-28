@@ -43,7 +43,7 @@ class AppointmentFragment : Fragment() {
         sharedPreferencesManager = SharedPreferencesManager.getInstance(this.context!!)
         val view = inflater.inflate(R.layout.fragment_appointment, container, false)
 
-        (activity as MainActivity).setFragmentToolbar("Next Appointments", true, fragmentManager!!)
+        (activity as MainActivity).setFragmentToolbar(resources.getString(R.string.title_myappointments), false, fragmentManager!!)
         dataClient = Wearable.getDataClient(this.context!!)
         return view
     }
