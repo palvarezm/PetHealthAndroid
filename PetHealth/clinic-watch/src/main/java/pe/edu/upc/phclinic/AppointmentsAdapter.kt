@@ -1,4 +1,4 @@
-package pe.edu.upc.pethealth
+package pe.edu.upc.phclinic
 
 import android.content.Context
 import android.content.Intent
@@ -62,8 +62,7 @@ class AppointmentsAdapter(var appts: ArrayList<ApptResponse>,
             Picasso.get().load(apptResponse.pet.image_url).transform(CropCircleTransformation()).into(petImage)
             layout.setOnClickListener { view->
                 val context = view.context
-                context.startActivity(Intent(context, AppointmentDetailActivity::class.java).
-                        putExtra("appointment", Gson().toJson(apptResponse)))
+                context.startActivity(Intent(context, AppointmentDetailActivity(apptResponse)::class.java))
             }
         }
 

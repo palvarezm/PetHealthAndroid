@@ -17,6 +17,7 @@
         android:layout_weight="1" />
 
     <androidx.recyclerview.widget.RecyclerView
+        tools:listitem="@layout/item_appointment"
         android:id="@+id/appointmentRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

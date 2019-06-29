@@ -1,163 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/appointmentDetailConstraintLayout"
+<ScrollView
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:foreground="#CC000000"
-    >
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/apptFinishButton"
-            android:layout_width="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/appointmentDetailConstraintLayout"
             android:layout_height="wrap_content"
-            android:text="Finish Appointment"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginVertical="@dimen/default_margin"
-            android:layout_marginHorizontal="@dimen/default_margin"
-            />
+            android:layout_width="match_parent">
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/apptFinishButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Terminar"
+                    android:layout_marginVertical="@dimen/big_margin"
+                    android:layout_marginHorizontal="@dimen/big_margin"
+                    app:layout_constraintTop_toBottomOf="@id/infoCardView"
+                    app:layout_constraintBottom_toBottomOf="@id/infoCardView"
+                    app:layout_constraintEnd_toEndOf="@id/infoCardView" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/infoCardView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/big_margin"
-            android:layout_marginTop="75dp"
-            android:layout_marginBottom="@dimen/default_margin"
-            app:layout_constraintTop_toTopOf="@id/petImageView"
-            app:cardCornerRadius="@dimen/default_margin">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/infoCardView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_marginHorizontal="@dimen/big_margin"
+                    android:layout_marginTop="85dp"
+                    app:layout_constraintVertical_bias="0.0"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    app:layout_constraintTop_toTopOf="@id/petImageView"
+                    app:cardCornerRadius="@dimen/default_margin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/petClinicHistoryTextView">
 
-                        <TextView
-                            android:id="@+id/petNameTextView"
-                            android:layout_width="100dp"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/default_margin"
-                            android:text="Pet Name"
-                            app:layout_constraintBottom_toBottomOf="@id/petBirthTextView"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/petRaceTextView" />
+                            app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
-                            android:id="@+id/petRaceTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="8dp"
-                            android:layout_marginTop="83dp"
-                            android:layout_marginBottom="@dimen/default_margin"
-                            android:text="Race"
-                            app:layout_constraintBottom_toTopOf="@id/petDescTextView"
-                            app:layout_constraintStart_toEndOf="@id/petNameTextView"
-                            app:layout_constraintTop_toTopOf="parent" />
+                                <TextView
+                                    android:id="@+id/petNameTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/big_padding"
+                                    android:textAlignment="textEnd"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorIcons"
+                                    android:text="Pet Name"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="@id/petBirthTextView"
+                                    app:layout_constraintEnd_toStartOf="@id/petSegmentView"
+                                    app:layout_constraintTop_toTopOf="@id/petRaceTextView" />
+                                <View
+                                    android:id="@+id/petSegmentView"
+                                    android:layout_width="0.8dp"
+                                    android:layout_height="0dp"
+                                    android:layout_margin="@dimen/default_margin"
+                                    android:background="@color/colorPrimaryLight"
+                                    app:layout_constraintHorizontal_bias="0.3"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="@id/petRaceTextView"
+                                    app:layout_constraintBottom_toBottomOf="@id/petBirthTextView"/>
 
-                        <TextView
-                            android:id="@+id/petDescTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/default_margin"
-                            android:text="Description"
-                            app:layout_constraintBottom_toTopOf="@id/petBirthTextView"
-                            app:layout_constraintStart_toEndOf="@id/petNameTextView"
-                            app:layout_constraintTop_toBottomOf="@id/petRaceTextView" />
+                                <TextView
+                                    android:id="@+id/petRaceTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/big_padding"
+                                    android:layout_marginTop="101dp"
+                                    android:layout_marginBottom="@dimen/minimun_margin"
+                                    android:textColor="@color/colorIcons"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    android:text="Race"
+                                    app:layout_constraintBottom_toTopOf="@id/petDescTextView"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@id/petSegmentView"
+                                    app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/petBirthTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/default_margin"
-                            android:text="Pet birth"
-                            app:layout_constraintBottom_toTopOf="@id/apptDateTextView"
-                            app:layout_constraintStart_toEndOf="@id/petNameTextView"
-                            app:layout_constraintTop_toBottomOf="@id/petDescTextView" />
+                                <TextView
+                                    android:id="@+id/petDescTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginVertical="@dimen/minimun_margin"
+                                    android:layout_marginHorizontal="@dimen/big_padding"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    android:textColor="@color/colorIcons"
+                                    android:text="Description"
+                                    app:layout_constraintBottom_toTopOf="@id/petBirthTextView"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@id/petSegmentView"
+                                    app:layout_constraintTop_toBottomOf="@id/petRaceTextView" />
 
-                        <TextView
-                            android:id="@+id/apptTypeTextView"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/default_margin"
-                            android:layout_marginBottom="8dp"
-                            android:text="Appt Type"
-                            app:layout_constraintBottom_toBottomOf="@id/apptDescTextView"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/apptDateTextView" />
+                                <TextView
+                                    android:id="@+id/petBirthTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/minimun_margin"
+                                    android:layout_marginBottom="@dimen/default_margin"
+                                    android:layout_marginHorizontal="@dimen/big_padding"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    android:textColor="@color/colorIcons"
+                                    android:text="Pet birth"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintBottom_toTopOf="@id/apptDateTextView"
+                                    app:layout_constraintStart_toEndOf="@id/petSegmentView"
+                                    app:layout_constraintTop_toBottomOf="@id/petDescTextView" />
 
-                        <TextView
-                            android:id="@+id/apptDateTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/default_margin"
-                            android:text="Mar, 14 8:00 am - 10:00 pm"
-                            app:layout_constraintBottom_toTopOf="@id/apptVetTextView"
-                            app:layout_constraintStart_toEndOf="@id/apptTypeTextView"
-                            app:layout_constraintTop_toBottomOf="@id/petBirthTextView" />
+                                <TextView
+                                    android:id="@+id/apptTypeTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginVertical="@dimen/default_margin"
+                                    android:layout_marginHorizontal="@dimen/big_padding"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorIcons"
+                                    android:text="Appt Type"
+                                    android:textAlignment="textEnd"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="@id/apptDescTextView"
+                                    app:layout_constraintEnd_toStartOf="@id/apptSegmentView"
+                                    app:layout_constraintTop_toTopOf="@id/apptDateTextView" />
+                                <View
+                                    android:id="@+id/apptSegmentView"
+                                    android:layout_width="0.8dp"
+                                    android:layout_height="0dp"
+                                    android:layout_margin="@dimen/default_margin"
+                                    android:background="@color/colorPrimaryLight"
+                                    app:layout_constraintHorizontal_bias="0.3"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="@id/apptDateTextView"
+                                    app:layout_constraintBottom_toBottomOf="@id/apptDescTextView"/>
 
-                        <TextView
-                            android:id="@+id/apptVetTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/default_margin"
-                            android:text="Veterinarian"
-                            app:layout_constraintBottom_toTopOf="@id/apptDescTextView"
-                            app:layout_constraintStart_toEndOf="@id/apptTypeTextView"
-                            app:layout_constraintTop_toBottomOf="@id/apptDateTextView" />
+                                <TextView
+                                    android:id="@+id/apptDateTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/default_margin"
+                                    android:layout_marginHorizontal="@dimen/big_padding"
+                                    android:layout_marginBottom="@dimen/minimun_margin"
+                                    android:textColor="@color/colorIcons"
+                                    android:text="Mar, 14 8:00 am - 10:00 pm"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintBottom_toTopOf="@id/apptVetTextView"
+                                    app:layout_constraintStart_toEndOf="@id/petSegmentView"
+                                    app:layout_constraintTop_toBottomOf="@id/petBirthTextView" />
 
-                        <TextView
-                            android:id="@+id/apptDescTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/default_margin"
-                            android:text="Description"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/apptTypeTextView"
-                            app:layout_constraintTop_toBottomOf="@id/apptVetTextView" />
+                                <TextView
+                                    android:id="@+id/apptVetTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginVertical="@dimen/minimun_margin"
+                                    android:layout_marginHorizontal="@dimen/big_padding"
+                                    android:text="Veterinarian"
+                                    android:textColor="@color/colorIcons"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintBottom_toTopOf="@id/apptDescTextView"
+                                    app:layout_constraintStart_toEndOf="@id/apptSegmentView"
+                                    app:layout_constraintTop_toBottomOf="@id/apptDateTextView" />
+
+                                <TextView
+                                    android:id="@+id/apptDescTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/minimun_margin"
+                                    android:layout_marginHorizontal="@dimen/big_padding"
+                                    android:textColor="@color/colorIcons"
+                                    android:layout_marginBottom="36dp"
+                                    android:text="Description"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@id/apptSegmentView"
+                                    app:layout_constraintTop_toBottomOf="@id/apptVetTextView" />
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.card.MaterialCardView>
 
-        <com.wang.avi.AVLoadingIndicatorView
-            android:id="@+id/avi"
-            style="@style/AVLoadingIndicatorView"
-            android:visibility="visible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:indicatorColor="@color/colorPrimaryDark"
-            app:indicatorName="BallScaleIndicator"
-            app:layout_constraintBottom_toBottomOf="@id/petImageView"
-            app:layout_constraintEnd_toEndOf="@id/petImageView"
-            app:layout_constraintStart_toStartOf="@id/petImageView"
-            app:layout_constraintTop_toTopOf="@id/petImageView"
-            android:elevation="4dp"/>
+                <com.wang.avi.AVLoadingIndicatorView
+                    android:id="@+id/avi"
+                    style="@style/AVLoadingIndicatorView"
+                    android:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:indicatorColor="@color/colorPrimaryDark"
+                    app:indicatorName="BallScaleIndicator"
+                    app:layout_constraintBottom_toBottomOf="@id/petImageView"
+                    app:layout_constraintEnd_toEndOf="@id/petImageView"
+                    app:layout_constraintStart_toStartOf="@id/petImageView"
+                    app:layout_constraintTop_toTopOf="@id/petImageView"
+                    android:elevation="10dp"/>
 
-        <ImageView
-            android:id="@+id/petImageView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="36dp"
-            android:paddingTop="45dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:elevation="5dp"/>
+                <ImageView
+                    android:id="@+id/petImageView"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_marginTop="@dimen/big_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:elevation="11dp"/>
+                <TextView
+                    android:id="@+id/petClinicHistoryTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Historial Clinico"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/minimun_margin"
+                    android:layout_marginHorizontal="@dimen/big_margin"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintBottom_toTopOf="@id/historiesRecyclerView"
+                    app:layout_constraintEnd_toEndOf="@id/infoCardView"
+                    app:layout_constraintStart_toStartOf="@id/infoCardView"
+                    app:layout_constraintTop_toBottomOf="@id/infoCardView"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/historiesRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin"
-            android:layout_marginHorizontal="@dimen/big_margin"
-            android:layout_marginBottom="@dimen/big_margin"
-            app:layout_constraintTop_toBottomOf="@id/infoCardView"
-            tools:listitem="@layout/item_historial">
-        </androidx.recyclerview.widget.RecyclerView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/historiesRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/minimun_margin"
+                    android:layout_marginHorizontal="@dimen/big_margin"
+                    android:layout_marginBottom="@dimen/super_big_margin"
+                    app:layout_constraintTop_toBottomOf="@id/petClinicHistoryTextView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:listitem="@layout/item_historial">
+                </androidx.recyclerview.widget.RecyclerView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

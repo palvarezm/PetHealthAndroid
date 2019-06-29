@@ -13,7 +13,7 @@ object ApptModel{
             val veterinary: VeterinaryModel.Veterinary
     )
     data class Appt(
-            val id: Int?,
+            val id: Int = 0,
             val appt_date: String = "",
             val desc: String = "",
             val status: String = "",
