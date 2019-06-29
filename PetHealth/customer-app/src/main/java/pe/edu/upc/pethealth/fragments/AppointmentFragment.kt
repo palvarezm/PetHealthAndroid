@@ -9,11 +9,15 @@ import android.view.ViewGroup
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.androidnetworking.interfaces.JSONArrayRequestListener
+import com.github.salomonbrys.kotson.toJsonArray
 
 import com.google.android.gms.wearable.DataClient
 import com.google.android.gms.wearable.PutDataMapRequest
 import com.google.android.gms.wearable.Wearable
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_appointment.*
+import org.json.JSONObject
 import pe.edu.upc.lib.models.ApptModel
 
 import pe.edu.upc.pethealth.R
@@ -64,9 +68,8 @@ class AppointmentFragment : Fragment() {
     }
 
     internal fun sendWearData(appt: ArrayList<ApptModel.ApptResponse>) {
-
         val putDataMapReq = PutDataMapRequest.create(APPT_PATH)
-        putDataMapReq.dataMap.putString(APPT_KEY, appt.toString())
+        putDataMapReq.dataMap.putString(APPT_KEY, Gson().toJson(appt))
         val putDataReq = putDataMapReq.asPutDataRequest().setUrgent()
         dataClient.putDataItem(putDataReq)
     }

@@ -3,6 +3,7 @@ package pe.edu.upc.pethealth
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
+import android.util.Log
 import androidx.core.content.edit
 import androidx.wear.widget.WearableLinearLayoutManager
 
@@ -12,6 +13,12 @@ import kotlinx.android.synthetic.main.activity_appointments.*
 import pe.edu.upc.lib.models.ApptModel.ApptResponse
 import com.github.salomonbrys.kotson.*
 import com.google.gson.Gson
+import pe.edu.upc.lib.models.ApptModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class AppointmentsActivity : WearableActivity(), DataClient.OnDataChangedListener  {
 
@@ -21,6 +28,7 @@ class AppointmentsActivity : WearableActivity(), DataClient.OnDataChangedListene
 
     lateinit var shared: SharedPreferences
     lateinit var apptsAdapter: AppointmentsAdapter
+    private lateinit var retrofit: Retrofit
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

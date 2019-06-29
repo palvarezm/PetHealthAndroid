@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
+import com.github.salomonbrys.kotson.fromJson
+import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.activity_appointment_detail.*
@@ -12,11 +14,13 @@ import java.text.SimpleDateFormat
 import java.time.Instant
 import java.util.*
 
-class AppointmentDetailActivity(var appt: ApptResponse) : WearableActivity() {
+class AppointmentDetailActivity : WearableActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_appointment_detail)
+        val apptString = intent.extras.getString("appointment")
+        val appt = Gson().fromJson<ApptResponse>(apptString)
 
         val dateFormatter = SimpleDateFormat("dd/MM, ", Locale.getDefault())
         val timeFormatter = SimpleDateFormat("h:mm aaa",Locale.getDefault())

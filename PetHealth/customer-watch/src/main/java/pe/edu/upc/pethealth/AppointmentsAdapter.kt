@@ -62,7 +62,8 @@ class AppointmentsAdapter(var appts: ArrayList<ApptResponse>,
             Picasso.get().load(apptResponse.pet.image_url).transform(CropCircleTransformation()).into(petImage)
             layout.setOnClickListener { view->
                 val context = view.context
-                context.startActivity(Intent(context, AppointmentDetailActivity(apptResponse)::class.java))
+                context.startActivity(Intent(context, AppointmentDetailActivity::class.java).
+                        putExtra("appointment", Gson().toJson(apptResponse)))
             }
         }
 
