@@ -27,6 +27,7 @@ import pe.edu.upc.lib.models.VeterinaryModel.Veterinary
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 
 class SignInActivity : AppCompatActivity() {
 
@@ -118,8 +119,13 @@ class SignInActivity : AppCompatActivity() {
                         val userJSONObject = JSONObject(answer.data?.get("user").toString())
                         val gson = GsonBuilder().create()
                         user = gson.fromJson<User>(userJSONObject.toString(), User::class.java)
-
-                        val veterinaryJSONObject = JSONObject(answer.data?.get("person").toString())
+                        var veterinaryJSONObject : JSONObject
+                        try {
+                            veterinaryJSONObject = JSONObject(answer.data?.get("person").toString())
+                        }
+                        catch (e: Exception){
+                            veterinaryJSONObject = JSONObject(answer.data?.get("veterinary").toString())
+                        }
                         veterinary = gson.fromJson<Veterinary>(veterinaryJSONObject.toString(), Veterinary::class.java)
 
                         sharedPreferencesManager!!.saveUser(

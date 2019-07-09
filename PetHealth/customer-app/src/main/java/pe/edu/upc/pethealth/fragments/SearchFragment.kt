@@ -108,12 +108,12 @@ class SearchFragment : Fragment(), OnMapReadyCallback {
         val coarseLocationPermission = checkSelfPermission(this.context!!, COARSE_LOCATION)
         if (fineLocationPermission == PackageManager.PERMISSION_GRANTED &&
                 coarseLocationPermission == PackageManager.PERMISSION_GRANTED) {
+            mMap.isMyLocationEnabled = true
 
         } else {
             ActivityCompat.requestPermissions(this.activity!!, arrayOf(FINE_LOCATION, COARSE_LOCATION), LOCATION_REQUEST_CODE)
         }
 
-        mMap.isMyLocationEnabled = true
         fusedLocationClient.lastLocation.addOnSuccessListener {location: Location? ->
             location?.let { currentLatLng = LatLng(it.latitude,it.longitude) }
         }
