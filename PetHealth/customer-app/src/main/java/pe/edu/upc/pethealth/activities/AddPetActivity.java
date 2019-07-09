@@ -5,7 +5,6 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.hardware.Camera;
 import android.provider.MediaStore;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -41,7 +40,6 @@ import pe.edu.upc.pethealth.persistence.SharedPreferencesManager;
 
 public class AddPetActivity extends AppCompatActivity {
 
-    private Camera camera;
     private EditText nameEditText;
     private EditText raceEditText;
     private EditText birthDateEditText;

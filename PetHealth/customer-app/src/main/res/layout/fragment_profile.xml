@@ -16,7 +16,7 @@
             android:layout_height="1.2dp"
             android:layout_marginBottom="4dp"
             android:layout_marginHorizontal="36dp"
-            android:background="@color/colorPrimaryLight"
+            android:background="@color/colorPrimaryDark"
             app:layout_constraintBottom_toTopOf="@+id/textView"/>
         <com.wang.avi.AVLoadingIndicatorView
             android:id="@+id/avi"
@@ -63,6 +63,7 @@
             android:textSize="24dp"
             android:textStyle="bold"
             android:maxLines="2"
+            app:layout_constraintTop_toTopOf="@id/profileImageView"
             app:layout_constraintBottom_toTopOf="@+id/documentNumberTextView"
             app:layout_constraintEnd_toEndOf="@+id/petsRecyclerView"
             app:layout_constraintStart_toEndOf="@+id/profileImageView" />

@@ -34,7 +34,7 @@
     <string name="title_activity_add_appointment">Add Appointment</string>
     <string name="b_veterinary_chat">Chat</string>
     <string name="pet_tips_title">Tips para tu mascota</string>
-    <string name="bt_edit_profile">Editar datos</string>
+    <string name="bt_edit_profile">Editar perfil</string>
 
 
 </resources>

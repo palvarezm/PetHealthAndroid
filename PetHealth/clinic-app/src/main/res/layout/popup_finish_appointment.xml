@@ -4,25 +4,26 @@
     android:id="@+id/popUpConstraint"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
-
-
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/diagnoseTextInputLayout"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/big_margin"
-            android:layout_marginHorizontal="@dimen/big_margin"
+            android:layout_marginTop="@dimen/big_padding"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:layout_marginHorizontal="@dimen/big_padding"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/prescriptionTextInputLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/diagnoseTextInputEditText"
                 android:layout_width="match_parent"
                 android:hint="Diagnose"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -30,17 +31,19 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/prescriptionTextInputLayout"
             app:layout_constraintTop_toBottomOf="@id/diagnoseTextInputLayout"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/big_margin"
-            android:layout_marginHorizontal="@dimen/big_margin"
+            android:layout_marginVertical="@dimen/default_margin"
+            android:layout_marginHorizontal="@dimen/big_padding"
+            app:layout_constraintBottom_toTopOf="@id/cancelButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/prescriptionTextInputEditText"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-
+                android:layout_height="wrap_content"
                 android:hint="Prescription"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -48,30 +51,32 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/acceptButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="9dp"
+                android:textSize="12dp"
                 android:text="Confirmar"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/prescriptionTextInputLayout"
                 app:layout_constraintEnd_toStartOf="@id/cancelButton"
-                app:layout_constraintTop_toBottomOf="@+id/prescriptionTextInputLayout"
-                android:layout_marginStart="70dp"
+                app:layout_constraintTop_toTopOf="@+id/cancelButton"
+                app:layout_constraintBottom_toBottomOf="@id/cancelButton"
+                android:layout_marginStart="@dimen/big_margin"
                 android:layout_marginEnd="@dimen/default_margin"
-                android:layout_marginVertical="@dimen/big_margin"
                 android:backgroundTint="@color/colorPrimaryLight"
                 />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/cancelButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginVertical="@dimen/big_margin"
-                android:textSize="9dp"
+                android:layout_marginStart="@dimen/big_margin"
+                android:layout_marginEnd="@dimen/big_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/big_padding"
+                android:textSize="12dp"
                 android:text="Cancelar"
-                android:paddingVertical="@dimen/default_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/prescriptionTextInputLayout"
                 app:layout_constraintTop_toBottomOf="@+id/prescriptionTextInputLayout"
-                app:layout_constraintStart_toEndOf="@id/acceptButton"
-                />
+                app:layout_constraintStart_toEndOf="@id/acceptButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

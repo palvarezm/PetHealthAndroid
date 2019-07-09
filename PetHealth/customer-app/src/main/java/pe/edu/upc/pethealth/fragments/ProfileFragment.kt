@@ -41,7 +41,7 @@ class ProfileFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         super.onCreateOptionsMenu(menu, inflater)
-        menu!!.add("Edit Profile")
+        menu!!.add(resources.getString(R.string.bt_edit_profile))
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
