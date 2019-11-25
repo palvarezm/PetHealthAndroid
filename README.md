@@ -1,2 +1,2 @@
 # PetHealthAndroid
-PetHealth android mobile application for pet owners
+PetHealth android mobile application for veterinarians, clinics and pet owners
